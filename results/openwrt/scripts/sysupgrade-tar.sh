@@ -1,7 +1,6 @@
 
 In openwrt/scripts/sysupgrade-tar.sh line 3:
 . $TOPDIR/scripts/functions.sh
-  ^--------------------------^ SC1090: Can't follow non-constant source. Use a directive to specify location.
   ^-----^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
@@ -34,6 +33,6 @@ Did you mean:
 (cd "$tmpdir" || exit; tar --sort=name --owner=0 --group=0 --numeric-owner -cvf sysupgrade.tar sysupgrade-"${board}" "${mtime}")
 
 For more information:
-  https://www.shellcheck.net/wiki/SC1090 -- Can't follow non-constant source....
   https://www.shellcheck.net/wiki/SC2164 -- Use 'cd ... || exit' or 'cd ... |...
   https://www.shellcheck.net/wiki/SC2166 -- Prefer [ p ] && [ q ] as [ p -a q...
+  https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...

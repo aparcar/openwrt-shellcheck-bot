@@ -1,9 +1,4 @@
 
-In openwrt/target/linux/ramips/mt7621/base-files/lib/upgrade/ubnt.sh line 5:
-. /lib/functions.sh
-  ^---------------^ SC1091: Not following: /lib/functions.sh was not specified as input (see shellcheck -x).
-
-
 In openwrt/target/linux/ramips/mt7621/base-files/lib/upgrade/ubnt.sh line 13:
 	local current_kernel_index=$(hexdump -s $UBNT_ERX_KERNEL_INDEX_OFFSET -n 1 -e '/1 "%X "' ${factory_mtd})
                                                                                                  ^------------^ SC2086: Double quote to prevent globbing and word splitting.
@@ -86,6 +81,5 @@ Did you mean:
 	ubnt_update_target_kernel "${factory_mtd}" "${kernel_part}" || exit 1
 
 For more information:
-  https://www.shellcheck.net/wiki/SC1091 -- Not following: /lib/functions.sh ...
   https://www.shellcheck.net/wiki/SC2015 -- Note that A && B || C is not if-t...
   https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...

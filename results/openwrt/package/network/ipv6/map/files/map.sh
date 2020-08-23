@@ -1,19 +1,4 @@
 
-In openwrt/package/network/ipv6/map/files/map.sh line 17:
-	. /lib/functions.sh
-          ^---------------^ SC1091: Not following: /lib/functions.sh was not specified as input (see shellcheck -x).
-
-
-In openwrt/package/network/ipv6/map/files/map.sh line 18:
-	. /lib/functions/network.sh
-          ^-----------------------^ SC1091: Not following: /lib/functions/network.sh was not specified as input (see shellcheck -x).
-
-
-In openwrt/package/network/ipv6/map/files/map.sh line 19:
-	. ../netifd-proto.sh
-          ^----------------^ SC1091: Not following: ../netifd-proto.sh was not specified as input (see shellcheck -x).
-
-
 In openwrt/package/network/ipv6/map/files/map.sh line 58:
 	echo "rule=$rule" > /tmp/map-$cfg.rules
                                      ^--^ SC2086: Double quote to prevent globbing and word splitting.
@@ -190,4 +175,4 @@ Did you mean:
 For more information:
   https://www.shellcheck.net/wiki/SC2046 -- Quote this to prevent word splitt...
   https://www.shellcheck.net/wiki/SC2166 -- Prefer [ p ] && [ q ] as [ p -a q...
-  https://www.shellcheck.net/wiki/SC1091 -- Not following: ../netifd-proto.sh...
+  https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...

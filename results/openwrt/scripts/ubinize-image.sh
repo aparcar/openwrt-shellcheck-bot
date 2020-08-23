@@ -1,7 +1,6 @@
 
 In openwrt/scripts/ubinize-image.sh line 3:
 . $TOPDIR/scripts/functions.sh
-  ^--------------------------^ SC1090: Can't follow non-constant source. Use a directive to specify location.
   ^-----^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
@@ -58,6 +57,6 @@ Did you mean:
 ubinize "$ubinize_seq" -o "$outfile" "$ubinize_param" "$ubinizecfg"
 
 For more information:
-  https://www.shellcheck.net/wiki/SC1090 -- Can't follow non-constant source....
   https://www.shellcheck.net/wiki/SC2124 -- Assigning an array to a string! A...
   https://www.shellcheck.net/wiki/SC2166 -- Prefer [ p ] && [ q ] as [ p -a q...
+  https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...

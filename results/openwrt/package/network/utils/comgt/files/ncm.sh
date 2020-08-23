@@ -1,14 +1,4 @@
 
-In openwrt/package/network/utils/comgt/files/ncm.sh line 4:
-	. /lib/functions.sh
-          ^---------------^ SC1091: Not following: /lib/functions.sh was not specified as input (see shellcheck -x).
-
-
-In openwrt/package/network/utils/comgt/files/ncm.sh line 5:
-	. ../netifd-proto.sh
-          ^----------------^ SC1091: Not following: ../netifd-proto.sh was not specified as input (see shellcheck -x).
-
-
 In openwrt/package/network/utils/comgt/files/ncm.sh line 30:
 	local device apn auth username password pincode delay mode pdptype profile $PROTO_DEFAULT_OPTIONS
                                                                                    ^--------------------^ SC2086: Double quote to prevent globbing and word splitting.
@@ -105,5 +95,5 @@ In openwrt/package/network/utils/comgt/files/ncm.sh line 226:
 
 For more information:
   https://www.shellcheck.net/wiki/SC2166 -- Prefer [ p ] || [ q ] as [ p -o q...
-  https://www.shellcheck.net/wiki/SC1091 -- Not following: ../netifd-proto.sh...
   https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...
+  https://www.shellcheck.net/wiki/SC2181 -- Check exit code directly with e.g...

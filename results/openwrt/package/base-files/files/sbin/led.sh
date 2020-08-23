@@ -1,9 +1,4 @@
 
-In openwrt/package/base-files/files/sbin/led.sh line 4:
-. /lib/functions.sh
-  ^---------------^ SC1091: Not following: /lib/functions.sh was not specified as input (see shellcheck -x).
-
-
 In openwrt/package/base-files/files/sbin/led.sh line 10:
 	config_get name $1 name
                         ^-- SC2086: Double quote to prevent globbing and word splitting.
@@ -48,5 +43,4 @@ In openwrt/package/base-files/files/sbin/led.sh line 20:
 
 For more information:
   https://www.shellcheck.net/wiki/SC2166 -- Prefer [ p ] && [ q ] as [ p -a q...
-  https://www.shellcheck.net/wiki/SC1091 -- Not following: /lib/functions.sh ...
   https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...

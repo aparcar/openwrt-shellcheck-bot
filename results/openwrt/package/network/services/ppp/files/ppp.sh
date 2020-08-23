@@ -1,19 +1,4 @@
 
-In openwrt/package/network/services/ppp/files/ppp.sh line 6:
-	. /lib/functions.sh
-          ^---------------^ SC1091: Not following: /lib/functions.sh was not specified as input (see shellcheck -x).
-
-
-In openwrt/package/network/services/ppp/files/ppp.sh line 7:
-	. /lib/functions/network.sh
-          ^-----------------------^ SC1091: Not following: /lib/functions/network.sh was not specified as input (see shellcheck -x).
-
-
-In openwrt/package/network/services/ppp/files/ppp.sh line 8:
-	. ../netifd-proto.sh
-          ^----------------^ SC1091: Not following: ../netifd-proto.sh was not specified as input (see shellcheck -x).
-
-
 In openwrt/package/network/services/ppp/files/ppp.sh line 22:
 		if [ -n "$res_mask" -a "$mask" != 32 ]; then
                                     ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
@@ -87,4 +72,4 @@ In openwrt/package/network/services/ppp/files/ppp.sh line 336:
 For more information:
   https://www.shellcheck.net/wiki/SC2144 -- -f doesn't work with globs. Use a...
   https://www.shellcheck.net/wiki/SC2166 -- Prefer [ p ] && [ q ] as [ p -a q...
-  https://www.shellcheck.net/wiki/SC1091 -- Not following: ../netifd-proto.sh...
+  https://www.shellcheck.net/wiki/SC2015 -- Note that A && B || C is not if-t...

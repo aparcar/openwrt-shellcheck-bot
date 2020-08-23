@@ -1,9 +1,4 @@
 
-In openwrt/package/network/services/hostapd/files/wps-hotplug.sh line 7:
-	. /usr/share/libubox/jshn.sh
-          ^------------------------^ SC1091: Not following: /usr/share/libubox/jshn.sh was not specified as input (see shellcheck -x).
-
-
 In openwrt/package/network/services/hostapd/files/wps-hotplug.sh line 8:
 	ubus -S -t 30 listen wps_credentials | while read creds; do
                                                      ^--^ SC2162: read without -r will mangle backslashes.
@@ -63,5 +58,5 @@ Did you mean:
 
 For more information:
   https://www.shellcheck.net/wiki/SC2166 -- Prefer [ p ] && [ q ] as [ p -a q...
-  https://www.shellcheck.net/wiki/SC1091 -- Not following: /usr/share/libubox...
   https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...
+  https://www.shellcheck.net/wiki/SC2162 -- read without -r will mangle backs...

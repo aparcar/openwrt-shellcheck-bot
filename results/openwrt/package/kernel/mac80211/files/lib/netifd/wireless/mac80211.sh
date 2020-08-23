@@ -1,19 +1,4 @@
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 2:
-. /lib/netifd/netifd-wireless.sh
-  ^----------------------------^ SC1091: Not following: /lib/netifd/netifd-wireless.sh was not specified as input (see shellcheck -x).
-
-
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 3:
-. /lib/netifd/hostapd.sh
-  ^--------------------^ SC1091: Not following: /lib/netifd/hostapd.sh was not specified as input (see shellcheck -x).
-
-
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 4:
-. /lib/netifd/mac80211.sh
-  ^---------------------^ SC1091: Not following: /lib/netifd/mac80211.sh was not specified as input (see shellcheck -x).
-
-
 In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 74:
 	config_add_int $MP_CONFIG_INT
                        ^------------^ SC2086: Double quote to prevent globbing and word splitting.

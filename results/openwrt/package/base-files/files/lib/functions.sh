@@ -20,11 +20,6 @@ Did you mean:
 	local pkgname="$(basename "${1%.*}")"
 
 
-In openwrt/package/base-files/files/lib/functions.sh line 180:
-		( . "$root/usr/lib/opkg/info/${pkgname}.prerm-pkg" )
-                    ^-- SC1090: Can't follow non-constant source. Use a directive to specify location.
-
-
 In openwrt/package/base-files/files/lib/functions.sh line 185:
 	for i in $(grep -s "^/etc/init.d/" "$root/usr/lib/opkg/info/${pkgname}.list"); do
                  ^-- SC2013: To read lines rather than words, pipe/redirect to a 'while read' loop.
@@ -71,11 +66,6 @@ Did you mean:
 	local pkgname="$(basename "${1%.*}")"
 
 
-In openwrt/package/base-files/files/lib/functions.sh line 243:
-		( . "$root/usr/lib/opkg/info/${pkgname}.postinst-pkg" )
-                    ^-- SC1090: Can't follow non-constant source. Use a directive to specify location.
-
-
 In openwrt/package/base-files/files/lib/functions.sh line 248:
 		cp -R $root/rootfs-overlay/. $root/
                       ^---^ SC2086: Double quote to prevent globbing and word splitting.
@@ -101,7 +91,6 @@ In openwrt/package/base-files/files/lib/functions.sh line 263:
 In openwrt/package/base-files/files/lib/functions.sh line 264:
 				( [ -f "$i" ] && cd "$(dirname $i)" && . "$i" ) && rm -f "$i"
                                                                ^-- SC2086: Double quote to prevent globbing and word splitting.
-                                                                         ^--^ SC1090: Can't follow non-constant source. Use a directive to specify location.
 
 Did you mean: 
 				( [ -f "$i" ] && cd "$(dirname "$i")" && . "$i" ) && rm -f "$i"
@@ -123,7 +112,6 @@ Did you mean:
 
 In openwrt/package/base-files/files/lib/functions.sh line 291:
 		. $file
-                  ^---^ SC1090: Can't follow non-constant source. Use a directive to specify location.
                   ^---^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
@@ -241,12 +229,7 @@ In openwrt/package/base-files/files/lib/functions.sh line 374:
 Did you mean: 
 	grep -qs "^${1}:" "${IPKG_INSTROOT}"/etc/passwd
 
-
-In openwrt/package/base-files/files/lib/functions.sh line 381:
-[ -z "$IPKG_INSTROOT" ] && [ -f /lib/config/uci.sh ] && . /lib/config/uci.sh
-                                                          ^----------------^ SC1091: Not following: /lib/config/uci.sh was not specified as input (see shellcheck -x).
-
 For more information:
   https://www.shellcheck.net/wiki/SC2045 -- Iterating over ls output is fragi...
-  https://www.shellcheck.net/wiki/SC1090 -- Can't follow non-constant source....
   https://www.shellcheck.net/wiki/SC2153 -- Possible misspelling: CONFIG_SECT...
+  https://www.shellcheck.net/wiki/SC2013 -- To read lines rather than words, ...

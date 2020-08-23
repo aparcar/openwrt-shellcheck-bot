@@ -1,14 +1,4 @@
 
-In openwrt/package/network/config/netifd/files/lib/netifd/proto/dhcp.sh line 5:
-. /lib/functions.sh
-  ^---------------^ SC1091: Not following: /lib/functions.sh was not specified as input (see shellcheck -x).
-
-
-In openwrt/package/network/config/netifd/files/lib/netifd/proto/dhcp.sh line 6:
-. ../netifd-proto.sh
-  ^----------------^ SC1091: Not following: ../netifd-proto.sh was not specified as input (see shellcheck -x).
-
-
 In openwrt/package/network/config/netifd/files/lib/netifd/proto/dhcp.sh line 56:
 	[ "$iface6rd" != 0 -a -f /lib/netifd/proto/6rd.sh ] && append dhcpopts "-O 212"
                            ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
@@ -39,5 +29,4 @@ Did you mean:
 
 For more information:
   https://www.shellcheck.net/wiki/SC2166 -- Prefer [ p ] && [ q ] as [ p -a q...
-  https://www.shellcheck.net/wiki/SC1091 -- Not following: ../netifd-proto.sh...
   https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...

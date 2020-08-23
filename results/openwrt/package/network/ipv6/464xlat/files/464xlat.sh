@@ -1,19 +1,4 @@
 
-In openwrt/package/network/ipv6/464xlat/files/464xlat.sh line 16:
-	. /lib/functions.sh
-          ^---------------^ SC1091: Not following: /lib/functions.sh was not specified as input (see shellcheck -x).
-
-
-In openwrt/package/network/ipv6/464xlat/files/464xlat.sh line 17:
-	. /lib/functions/network.sh
-          ^-----------------------^ SC1091: Not following: /lib/functions/network.sh was not specified as input (see shellcheck -x).
-
-
-In openwrt/package/network/ipv6/464xlat/files/464xlat.sh line 18:
-	. ../netifd-proto.sh
-          ^----------------^ SC1091: Not following: ../netifd-proto.sh was not specified as input (see shellcheck -x).
-
-
 In openwrt/package/network/ipv6/464xlat/files/464xlat.sh line 40:
 	ip6addr=$(464xlatcfg "$link" "$tundev" "$ip6prefix" 192.0.0.1 $ip6addr)
                                                                       ^------^ SC2086: Double quote to prevent globbing and word splitting.
@@ -94,5 +79,4 @@ Did you mean:
 	[ -n "$ip6addr" ] && ip -6 rule del to "$ip6addr" lookup prelocal
 
 For more information:
-  https://www.shellcheck.net/wiki/SC1091 -- Not following: ../netifd-proto.sh...
   https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...

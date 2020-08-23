@@ -2,8 +2,6 @@
 In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 2:
 [ -e /lib/functions.sh ] && . /lib/functions.sh || . ./functions.sh
                          ^-- SC2015: Note that A && B || C is not if-then-else. C may run when A is true.
-                              ^---------------^ SC1091: Not following: /lib/functions.sh was not specified as input (see shellcheck -x).
-                                                     ^------------^ SC1091: Not following: ./functions.sh was not specified as input (see shellcheck -x).
 
 
 In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 3:
@@ -24,9 +22,29 @@ In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line
                            ^-- SC2015: Note that A && B || C is not if-then-else. C may run when A is true.
 
 
-In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 25:
-	. /lib/functions/network.sh
-          ^-----------------------^ SC1091: Not following: /lib/functions/network.sh was not specified as input (see shellcheck -x).
+In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 77:
+				value="$(echo "$value" | sed -e 's,-,:,g')"
+                                         ^-- SC2001: See if you can use ${variable//search/replace} instead.
+
+
+In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 109:
+				value="$(echo "$value" | sed -e 's,-,:,g')"
+                                         ^-- SC2001: See if you can use ${variable//search/replace} instead.
+
+
+In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 117:
+				value="$(echo "$value" | sed -e 's,-,:,g')"
+                                         ^-- SC2001: See if you can use ${variable//search/replace} instead.
+
+
+In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 142:
+				value="$(echo "$value" | sed -e 's,-,:,g')"
+                                         ^-- SC2001: See if you can use ${variable//search/replace} instead.
+
+
+In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 153:
+				value="$(echo "$value" | sed -e 's,-,:,g')"
+                                         ^-- SC2001: See if you can use ${variable//search/replace} instead.
 
 
 In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 164:
@@ -209,11 +227,6 @@ In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line
 In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 502:
 [ -e ./qos.conf ] && {
                   ^-- SC2015: Note that A && B || C is not if-then-else. C may run when A is true.
-
-
-In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 503:
-	. ./qos.conf
-          ^--------^ SC1091: Not following: ./qos.conf was not specified as input (see shellcheck -x).
 
 
 In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 504:

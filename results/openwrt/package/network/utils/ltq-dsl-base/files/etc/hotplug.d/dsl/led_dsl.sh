@@ -1,14 +1,4 @@
 
-In openwrt/package/network/utils/ltq-dsl-base/files/etc/hotplug.d/dsl/led_dsl.sh line 5:
-. /lib/functions.sh
-  ^---------------^ SC1091: Not following: /lib/functions.sh was not specified as input (see shellcheck -x).
-
-
-In openwrt/package/network/utils/ltq-dsl-base/files/etc/hotplug.d/dsl/led_dsl.sh line 6:
-. /lib/functions/leds.sh
-  ^--------------------^ SC1091: Not following: /lib/functions/leds.sh was not specified as input (see shellcheck -x).
-
-
 In openwrt/package/network/utils/ltq-dsl-base/files/etc/hotplug.d/dsl/led_dsl.sh line 11:
 		led_set_attr $1 "trigger" "netdev"
                              ^-- SC2086: Double quote to prevent globbing and word splitting.
@@ -73,5 +63,4 @@ Did you mean:
 	  *)		led_off "$led"
 
 For more information:
-  https://www.shellcheck.net/wiki/SC1091 -- Not following: /lib/functions.sh ...
   https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...

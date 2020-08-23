@@ -1,0 +1,34 @@
+name: Update shellcheck results
+
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: '0 */24 * * *'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Install fd-find & shellcheck
+      run: |
+        sudo apt update
+        sudo apt install fd-find shellcheck -y
+
+    - name: Checkout repo
+      uses: actions/checkout@v2
+
+    - name: Checkout openwrt
+      uses: actions/checkout@v2
+      with:
+        repository: openwrt/openwrt
+        path: openwrt/
+
+    - name: Update reults
+      run: bash update.sh
+
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}

@@ -1,9 +1,4 @@
 
-In openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh line 2:
-. /lib/netifd/mac80211.sh
-  ^---------------------^ SC1091: Not following: /lib/netifd/mac80211.sh was not specified as input (see shellcheck -x).
-
-
 In openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh line 8:
 		[ -d /sys/class/ieee80211/$phy ] && return
                                           ^--^ SC2086: Double quote to prevent globbing and word splitting.
@@ -50,5 +45,5 @@ In openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh line 118:
 
 For more information:
   https://www.shellcheck.net/wiki/SC2166 -- Prefer [ p ] && [ q ] as [ p -a q...
-  https://www.shellcheck.net/wiki/SC1091 -- Not following: /lib/netifd/mac802...
   https://www.shellcheck.net/wiki/SC2018 -- Use '[:lower:]' to support accent...
+  https://www.shellcheck.net/wiki/SC2019 -- Use '[:upper:]' to support accent...

@@ -1,9 +1,4 @@
 
-In openwrt/target/linux/imx6/base-files/lib/upgrade/platform.sh line 5:
-. /lib/imx6.sh
-  ^----------^ SC1091: Not following: /lib/imx6.sh was not specified as input (see shellcheck -x).
-
-
 In openwrt/target/linux/imx6/base-files/lib/upgrade/platform.sh line 30:
 	get_image "$1" | tar Oxf - sysupgrade-apalis/root > $(rootpart_from_uuid)
                                                             ^-------------------^ SC2046: Quote this to prevent word splitting.
@@ -19,5 +14,4 @@ Did you mean:
 
 For more information:
   https://www.shellcheck.net/wiki/SC2046 -- Quote this to prevent word splitt...
-  https://www.shellcheck.net/wiki/SC1091 -- Not following: /lib/imx6.sh was n...
   https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...

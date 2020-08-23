@@ -1,14 +1,4 @@
 
-In openwrt/target/linux/ar71xx/base-files/lib/upgrade/platform.sh line 5:
-. /lib/functions/system.sh
-  ^----------------------^ SC1091: Not following: /lib/functions/system.sh was not specified as input (see shellcheck -x).
-
-
-In openwrt/target/linux/ar71xx/base-files/lib/upgrade/platform.sh line 6:
-. /lib/ar71xx.sh
-  ^------------^ SC1091: Not following: /lib/ar71xx.sh was not specified as input (see shellcheck -x).
-
-
 In openwrt/target/linux/ar71xx/base-files/lib/upgrade/platform.sh line 19:
 	while read dev size erasesize name; do
               ^--^ SC2162: read without -r will mangle backslashes.
@@ -134,5 +124,5 @@ Did you mean:
 
 For more information:
   https://www.shellcheck.net/wiki/SC2166 -- Prefer [ p ] && [ q ] as [ p -a q...
-  https://www.shellcheck.net/wiki/SC1091 -- Not following: /lib/ar71xx.sh was...
   https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...
+  https://www.shellcheck.net/wiki/SC2162 -- read without -r will mangle backs...

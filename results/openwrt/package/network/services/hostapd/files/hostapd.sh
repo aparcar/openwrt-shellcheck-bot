@@ -1,9 +1,4 @@
 
-In openwrt/package/network/services/hostapd/files/hostapd.sh line 1:
-. /lib/functions/network.sh
-  ^-----------------------^ SC1091: Not following: /lib/functions/network.sh was not specified as input (see shellcheck -x).
-
-
 In openwrt/package/network/services/hostapd/files/hostapd.sh line 7:
 	append $var "$val" ","
                ^--^ SC2086: Double quote to prevent globbing and word splitting.

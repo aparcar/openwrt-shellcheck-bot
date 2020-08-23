@@ -1,9 +1,4 @@
 
-In openwrt/package/system/procd/files/procd.sh line 43:
-. "$IPKG_INSTROOT/usr/share/libubox/jshn.sh"
-  ^-- SC1090: Can't follow non-constant source. Use a directive to specify location.
-
-
 In openwrt/package/system/procd/files/procd.sh line 50:
 	local service_name="$(basename ${basescript:-$initscript})"
                                        ^------------------------^ SC2086: Double quote to prevent globbing and word splitting.
@@ -195,5 +190,5 @@ In openwrt/package/system/procd/files/procd.sh line 535:
 
 For more information:
   https://www.shellcheck.net/wiki/SC2068 -- Double quote array expansions to ...
-  https://www.shellcheck.net/wiki/SC1090 -- Can't follow non-constant source....
   https://www.shellcheck.net/wiki/SC2046 -- Quote this to prevent word splitt...
+  https://www.shellcheck.net/wiki/SC2091 -- Remove surrounding $() to avoid e...

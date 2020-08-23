@@ -1,14 +1,4 @@
 
-In openwrt/package/base-files/files/lib/functions/caldata.sh line 3:
-. /lib/functions.sh
-  ^---------------^ SC1091: Not following: /lib/functions.sh was not specified as input (see shellcheck -x).
-
-
-In openwrt/package/base-files/files/lib/functions/caldata.sh line 4:
-. /lib/functions/system.sh
-  ^----------------------^ SC1091: Not following: /lib/functions/system.sh was not specified as input (see shellcheck -x).
-
-
 In openwrt/package/base-files/files/lib/functions/caldata.sh line 17:
 	mtd=$(find_mtd_chardev $part)
                                ^---^ SC2086: Double quote to prevent globbing and word splitting.
@@ -24,11 +14,6 @@ In openwrt/package/base-files/files/lib/functions/caldata.sh line 20:
 
 Did you mean: 
 	dd if="$mtd" of=/lib/firmware/"$FIRMWARE" iflag=skip_bytes bs=$count skip=$offset count=1 2>/dev/null || \
-
-
-In openwrt/package/base-files/files/lib/functions/caldata.sh line 31:
-	. /lib/upgrade/nand.sh
-          ^------------------^ SC1091: Not following: /lib/upgrade/nand.sh was not specified as input (see shellcheck -x).
 
 
 In openwrt/package/base-files/files/lib/functions/caldata.sh line 33:
@@ -176,5 +161,5 @@ Did you mean:
 
 For more information:
   https://www.shellcheck.net/wiki/SC2166 -- Prefer [ p ] || [ q ] as [ p -o q...
-  https://www.shellcheck.net/wiki/SC1091 -- Not following: /lib/functions.sh ...
   https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...
+  https://www.shellcheck.net/wiki/SC2002 -- Useless cat. Consider 'cmd < file...

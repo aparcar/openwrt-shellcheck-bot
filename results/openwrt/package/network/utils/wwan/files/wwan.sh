@@ -1,40 +1,4 @@
 
-In openwrt/package/network/utils/wwan/files/wwan.sh line 3:
-. /lib/functions.sh
-  ^---------------^ SC1091: Not following: /lib/functions.sh was not specified as input (see shellcheck -x).
-
-
-In openwrt/package/network/utils/wwan/files/wwan.sh line 4:
-. ../netifd-proto.sh
-  ^----------------^ SC1091: Not following: ../netifd-proto.sh was not specified as input (see shellcheck -x).
-
-
-In openwrt/package/network/utils/wwan/files/wwan.sh line 18:
-[ -f ./mbim.sh ] && . ./mbim.sh
-                      ^-------^ SC1091: Not following: ./mbim.sh was not specified as input (see shellcheck -x).
-
-
-In openwrt/package/network/utils/wwan/files/wwan.sh line 19:
-[ -f ./ncm.sh ] && . ./ncm.sh
-                     ^------^ SC1091: Not following: ./ncm.sh was not specified as input (see shellcheck -x).
-
-
-In openwrt/package/network/utils/wwan/files/wwan.sh line 20:
-[ -f ./qmi.sh ] && . ./qmi.sh
-                     ^------^ SC1091: Not following: ./qmi.sh was not specified as input (see shellcheck -x).
-
-
-In openwrt/package/network/utils/wwan/files/wwan.sh line 21:
-[ -f ./3g.sh ] && { . ./ppp.sh; . ./3g.sh; }
-                      ^------^ SC1091: Not following: ./ppp.sh was not specified as input (see shellcheck -x).
-                                  ^-----^ SC1091: Not following: ./3g.sh was not specified as input (see shellcheck -x).
-
-
-In openwrt/package/network/utils/wwan/files/wwan.sh line 22:
-[ -f ./directip.sh ] && . ./directip.sh
-                          ^-----------^ SC1091: Not following: ./directip.sh was not specified as input (see shellcheck -x).
-
-
 In openwrt/package/network/utils/wwan/files/wwan.sh line 47:
 			vendor=$(cat /sys/bus/usb/devices/${bus}/idVendor)
                                                           ^----^ SC2086: Double quote to prevent globbing and word splitting.

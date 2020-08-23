@@ -1,9 +1,4 @@
 
-In openwrt/package/base-files/files/lib/upgrade/nand.sh line 5:
-. /lib/functions.sh
-  ^---------------^ SC1091: Not following: /lib/functions.sh was not specified as input (see shellcheck -x).
-
-
 In openwrt/package/base-files/files/lib/upgrade/nand.sh line 18:
 	local dev="/dev/$(basename $dir)"
                                    ^--^ SC2086: Double quote to prevent globbing and word splitting.
@@ -465,4 +460,4 @@ In openwrt/package/base-files/files/lib/upgrade/nand.sh line 313:
 For more information:
   https://www.shellcheck.net/wiki/SC2046 -- Quote this to prevent word splitt...
   https://www.shellcheck.net/wiki/SC2166 -- Prefer [ p ] && [ q ] as [ p -a q...
-  https://www.shellcheck.net/wiki/SC1091 -- Not following: /lib/functions.sh ...
+  https://www.shellcheck.net/wiki/SC2015 -- Note that A && B || C is not if-t...

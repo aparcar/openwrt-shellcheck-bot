@@ -1,14 +1,4 @@
 
-In openwrt/target/linux/ar71xx/base-files/lib/upgrade/merakinand.sh line 8:
-. /lib/ar71xx.sh
-  ^------------^ SC1091: Not following: /lib/ar71xx.sh was not specified as input (see shellcheck -x).
-
-
-In openwrt/target/linux/ar71xx/base-files/lib/upgrade/merakinand.sh line 9:
-. /lib/functions.sh
-  ^---------------^ SC1091: Not following: /lib/functions.sh was not specified as input (see shellcheck -x).
-
-
 In openwrt/target/linux/ar71xx/base-files/lib/upgrade/merakinand.sh line 14:
 	dd bs=1 count=2 skip=$pos if=$mtddev 2>/dev/null | hexdump -v -n 4 -e '1/1 "%02x"'
                              ^--^ SC2086: Double quote to prevent globbing and word splitting.
@@ -144,5 +134,5 @@ Did you mean:
 
 For more information:
   https://www.shellcheck.net/wiki/SC2166 -- Prefer [ p ] || [ q ] as [ p -o q...
-  https://www.shellcheck.net/wiki/SC1091 -- Not following: /lib/ar71xx.sh was...
   https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...
+  https://www.shellcheck.net/wiki/SC2006 -- Use $(...) notation instead of le...

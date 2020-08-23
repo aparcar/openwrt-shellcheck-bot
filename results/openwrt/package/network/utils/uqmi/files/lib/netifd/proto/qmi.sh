@@ -1,14 +1,4 @@
 
-In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 4:
-	. /lib/functions.sh
-          ^---------------^ SC1091: Not following: /lib/functions.sh was not specified as input (see shellcheck -x).
-
-
-In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 5:
-	. ../netifd-proto.sh
-          ^----------------^ SC1091: Not following: ../netifd-proto.sh was not specified as input (see shellcheck -x).
-
-
 In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 34:
 	local profile dhcpv6 autoconnect plmn timeout mtu $PROTO_DEFAULT_OPTIONS
                                                           ^--------------------^ SC2086: Double quote to prevent globbing and word splitting.
@@ -50,9 +40,9 @@ Did you mean:
 		/sbin/ip link set dev "$ifname" mtu "$mtu"
 
 
-In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 106:
-		. /usr/share/libubox/jshn.sh
-                  ^------------------------^ SC1091: Not following: /usr/share/libubox/jshn.sh was not specified as input (see shellcheck -x).
+In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 86:
+			let uninitialized_timeout++
+                        ^-------------------------^ SC2219: Instead of 'let expr', prefer (( expr )) .
 
 
 In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 183:
@@ -69,6 +59,11 @@ In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 189:
 
 Did you mean: 
 		echo "Y" > /sys/class/net/"$ifname"/qmi/raw_ip
+
+
+In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 199:
+			let registration_timeout++
+                        ^------------------------^ SC2219: Instead of 'let expr', prefer (( expr )) .
 
 
 In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 214:
@@ -110,5 +105,5 @@ Did you mean:
 
 For more information:
   https://www.shellcheck.net/wiki/SC2166 -- Prefer [ p ] || [ q ] as [ p -o q...
-  https://www.shellcheck.net/wiki/SC1091 -- Not following: ../netifd-proto.sh...
   https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...
+  https://www.shellcheck.net/wiki/SC2219 -- Instead of 'let expr', prefer (( ...

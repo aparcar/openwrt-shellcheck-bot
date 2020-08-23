@@ -1,9 +1,4 @@
 
-In openwrt/target/linux/ramips/mt7621/base-files/lib/upgrade/iodata.sh line 5:
-. /lib/functions.sh
-  ^---------------^ SC1091: Not following: /lib/functions.sh was not specified as input (see shellcheck -x).
-
-
 In openwrt/target/linux/ramips/mt7621/base-files/lib/upgrade/iodata.sh line 23:
 	if [ -z "$persist_mtd" -o -z "$factory_mtd" ]; then
                                ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
@@ -52,5 +47,4 @@ Did you mean:
 
 For more information:
   https://www.shellcheck.net/wiki/SC2166 -- Prefer [ p ] && [ q ] as [ p -a q...
-  https://www.shellcheck.net/wiki/SC1091 -- Not following: /lib/functions.sh ...
   https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...

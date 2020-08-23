@@ -1,9 +1,4 @@
 
-In openwrt/package/base-files/files/lib/functions/migrations.sh line 3:
-. /lib/functions.sh
-  ^---------------^ SC1091: Not following: /lib/functions.sh was not specified as input (see shellcheck -x).
-
-
 In openwrt/package/base-files/files/lib/functions/migrations.sh line 7:
 	local tuples="$@"
                      ^--^ SC2124: Assigning an array to a string! Assign as array, or use * instead of @ to concatenate.
@@ -27,6 +22,7 @@ Did you mean:
 
 In openwrt/package/base-files/files/lib/functions/migrations.sh line 21:
 		new_sysfs=$(echo ${sysfs} | sed "s/${old}/${new}/")
+                            ^-- SC2001: See if you can use ${variable//search/replace} instead.
                                  ^------^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
@@ -51,5 +47,5 @@ Did you mean:
 
 For more information:
   https://www.shellcheck.net/wiki/SC2124 -- Assigning an array to a string! A...
-  https://www.shellcheck.net/wiki/SC1091 -- Not following: /lib/functions.sh ...
   https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...
+  https://www.shellcheck.net/wiki/SC2001 -- See if you can use ${variable//se...

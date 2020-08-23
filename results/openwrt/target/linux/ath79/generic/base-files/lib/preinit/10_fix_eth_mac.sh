@@ -1,9 +1,4 @@
 
-In openwrt/target/linux/ath79/generic/base-files/lib/preinit/10_fix_eth_mac.sh line 1:
-. /lib/functions.sh
-  ^---------------^ SC1091: Not following: /lib/functions.sh was not specified as input (see shellcheck -x).
-
-
 In openwrt/target/linux/ath79/generic/base-files/lib/preinit/10_fix_eth_mac.sh line 8:
 		ip link set dev eth0 address $(fritz_tffs -n maca -i $(find_mtd_part "tffs (1)"))
                                              ^-- SC2046: Quote this to prevent word splitting.
@@ -49,5 +44,4 @@ Did you mean:
 
 For more information:
   https://www.shellcheck.net/wiki/SC2046 -- Quote this to prevent word splitt...
-  https://www.shellcheck.net/wiki/SC1091 -- Not following: /lib/functions.sh ...
   https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...

@@ -201,11 +201,6 @@ Did you mean:
 				local num="$(( $(hex_le32_to_cpu "$3") ))"
 
 
-In openwrt/package/base-files/files/lib/upgrade/common.sh line 271:
-	. /etc/diag.sh
-          ^----------^ SC1091: Not following: /etc/diag.sh was not specified as input (see shellcheck -x).
-
-
 In openwrt/package/base-files/files/lib/upgrade/common.sh line 282:
 		get_image "$1" "$2" | mtd $MTD_ARGS $MTD_CONFIG_ARGS -j "$UPGRADE_BACKUP" write - "${PART_NAME:-image}"
                                           ^-------^ SC2086: Double quote to prevent globbing and word splitting.

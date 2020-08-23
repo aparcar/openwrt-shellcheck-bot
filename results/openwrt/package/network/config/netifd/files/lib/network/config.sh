@@ -1,9 +1,4 @@
 
-In openwrt/package/network/config/netifd/files/lib/network/config.sh line 4:
-. /usr/share/libubox/jshn.sh
-  ^------------------------^ SC1091: Not following: /usr/share/libubox/jshn.sh was not specified as input (see shellcheck -x).
-
-
 In openwrt/package/network/config/netifd/files/lib/network/config.sh line 12:
 			json_load "$(ifstatus $interface)"
                                               ^--------^ SC2086: Double quote to prevent globbing and word splitting.
@@ -17,6 +12,5 @@ In openwrt/package/network/config/netifd/files/lib/network/config.sh line 73:
                     ^-- SC2015: Note that A && B || C is not if-then-else. C may run when A is true.
 
 For more information:
-  https://www.shellcheck.net/wiki/SC1091 -- Not following: /usr/share/libubox...
   https://www.shellcheck.net/wiki/SC2015 -- Note that A && B || C is not if-t...
   https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...

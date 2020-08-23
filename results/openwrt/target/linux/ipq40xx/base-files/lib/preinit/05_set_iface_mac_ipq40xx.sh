@@ -1,9 +1,4 @@
 
-In openwrt/target/linux/ipq40xx/base-files/lib/preinit/05_set_iface_mac_ipq40xx.sh line 1:
-. /lib/functions.sh
-  ^---------------^ SC1091: Not following: /lib/functions.sh was not specified as input (see shellcheck -x).
-
-
 In openwrt/target/linux/ipq40xx/base-files/lib/preinit/05_set_iface_mac_ipq40xx.sh line 7:
 		ip link set dev eth0 address $(macaddr_add "$base_mac" +1)
                                              ^---------------------------^ SC2046: Quote this to prevent word splitting.
@@ -45,4 +40,3 @@ In openwrt/target/linux/ipq40xx/base-files/lib/preinit/05_set_iface_mac_ipq40xx.
 
 For more information:
   https://www.shellcheck.net/wiki/SC2046 -- Quote this to prevent word splitt...
-  https://www.shellcheck.net/wiki/SC1091 -- Not following: /lib/functions.sh ...

@@ -1,19 +1,4 @@
 
-In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 1:
-#!/bin/ash
-^--------^ SC2187: Ash scripts will be checked as Dash. Add '# shellcheck shell=dash' to silence.
-
-
-In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 3:
-. /lib/functions.sh
-  ^---------------^ SC1091: Not following: /lib/functions.sh was not specified as input (see shellcheck -x).
-
-
-In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 4:
-. /usr/share/libubox/jshn.sh
-  ^------------------------^ SC1091: Not following: /usr/share/libubox/jshn.sh was not specified as input (see shellcheck -x).
-
-
 In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 10:
 	[ $? = 0 ] && return
           ^-- SC2181: Check exit code directly with e.g. 'if mycmd;', not indirectly with $?.
@@ -106,5 +91,5 @@ Did you mean:
 
 For more information:
   https://www.shellcheck.net/wiki/SC2166 -- Prefer [ p ] && [ q ] as [ p -a q...
-  https://www.shellcheck.net/wiki/SC2187 -- Ash scripts will be checked as Da...
-  https://www.shellcheck.net/wiki/SC1091 -- Not following: /lib/functions.sh ...
+  https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...
+  https://www.shellcheck.net/wiki/SC2181 -- Check exit code directly with e.g...

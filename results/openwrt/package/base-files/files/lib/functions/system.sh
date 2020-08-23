@@ -1,14 +1,4 @@
 
-In openwrt/package/base-files/files/lib/functions/system.sh line 3:
-. /lib/functions.sh
-  ^---------------^ SC1091: Not following: /lib/functions.sh was not specified as input (see shellcheck -x).
-
-
-In openwrt/package/base-files/files/lib/functions/system.sh line 4:
-. /usr/share/libubox/jshn.sh
-  ^------------------------^ SC1091: Not following: /usr/share/libubox/jshn.sh was not specified as input (see shellcheck -x).
-
-
 In openwrt/package/base-files/files/lib/functions/system.sh line 15:
 	hexdump -v -n 6 -s $offset -e '5/1 "%02x:" 1/1 "%02x"' $path 2>/dev/null
                            ^-----^ SC2086: Double quote to prevent globbing and word splitting.
@@ -40,11 +30,6 @@ In openwrt/package/base-files/files/lib/functions/system.sh line 53:
 
 Did you mean: 
 	echo "$macaddr"
-
-
-In openwrt/package/base-files/files/lib/functions/system.sh line 118:
-	. /lib/upgrade/nand.sh
-          ^------------------^ SC1091: Not following: /lib/upgrade/nand.sh was not specified as input (see shellcheck -x).
 
 
 In openwrt/package/base-files/files/lib/functions/system.sh line 120:
@@ -158,4 +143,4 @@ Did you mean:
 For more information:
   https://www.shellcheck.net/wiki/SC2166 -- Prefer [ p ] && [ q ] as [ p -a q...
   https://www.shellcheck.net/wiki/SC2183 -- This format string has 6 variable...
-  https://www.shellcheck.net/wiki/SC1091 -- Not following: /lib/functions.sh ...
+  https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...

@@ -1,19 +1,4 @@
 
-In openwrt/package/network/ipv6/6in4/files/6in4.sh line 6:
-	. /lib/functions.sh
-          ^---------------^ SC1091: Not following: /lib/functions.sh was not specified as input (see shellcheck -x).
-
-
-In openwrt/package/network/ipv6/6in4/files/6in4.sh line 7:
-	. /lib/functions/network.sh
-          ^-----------------------^ SC1091: Not following: /lib/functions/network.sh was not specified as input (see shellcheck -x).
-
-
-In openwrt/package/network/ipv6/6in4/files/6in4.sh line 8:
-	. ../netifd-proto.sh
-          ^----------------^ SC1091: Not following: ../netifd-proto.sh was not specified as input (see shellcheck -x).
-
-
 In openwrt/package/network/ipv6/6in4/files/6in4.sh line 15:
 	local oIFS="$IFS"; IFS="."; set -- $1; IFS="$oIFS"
                                            ^-- SC2086: Double quote to prevent globbing and word splitting.
@@ -84,5 +69,4 @@ Did you mean:
 
 For more information:
   https://www.shellcheck.net/wiki/SC2166 -- Prefer [ p ] && [ q ] as [ p -a q...
-  https://www.shellcheck.net/wiki/SC1091 -- Not following: ../netifd-proto.sh...
   https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...
