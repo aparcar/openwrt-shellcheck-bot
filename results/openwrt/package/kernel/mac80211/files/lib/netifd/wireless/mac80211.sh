@@ -590,11 +590,11 @@ Did you mean:
 
 
 In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 630:
-		ubus call wpa_supplicant.${phy} config_del "{\"iface\":\"$ifname\"}"
+		ubus call wpa_supplicant.${phy} config_remove "{\"iface\":\"$ifname\"}"
                                          ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-		ubus call wpa_supplicant."${phy}" config_del "{\"iface\":\"$ifname\"}"
+		ubus call wpa_supplicant."${phy}" config_remove "{\"iface\":\"$ifname\"}"
 
 
 In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 654:
