@@ -25,11 +25,11 @@ In openwrt/scripts/getver.sh line 29:
 
 
 In openwrt/scripts/getver.sh line 30:
-		REV="$(git rev-list ${REBOOT}..$GET_REV | wc -l | awk '{print $1}')"
+		REV="$(git rev-list ${REBOOT}..$GET_REV 2>/dev/null | wc -l | awk '{print $1}')"
                                                ^------^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-		REV="$(git rev-list ${REBOOT}.."$GET_REV" | wc -l | awk '{print $1}')"
+		REV="$(git rev-list ${REBOOT}.."$GET_REV" 2>/dev/null | wc -l | awk '{print $1}')"
 
 
 In openwrt/scripts/getver.sh line 33:
@@ -42,11 +42,11 @@ Did you mean:
 
 
 In openwrt/scripts/getver.sh line 34:
-			UPSTREAM_REV="$(git rev-list ${REBOOT}..$UPSTREAM_BASE | wc -l | awk '{print $1}')"
+			UPSTREAM_REV="$(git rev-list ${REBOOT}..$UPSTREAM_BASE 2>/dev/null | wc -l | awk '{print $1}')"
                                                                 ^------------^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-			UPSTREAM_REV="$(git rev-list ${REBOOT}.."$UPSTREAM_BASE" | wc -l | awk '{print $1}')"
+			UPSTREAM_REV="$(git rev-list ${REBOOT}.."$UPSTREAM_BASE" 2>/dev/null | wc -l | awk '{print $1}')"
 
 
 In openwrt/scripts/getver.sh line 43:
