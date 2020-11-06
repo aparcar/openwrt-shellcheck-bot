@@ -4,7 +4,7 @@ In openwrt/target/linux/octeon/base-files/lib/upgrade/platform.sh line 8:
            ^--^ SC2162: read without -r will mangle backslashes.
 
 
-In openwrt/target/linux/octeon/base-files/lib/upgrade/platform.sh line 47:
+In openwrt/target/linux/octeon/base-files/lib/upgrade/platform.sh line 52:
 	if [ $board = "itus,shield-router" ]; then
              ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -12,7 +12,7 @@ Did you mean:
 	if [ "$board" = "itus,shield-router" ]; then
 
 
-In openwrt/target/linux/octeon/base-files/lib/upgrade/platform.sh line 52:
+In openwrt/target/linux/octeon/base-files/lib/upgrade/platform.sh line 57:
 		tar -Oxf $tar_file "$board_dir/kernel" > /boot/$kernel
                          ^-------^ SC2086: Double quote to prevent globbing and word splitting.
                                                                ^-----^ SC2086: Double quote to prevent globbing and word splitting.
@@ -21,7 +21,7 @@ Did you mean:
 		tar -Oxf "$tar_file" "$board_dir/kernel" > /boot/"$kernel"
 
 
-In openwrt/target/linux/octeon/base-files/lib/upgrade/platform.sh line 54:
+In openwrt/target/linux/octeon/base-files/lib/upgrade/platform.sh line 59:
 		mount -t vfat /dev/$kernel /boot
                                    ^-----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -29,12 +29,12 @@ Did you mean:
 		mount -t vfat /dev/"$kernel" /boot
 
 
-In openwrt/target/linux/octeon/base-files/lib/upgrade/platform.sh line 56:
+In openwrt/target/linux/octeon/base-files/lib/upgrade/platform.sh line 61:
 		[ -f /boot/vmlinux.64 -a ! -L /boot/vmlinux.64 ] && {
                                       ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
 
 
-In openwrt/target/linux/octeon/base-files/lib/upgrade/platform.sh line 62:
+In openwrt/target/linux/octeon/base-files/lib/upgrade/platform.sh line 67:
 		tar xf $tar_file $board_dir/kernel -O > /boot/vmlinux.64
                        ^-------^ SC2086: Double quote to prevent globbing and word splitting.
                                  ^--------^ SC2086: Double quote to prevent globbing and word splitting.
@@ -43,7 +43,7 @@ Did you mean:
 		tar xf "$tar_file" "$board_dir"/kernel -O > /boot/vmlinux.64
 
 
-In openwrt/target/linux/octeon/base-files/lib/upgrade/platform.sh line 67:
+In openwrt/target/linux/octeon/base-files/lib/upgrade/platform.sh line 72:
 	tar xf $tar_file $board_dir/root -O | dd of="${rootfs}" bs=4096
                ^-------^ SC2086: Double quote to prevent globbing and word splitting.
                          ^--------^ SC2086: Double quote to prevent globbing and word splitting.
@@ -52,7 +52,7 @@ Did you mean:
 	tar xf "$tar_file" "$board_dir"/root -O | dd of="${rootfs}" bs=4096
 
 
-In openwrt/target/linux/octeon/base-files/lib/upgrade/platform.sh line 94:
+In openwrt/target/linux/octeon/base-files/lib/upgrade/platform.sh line 100:
 	platform_do_flash $tar_file $board $kernel $rootfs
                           ^-------^ SC2086: Double quote to prevent globbing and word splitting.
                                     ^----^ SC2086: Double quote to prevent globbing and word splitting.
@@ -62,7 +62,7 @@ Did you mean:
 	platform_do_flash "$tar_file" "$board" $kernel "$rootfs"
 
 
-In openwrt/target/linux/octeon/base-files/lib/upgrade/platform.sh line 111:
+In openwrt/target/linux/octeon/base-files/lib/upgrade/platform.sh line 118:
 		local kernel_length=$(tar xf $tar_file $board_dir/kernel -O | wc -c 2> /dev/null)
                                              ^-------^ SC2086: Double quote to prevent globbing and word splitting.
                                                        ^--------^ SC2086: Double quote to prevent globbing and word splitting.
@@ -71,7 +71,7 @@ Did you mean:
 		local kernel_length=$(tar xf "$tar_file" "$board_dir"/kernel -O | wc -c 2> /dev/null)
 
 
-In openwrt/target/linux/octeon/base-files/lib/upgrade/platform.sh line 112:
+In openwrt/target/linux/octeon/base-files/lib/upgrade/platform.sh line 119:
 		local rootfs_length=$(tar xf $tar_file $board_dir/root -O | wc -c 2> /dev/null)
                                              ^-------^ SC2086: Double quote to prevent globbing and word splitting.
                                                        ^--------^ SC2086: Double quote to prevent globbing and word splitting.
@@ -80,7 +80,7 @@ Did you mean:
 		local rootfs_length=$(tar xf "$tar_file" "$board_dir"/root -O | wc -c 2> /dev/null)
 
 
-In openwrt/target/linux/octeon/base-files/lib/upgrade/platform.sh line 113:
+In openwrt/target/linux/octeon/base-files/lib/upgrade/platform.sh line 120:
 		[ "$kernel_length" = 0 -o "$rootfs_length" = 0 ] && {
                                        ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
 
