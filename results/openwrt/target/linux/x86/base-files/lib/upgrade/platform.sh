@@ -22,7 +22,7 @@ Did you mean:
 		if export_partdevice partdev "$part"; then
 
 
-In openwrt/target/linux/x86/base-files/lib/upgrade/platform.sh line 128:
+In openwrt/target/linux/x86/base-files/lib/upgrade/platform.sh line 127:
 		set -- $(dd if="/dev/$diskdev" bs=1 skip=1168 count=16 2>/dev/null | hexdump -v -e '8/1 "%02x "" "2/1 "%02x""-"6/1 "%02x"')
                        ^-- SC2046: Quote this to prevent word splitting.
 
