@@ -22,17 +22,7 @@ Did you mean:
 			if export_partdevice partdev "$part"; then
 
 
-In openwrt/target/linux/mvebu/base-files/lib/upgrade/sdcard.sh line 82:
-		fw_setenv openwrt_mmcload 'setenv bootargs "$openwrt_bootargs cfg80211.freg=$regdomain"; fatload mmc 0 0x01000000 zImage; fatload mmc 0 0x02000000 armada-385-turris-omnia.dtb'
-                                          ^-- SC2016: Expressions don't expand in single quotes, use double quotes for that.
-
-
-In openwrt/target/linux/mvebu/base-files/lib/upgrade/sdcard.sh line 83:
-		fw_setenv factory_mmcload 'setenv bootargs "$bootargs cfg80211.freg=$regdomain"; btrload mmc 0 0x01000000 boot/zImage @; btrload mmc 0 0x02000000 boot/dtb @'
-                                          ^-- SC2016: Expressions don't expand in single quotes, use double quotes for that.
-
-
-In openwrt/target/linux/mvebu/base-files/lib/upgrade/sdcard.sh line 96:
+In openwrt/target/linux/mvebu/base-files/lib/upgrade/sdcard.sh line 87:
 		[ -f /boot/kernel.img ] || mount -o rw,noatime /dev/$partdev /boot
                                                                     ^------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -41,5 +31,5 @@ Did you mean:
 
 For more information:
   https://www.shellcheck.net/wiki/SC2015 -- Note that A && B || C is not if-t...
-  https://www.shellcheck.net/wiki/SC2016 -- Expressions don't expand in singl...
   https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...
+  https://www.shellcheck.net/wiki/SC2162 -- read without -r will mangle backs...
