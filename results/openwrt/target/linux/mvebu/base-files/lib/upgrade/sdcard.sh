@@ -22,7 +22,7 @@ Did you mean:
 			if export_partdevice partdev "$part"; then
 
 
-In openwrt/target/linux/mvebu/base-files/lib/upgrade/sdcard.sh line 87:
+In openwrt/target/linux/mvebu/base-files/lib/upgrade/sdcard.sh line 86:
 		[ -f /boot/kernel.img ] || mount -o rw,noatime /dev/$partdev /boot
                                                                     ^------^ SC2086: Double quote to prevent globbing and word splitting.
 
