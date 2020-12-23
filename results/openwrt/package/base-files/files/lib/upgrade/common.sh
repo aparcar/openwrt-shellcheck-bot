@@ -206,7 +206,7 @@ Did you mean:
 				local num="$(( $(hex_le32_to_cpu "$3") ))"
 
 
-In openwrt/package/base-files/files/lib/upgrade/common.sh line 301:
+In openwrt/package/base-files/files/lib/upgrade/common.sh line 302:
 		get_image "$1" "$2" | mtd $MTD_ARGS $MTD_CONFIG_ARGS -j "$UPGRADE_BACKUP" write - "${PART_NAME:-image}"
                                           ^-------^ SC2086: Double quote to prevent globbing and word splitting.
                                                     ^--------------^ SC2086: Double quote to prevent globbing and word splitting.
@@ -215,7 +215,7 @@ Did you mean:
 		get_image "$1" "$2" | mtd "$MTD_ARGS" "$MTD_CONFIG_ARGS" -j "$UPGRADE_BACKUP" write - "${PART_NAME:-image}"
 
 
-In openwrt/package/base-files/files/lib/upgrade/common.sh line 303:
+In openwrt/package/base-files/files/lib/upgrade/common.sh line 304:
 		get_image "$1" "$2" | mtd $MTD_ARGS write - "${PART_NAME:-image}"
                                           ^-------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -223,7 +223,7 @@ Did you mean:
 		get_image "$1" "$2" | mtd "$MTD_ARGS" write - "${PART_NAME:-image}"
 
 
-In openwrt/package/base-files/files/lib/upgrade/common.sh line 305:
+In openwrt/package/base-files/files/lib/upgrade/common.sh line 306:
 	[ $? -ne 0 ] && exit 1
           ^-- SC2181: Check exit code directly with e.g. 'if mycmd;', not indirectly with $?.
 

@@ -426,11 +426,12 @@ Did you mean:
 
 
 In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 412:
-		[ "$(wc -l < /sys/class/ieee80211/${phy}/addresses)" -gt 1 ] && {
+		[ "$(wc -l < /sys/class/ieee80211/${phy}/addresses)" -gt $id ] && {
                                                   ^----^ SC2086: Double quote to prevent globbing and word splitting.
+                                                                         ^-^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-		[ "$(wc -l < /sys/class/ieee80211/"${phy}"/addresses)" -gt 1 ] && {
+		[ "$(wc -l < /sys/class/ieee80211/"${phy}"/addresses)" -gt "$id" ] && {
 
 
 In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 426:
@@ -447,7 +448,7 @@ In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 42
 
 
 In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 432:
-			b1=$(($b1 ^ ((($id - !($b1 & 2)) << 2) | 0x2)))
+			b1=$(($b1 ^ ((($id - !($b1 & 2)) << 2)) | 0x2))
                               ^-^ SC2004: $/${} is unnecessary on arithmetic variables.
                                        ^-^ SC2004: $/${} is unnecessary on arithmetic variables.
                                                ^-^ SC2004: $/${} is unnecessary on arithmetic variables.

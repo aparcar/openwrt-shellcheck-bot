@@ -1,20 +1,20 @@
 
-In openwrt/target/linux/tegra/base-files/lib/upgrade/platform.sh line 8:
+In openwrt/target/linux/tegra/base-files/lib/upgrade/platform.sh line 6:
 	export_bootdevice && export_partdevice diskdev 0 || {
                           ^-- SC2015: Note that A && B || C is not if-then-else. C may run when A is true.
 
 
-In openwrt/target/linux/tegra/base-files/lib/upgrade/platform.sh line 45:
+In openwrt/target/linux/tegra/base-files/lib/upgrade/platform.sh line 43:
 	export_bootdevice && export_partdevice diskdev 0 || {
                           ^-- SC2015: Note that A && B || C is not if-then-else. C may run when A is true.
 
 
-In openwrt/target/linux/tegra/base-files/lib/upgrade/platform.sh line 80:
+In openwrt/target/linux/tegra/base-files/lib/upgrade/platform.sh line 78:
 	while read part start size; do
               ^--^ SC2162: read without -r will mangle backslashes.
 
 
-In openwrt/target/linux/tegra/base-files/lib/upgrade/platform.sh line 81:
+In openwrt/target/linux/tegra/base-files/lib/upgrade/platform.sh line 79:
 		if export_partdevice partdev $part; then
                                              ^---^ SC2086: Double quote to prevent globbing and word splitting.
 
