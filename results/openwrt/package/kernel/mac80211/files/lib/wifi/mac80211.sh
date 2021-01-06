@@ -31,7 +31,7 @@ In openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh line 66:
                           ^-----^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh line 97:
+In openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh line 103:
 			dev_id="set wireless.radio${devidx}.macaddr=$(cat /sys/class/ieee80211/${dev}/macaddress)"
                                                                                                ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -39,7 +39,7 @@ Did you mean:
 			dev_id="set wireless.radio${devidx}.macaddr=$(cat /sys/class/ieee80211/"${dev}"/macaddress)"
 
 
-In openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh line 118:
+In openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh line 124:
 		devidx=$(($devidx + 1))
                           ^-----^ SC2004: $/${} is unnecessary on arithmetic variables.
 
