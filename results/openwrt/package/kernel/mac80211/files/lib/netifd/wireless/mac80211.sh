@@ -871,7 +871,7 @@ Did you mean:
 					mac80211_vap_cleanup none "$(uci -q -P /var/state get wireless._"${phy}".umlist)"
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1032:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1031:
 	uci -q -P /var/state set wireless._${phy}.aplist="${NEWAPLIST}"
                                            ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -879,7 +879,7 @@ Did you mean:
 	uci -q -P /var/state set wireless._"${phy}".aplist="${NEWAPLIST}"
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1033:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1032:
 	uci -q -P /var/state set wireless._${phy}.md5="${NEW_MD5}"
                                            ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -887,7 +887,7 @@ Did you mean:
 	uci -q -P /var/state set wireless._"${phy}".md5="${NEW_MD5}"
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1043:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1042:
 	uci -q -P /var/state set wireless._${phy}.splist="${NEWSPLIST}"
                                            ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -895,7 +895,7 @@ Did you mean:
 	uci -q -P /var/state set wireless._"${phy}".splist="${NEWSPLIST}"
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1044:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1043:
 	uci -q -P /var/state set wireless._${phy}.umlist="${NEWUMLIST}"
                                            ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -903,12 +903,12 @@ Did you mean:
 	uci -q -P /var/state set wireless._"${phy}".umlist="${NEWUMLIST}"
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1064:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1063:
 		ls "/sys/class/ieee80211/${phy}/device" 2>/dev/null | grep net: | sed -e 's,net:,,g'
                 ^-- SC2010: Don't use ls | grep. Use a glob or a for loop with a condition to allow non-alphanumeric filenames.
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1083:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1082:
 	uci -q -P /var/state revert wireless._${phy}
                                               ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
