@@ -871,6 +871,11 @@ Did you mean:
 					mac80211_vap_cleanup none "$(uci -q -P /var/state get wireless._"${phy}".umlist)"
 
 
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1024:
+			[ "$ret" != 0 -o -z "$hostapd_res" ] && {
+                                      ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
+
+
 In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1031:
 	uci -q -P /var/state set wireless._${phy}.aplist="${NEWAPLIST}"
                                            ^----^ SC2086: Double quote to prevent globbing and word splitting.
