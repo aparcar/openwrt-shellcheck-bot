@@ -43,7 +43,7 @@ In openwrt/target/linux/layerscape/base-files/lib/upgrade/platform.sh line 55:
                           ^-- SC2015: Note that A && B || C is not if-then-else. C may run when A is true.
 
 
-In openwrt/target/linux/layerscape/base-files/lib/upgrade/platform.sh line 87:
+In openwrt/target/linux/layerscape/base-files/lib/upgrade/platform.sh line 89:
 		nand_do_platform_check "traverse-ls1043" $1
                                                          ^-- SC2086: Double quote to prevent globbing and word splitting.
 
