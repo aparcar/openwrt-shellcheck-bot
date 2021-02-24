@@ -56,8 +56,8 @@ Did you mean:
 
 
 In openwrt/package/network/services/ppp/files/ppp.sh line 334:
-	[ -f /usr/lib/pppd/*/rp-pppoe.so ] && add_protocol pppoe
-             ^-------------------------^ SC2144: -f doesn't work with globs. Use a for loop.
+	[ -f /usr/lib/pppd/*/pppoe.so ] && add_protocol pppoe
+             ^----------------------^ SC2144: -f doesn't work with globs. Use a for loop.
 
 
 In openwrt/package/network/services/ppp/files/ppp.sh line 335:
