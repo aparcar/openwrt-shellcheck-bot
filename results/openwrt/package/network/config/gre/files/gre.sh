@@ -90,26 +90,5 @@ In openwrt/package/network/config/gre/files/gre.sh line 201:
 Did you mean: 
 	grev6_setup "$cfg" "gretapip6"
 
-
-In openwrt/package/network/config/gre/files/gre.sh line 294:
-	[ -f /lib/modules/$(uname -r)/gre.ko ] && add_protocol gre
-                          ^---------^ SC2046: Quote this to prevent word splitting.
-
-
-In openwrt/package/network/config/gre/files/gre.sh line 295:
-	[ -f /lib/modules/$(uname -r)/gre.ko ] && add_protocol gretap
-                          ^---------^ SC2046: Quote this to prevent word splitting.
-
-
-In openwrt/package/network/config/gre/files/gre.sh line 296:
-	[ -f /lib/modules/$(uname -r)/ip6_gre.ko ] && add_protocol grev6
-                          ^---------^ SC2046: Quote this to prevent word splitting.
-
-
-In openwrt/package/network/config/gre/files/gre.sh line 297:
-	[ -f /lib/modules/$(uname -r)/ip6_gre.ko ] && add_protocol grev6tap
-                          ^---------^ SC2046: Quote this to prevent word splitting.
-
 For more information:
-  https://www.shellcheck.net/wiki/SC2046 -- Quote this to prevent word splitt...
   https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...
