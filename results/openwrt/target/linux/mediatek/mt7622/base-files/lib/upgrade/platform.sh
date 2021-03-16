@@ -151,7 +151,12 @@ Did you mean:
 		echo "$rootdev" > /tmp/sysupgrade.rootdev
 
 
-In openwrt/target/linux/mediatek/mt7622/base-files/lib/upgrade/platform.sh line 102:
+In openwrt/target/linux/mediatek/mt7622/base-files/lib/upgrade/platform.sh line 64:
+		if [ "$magic" = "44485032" -o "$magic" = "44485033" ]; then
+                                           ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
+
+
+In openwrt/target/linux/mediatek/mt7622/base-files/lib/upgrade/platform.sh line 117:
 	blockdev --rereadpt /dev/$rootdev
                                  ^------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -159,7 +164,7 @@ Did you mean:
 	blockdev --rereadpt /dev/"$rootdev"
 
 
-In openwrt/target/linux/mediatek/mt7622/base-files/lib/upgrade/platform.sh line 103:
+In openwrt/target/linux/mediatek/mt7622/base-files/lib/upgrade/platform.sh line 118:
 	local datadev=$(get_partition $rootdev rootfs_data)
                                       ^------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -167,7 +172,7 @@ Did you mean:
 	local datadev=$(get_partition "$rootdev" rootfs_data)
 
 
-In openwrt/target/linux/mediatek/mt7622/base-files/lib/upgrade/platform.sh line 105:
+In openwrt/target/linux/mediatek/mt7622/base-files/lib/upgrade/platform.sh line 120:
 	dd if="$UPGRADE_BACKUP" of=/dev/$datadev
                                         ^------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -175,5 +180,6 @@ Did you mean:
 	dd if="$UPGRADE_BACKUP" of=/dev/"$datadev"
 
 For more information:
+  https://www.shellcheck.net/wiki/SC2166 -- Prefer [ p ] || [ q ] as [ p -o q...
   https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...
   https://www.shellcheck.net/wiki/SC2231 -- Quote expansions in this for loop...
