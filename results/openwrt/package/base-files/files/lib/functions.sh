@@ -229,6 +229,19 @@ In openwrt/package/base-files/files/lib/functions.sh line 380:
 Did you mean: 
 	grep -qs "^${1}:" "${IPKG_INSTROOT}"/etc/passwd
 
+
+In openwrt/package/base-files/files/lib/functions.sh line 391:
+	for cmdlinevar in $(cat /proc/cmdline); do
+                          ^------------------^ SC2013: To read lines rather than words, pipe/redirect to a 'while read' loop.
+
+
+In openwrt/package/base-files/files/lib/functions.sh line 393:
+		[ "=" = "${tmp:0:1}" ] && echo ${tmp:1}
+                                               ^------^ SC2086: Double quote to prevent globbing and word splitting.
+
+Did you mean: 
+		[ "=" = "${tmp:0:1}" ] && echo "${tmp:1}"
+
 For more information:
   https://www.shellcheck.net/wiki/SC2045 -- Iterating over ls output is fragi...
   https://www.shellcheck.net/wiki/SC2153 -- Possible misspelling: CONFIG_SECT...
