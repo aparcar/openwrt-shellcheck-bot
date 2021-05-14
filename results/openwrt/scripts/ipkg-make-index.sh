@@ -26,11 +26,11 @@ Did you mean:
 
 
 In openwrt/scripts/ipkg-make-index.sh line 21:
-	sha256sum=$(mkhash sha256 $pkg)
-                                  ^--^ SC2086: Double quote to prevent globbing and word splitting.
+	sha256sum=$($MKHASH sha256 $pkg)
+                                   ^--^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-	sha256sum=$(mkhash sha256 "$pkg")
+	sha256sum=$($MKHASH sha256 "$pkg")
 
 
 In openwrt/scripts/ipkg-make-index.sh line 23:

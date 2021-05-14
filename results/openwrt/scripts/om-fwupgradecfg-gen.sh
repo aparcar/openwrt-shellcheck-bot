@@ -8,19 +8,19 @@ Did you mean:
 
 
 In openwrt/scripts/om-fwupgradecfg-gen.sh line 57:
-KERNEL_MD5=$(mkhash md5 $KERNEL_PATH)
-                        ^----------^ SC2086: Double quote to prevent globbing and word splitting.
+KERNEL_MD5=$($MKHASH md5 $KERNEL_PATH)
+                         ^----------^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-KERNEL_MD5=$(mkhash md5 "$KERNEL_PATH")
+KERNEL_MD5=$($MKHASH md5 "$KERNEL_PATH")
 
 
 In openwrt/scripts/om-fwupgradecfg-gen.sh line 58:
-KERNEL_SHA256=$(mkhash sha256 $KERNEL_PATH)
-                              ^----------^ SC2086: Double quote to prevent globbing and word splitting.
+KERNEL_SHA256=$($MKHASH sha256 $KERNEL_PATH)
+                               ^----------^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-KERNEL_SHA256=$(mkhash sha256 "$KERNEL_PATH")
+KERNEL_SHA256=$($MKHASH sha256 "$KERNEL_PATH")
 
 
 In openwrt/scripts/om-fwupgradecfg-gen.sh line 60:
@@ -37,27 +37,27 @@ ROOTFS_FLASH_ADDR=$(addr=$(($KERNEL_FLASH_ADDR + ($KERNEL_PART_SIZE_KB * 1024)))
 
 
 In openwrt/scripts/om-fwupgradecfg-gen.sh line 66:
-ROOTFS_MD5=$(dd if=$ROOTFS_PATH bs=$CHECK_BS count=$ROOTFS_CHECK_BLOCKS 2>&- | mkhash md5)
+ROOTFS_MD5=$(dd if=$ROOTFS_PATH bs=$CHECK_BS count=$ROOTFS_CHECK_BLOCKS 2>&- | $MKHASH md5)
                    ^----------^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-ROOTFS_MD5=$(dd if="$ROOTFS_PATH" bs=$CHECK_BS count=$ROOTFS_CHECK_BLOCKS 2>&- | mkhash md5)
+ROOTFS_MD5=$(dd if="$ROOTFS_PATH" bs=$CHECK_BS count=$ROOTFS_CHECK_BLOCKS 2>&- | $MKHASH md5)
 
 
 In openwrt/scripts/om-fwupgradecfg-gen.sh line 67:
-ROOTFS_MD5_FULL=$(mkhash md5 $ROOTFS_PATH)
-                             ^----------^ SC2086: Double quote to prevent globbing and word splitting.
+ROOTFS_MD5_FULL=$($MKHASH md5 $ROOTFS_PATH)
+                              ^----------^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-ROOTFS_MD5_FULL=$(mkhash md5 "$ROOTFS_PATH")
+ROOTFS_MD5_FULL=$($MKHASH md5 "$ROOTFS_PATH")
 
 
 In openwrt/scripts/om-fwupgradecfg-gen.sh line 68:
-ROOTFS_SHA256_FULL=$(mkhash sha256 $ROOTFS_PATH)
-                                   ^----------^ SC2086: Double quote to prevent globbing and word splitting.
+ROOTFS_SHA256_FULL=$($MKHASH sha256 $ROOTFS_PATH)
+                                    ^----------^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-ROOTFS_SHA256_FULL=$(mkhash sha256 "$ROOTFS_PATH")
+ROOTFS_SHA256_FULL=$($MKHASH sha256 "$ROOTFS_PATH")
 
 
 In openwrt/scripts/om-fwupgradecfg-gen.sh line 70:
