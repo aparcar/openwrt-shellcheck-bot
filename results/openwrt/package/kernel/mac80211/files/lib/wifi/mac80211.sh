@@ -26,12 +26,17 @@ In openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh line 37:
                     ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
 
 
-In openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh line 66:
+In openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh line 131:
+		[ -n "$mode_band" -a "$band" = "6g" ] && return
+                                  ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
+
+
+In openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh line 145:
 		devidx=$(($devidx + 1))
                           ^-----^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh line 103:
+In openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh line 168:
 			dev_id="set wireless.radio${devidx}.macaddr=$(cat /sys/class/ieee80211/${dev}/macaddress)"
                                                                                                ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -39,7 +44,7 @@ Did you mean:
 			dev_id="set wireless.radio${devidx}.macaddr=$(cat /sys/class/ieee80211/"${dev}"/macaddress)"
 
 
-In openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh line 124:
+In openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh line 189:
 		devidx=$(($devidx + 1))
                           ^-----^ SC2004: $/${} is unnecessary on arithmetic variables.
 
