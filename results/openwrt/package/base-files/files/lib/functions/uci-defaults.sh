@@ -15,7 +15,7 @@ In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 40:
 
 
 In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 42:
-		[ "$opt" = "ifname" -a "$val" != "${val/ //}" ] && {
+		[ "$opt" = "device" -a "$val" != "${val/ //}" ] && {
                                     ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
                                                                 ^-- SC2015: Note that A && B || C is not if-then-else. C may run when A is true.
 
