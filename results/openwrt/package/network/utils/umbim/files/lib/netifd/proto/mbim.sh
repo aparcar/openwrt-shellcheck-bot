@@ -51,30 +51,30 @@ Did you mean:
 
 
 In openwrt/package/network/utils/umbim/files/lib/netifd/proto/mbim.sh line 94:
- 	umbim $DBG -n -t $tid -d $device subscriber || {
+	umbim $DBG -n -t $tid -d $device subscriber || {
               ^--^ SC2086: Double quote to prevent globbing and word splitting.
                                  ^-----^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
- 	umbim "$DBG" -n -t $tid -d "$device" subscriber || {
+	umbim "$DBG" -n -t $tid -d "$device" subscriber || {
 
 
 In openwrt/package/network/utils/umbim/files/lib/netifd/proto/mbim.sh line 102:
-  	umbim $DBG -n -t $tid -d $device registration || {
+	umbim $DBG -n -t $tid -d $device registration || {
               ^--^ SC2086: Double quote to prevent globbing and word splitting.
                                  ^-----^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-  	umbim "$DBG" -n -t $tid -d "$device" registration || {
+	umbim "$DBG" -n -t $tid -d "$device" registration || {
 
 
 In openwrt/package/network/utils/umbim/files/lib/netifd/proto/mbim.sh line 110:
-   	umbim $DBG -n -t $tid -d $device attach || {
+	umbim $DBG -n -t $tid -d $device attach || {
               ^--^ SC2086: Double quote to prevent globbing and word splitting.
                                  ^-----^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-   	umbim "$DBG" -n -t $tid -d "$device" attach || {
+	umbim "$DBG" -n -t $tid -d "$device" attach || {
 
 
 In openwrt/package/network/utils/umbim/files/lib/netifd/proto/mbim.sh line 118:
@@ -97,14 +97,6 @@ Did you mean:
 In openwrt/package/network/utils/umbim/files/lib/netifd/proto/mbim.sh line 150:
 	_proto_mbim_setup $@
                           ^-- SC2068: Double quote array expansions to avoid re-splitting elements.
-
-
-In openwrt/package/network/utils/umbim/files/lib/netifd/proto/mbim.sh line 158:
-	return $rt
-               ^-^ SC2086: Double quote to prevent globbing and word splitting.
-
-Did you mean: 
-	return "$rt"
 
 
 In openwrt/package/network/utils/umbim/files/lib/netifd/proto/mbim.sh line 166:
