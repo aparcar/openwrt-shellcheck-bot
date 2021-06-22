@@ -20,7 +20,7 @@ In openwrt/package/system/uci/files/lib/config/uci.sh line 41:
                       ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
 
 
-In openwrt/package/system/uci/files/lib/config/uci.sh line 154:
+In openwrt/package/system/uci/files/lib/config/uci.sh line 162:
 	/sbin/uci ${UCI_CONFIG_DIR:+-c $UCI_CONFIG_DIR} commit $PACKAGE
                                                                ^------^ SC2086: Double quote to prevent globbing and word splitting.
 

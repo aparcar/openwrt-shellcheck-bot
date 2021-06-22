@@ -170,14 +170,14 @@ Did you mean:
 
 
 In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 329:
-		export dev_${dir}="ip link set $dev up >&- 2>&-
+		export dev_${dir}="ip link add ${dev} type ifb >&- 2>&-
                            ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-		export dev_"${dir}"="ip link set $dev up >&- 2>&-
+		export dev_"${dir}"="ip link add ${dev} type ifb >&- 2>&-
 
 
-In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 346:
+In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 347:
 		append dev_${dir} "tc qdisc del dev $device ingress >&- 2>&-
                            ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -185,12 +185,12 @@ Did you mean:
 		append dev_"${dir}" "tc qdisc del dev $device ingress >&- 2>&-
 
 
-In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 354:
+In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 355:
 ${INSMOD:+$INSMOD$N}${dev_up:+$dev_up
           ^-----^ SC2153: Possible misspelling: INSMOD may not be assigned, but insmod is.
 
 
-In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 384:
+In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 385:
 		[ ! -z "$(echo $options | grep 'TOS')" ] && {
                   ^-- SC2236: Use -n instead of ! -z.
                     ^-- SC2143: Use ! grep -q instead of comparing output with [ -z .. ].
@@ -200,18 +200,18 @@ Did you mean:
 		[ ! -z "$(echo "$options" | grep 'TOS')" ] && {
 
 
-In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 392:
+In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 393:
 		target=$(($target | ($target << 4)))
                           ^-----^ SC2004: $/${} is unnecessary on arithmetic variables.
                                      ^-----^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 411:
+In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 412:
 		[ -z "$maxsize" -o -z "$mark" ] || {
                                 ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
 
 
-In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 473:
+In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 474:
 		start_cg $group
                          ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -219,27 +219,27 @@ Did you mean:
 		start_cg "$group"
 
 
-In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 493:
+In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 494:
 				-e '${p;g}' |
                                    ^------^ SC2016: Expressions don't expand in single quotes, use double quotes for that.
 
 
-In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 502:
+In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 503:
 [ -e ./qos.conf ] && {
                   ^-- SC2015: Note that A && B || C is not if-then-else. C may run when A is true.
 
 
-In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 504:
+In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 505:
 	config_cb
         ^-------^ SC2119: Use config_cb "$@" if function's $1 should mean script's $1.
 
 
-In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 512:
+In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 513:
 	export C="$(($C + 1))"
                      ^-- SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 515:
+In openwrt/package/network/config/qos-scripts/files/usr/lib/qos/generate.sh line 516:
 [ -x /usr/sbin/ip6tables ] && {
                            ^-- SC2015: Note that A && B || C is not if-then-else. C may run when A is true.
 
