@@ -146,8 +146,8 @@ Did you mean:
 
 
 In openwrt/package/system/procd/files/procd.sh line 397:
-	_procd_add_action_mount_trigger start $(procd_get_mountpoints "$@")
-                                              ^---------------------------^ SC2046: Quote this to prevent word splitting.
+	_procd_add_action_mount_trigger restart $(procd_get_mountpoints "$@")
+                                                ^---------------------------^ SC2046: Quote this to prevent word splitting.
 
 
 In openwrt/package/system/procd/files/procd.sh line 401:
