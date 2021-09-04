@@ -76,7 +76,7 @@ In openwrt/target/linux/mediatek/mt7622/base-files/lib/upgrade/platform.sh line 
                                            ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
 
 
-In openwrt/target/linux/mediatek/mt7622/base-files/lib/upgrade/platform.sh line 91:
+In openwrt/target/linux/mediatek/mt7622/base-files/lib/upgrade/platform.sh line 97:
 	dd if="$UPGRADE_BACKUP" of=/dev/$datapart
                                         ^-------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -84,7 +84,7 @@ Did you mean:
 	dd if="$UPGRADE_BACKUP" of=/dev/"$datapart"
 
 
-In openwrt/target/linux/mediatek/mt7622/base-files/lib/upgrade/platform.sh line 100:
+In openwrt/target/linux/mediatek/mt7622/base-files/lib/upgrade/platform.sh line 106:
 		if echo $rootdev | grep -q mmc; then
                         ^------^ SC2086: Double quote to prevent globbing and word splitting.
 
