@@ -106,15 +106,7 @@ Did you mean:
 	losetup -d "$loopdev" >/dev/null 2>&1
 
 
-In openwrt/target/linux/ipq806x/base-files/lib/upgrade/zyxel.sh line 95:
-		[ -b $dualflagmtd ] || \
-                     ^----------^ SC2086: Double quote to prevent globbing and word splitting.
-
-Did you mean: 
-		[ -b "$dualflagmtd" ] || \
-
-
-In openwrt/target/linux/ipq806x/base-files/lib/upgrade/zyxel.sh line 97:
+In openwrt/target/linux/ipq806x/base-files/lib/upgrade/zyxel.sh line 94:
 		[ -b $dualflagmtd ] || return 1
                      ^----------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -122,7 +114,7 @@ Did you mean:
 		[ -b "$dualflagmtd" ] || return 1
 
 
-In openwrt/target/linux/ipq806x/base-files/lib/upgrade/zyxel.sh line 122:
+In openwrt/target/linux/ipq806x/base-files/lib/upgrade/zyxel.sh line 119:
 	zyxel_do_flash $tar_file $kernel $rootfs $dualflagmtd
                        ^-------^ SC2086: Double quote to prevent globbing and word splitting.
                                                  ^----------^ SC2086: Double quote to prevent globbing and word splitting.

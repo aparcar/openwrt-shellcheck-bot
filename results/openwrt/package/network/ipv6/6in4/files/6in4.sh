@@ -67,14 +67,6 @@ In openwrt/package/network/ipv6/6in4/files/6in4.sh line 125:
 Did you mean: 
 				if proto_6in4_update $urlget "$urlget_opts" --user="$username" --password="$password" "$url" 2>&1 | \
 
-
-In openwrt/package/network/ipv6/6in4/files/6in4.sh line 142:
-	ip link del $link
-                    ^---^ SC2086: Double quote to prevent globbing and word splitting.
-
-Did you mean: 
-	ip link del "$link"
-
 For more information:
   https://www.shellcheck.net/wiki/SC2166 -- Prefer [ p ] && [ q ] as [ p -a q...
   https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...

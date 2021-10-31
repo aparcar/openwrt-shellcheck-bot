@@ -17,14 +17,6 @@ In openwrt/package/network/ipv6/6rd/files/6rd.sh line 51:
                                           ^-----------^ SC2004: $/${} is unnecessary on arithmetic variables.
                                                                ^-----------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
-
-In openwrt/package/network/ipv6/6rd/files/6rd.sh line 86:
-	ip link del $link
-                    ^---^ SC2086: Double quote to prevent globbing and word splitting.
-
-Did you mean: 
-	ip link del "$link"
-
 For more information:
   https://www.shellcheck.net/wiki/SC2166 -- Prefer [ p ] || [ q ] as [ p -o q...
   https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...
