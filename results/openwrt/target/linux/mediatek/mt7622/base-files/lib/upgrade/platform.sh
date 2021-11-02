@@ -16,19 +16,19 @@ Did you mean:
 
 
 In openwrt/target/linux/mediatek/mt7622/base-files/lib/upgrade/platform.sh line 16:
-			local fitpart=$(get_partition_by_name $rootdev "production")
-                                                              ^------^ SC2086: Double quote to prevent globbing and word splitting.
+			local fitpart=$(find_mmc_part "production" $rootdev)
+                                                                   ^------^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-			local fitpart=$(get_partition_by_name "$rootdev" "production")
+			local fitpart=$(find_mmc_part "production" "$rootdev")
 
 
 In openwrt/target/linux/mediatek/mt7622/base-files/lib/upgrade/platform.sh line 18:
-			dd if=/dev/zero of=/dev/$fitpart bs=4096 count=1 2>/dev/null
-                                                ^------^ SC2086: Double quote to prevent globbing and word splitting.
+			dd if=/dev/zero of=$fitpart bs=4096 count=1 2>/dev/null
+                                           ^------^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-			dd if=/dev/zero of=/dev/"$fitpart" bs=4096 count=1 2>/dev/null
+			dd if=/dev/zero of="$fitpart" bs=4096 count=1 2>/dev/null
 
 
 In openwrt/target/linux/mediatek/mt7622/base-files/lib/upgrade/platform.sh line 19:
@@ -40,11 +40,11 @@ Did you mean:
 
 
 In openwrt/target/linux/mediatek/mt7622/base-files/lib/upgrade/platform.sh line 20:
-			get_image "$1" | dd of=/dev/$fitpart
-                                                    ^------^ SC2086: Double quote to prevent globbing and word splitting.
+			get_image "$1" | dd of=$fitpart
+                                               ^------^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-			get_image "$1" | dd of=/dev/"$fitpart"
+			get_image "$1" | dd of="$fitpart"
 
 
 In openwrt/target/linux/mediatek/mt7622/base-files/lib/upgrade/platform.sh line 21:
@@ -56,19 +56,19 @@ Did you mean:
 
 
 In openwrt/target/linux/mediatek/mt7622/base-files/lib/upgrade/platform.sh line 22:
-			local datapart=$(get_partition_by_name $rootdev "rootfs_data")
-                                                               ^------^ SC2086: Double quote to prevent globbing and word splitting.
+			local datapart=$(find_mmc_part "rootfs_data" $rootdev)
+                                                                     ^------^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-			local datapart=$(get_partition_by_name "$rootdev" "rootfs_data")
+			local datapart=$(find_mmc_part "rootfs_data" "$rootdev")
 
 
 In openwrt/target/linux/mediatek/mt7622/base-files/lib/upgrade/platform.sh line 24:
-			dd if=/dev/zero of=/dev/$datapart bs=4096 count=1 2>/dev/null
-                                                ^-------^ SC2086: Double quote to prevent globbing and word splitting.
+			dd if=/dev/zero of=$datapart bs=4096 count=1 2>/dev/null
+                                           ^-------^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-			dd if=/dev/zero of=/dev/"$datapart" bs=4096 count=1 2>/dev/null
+			dd if=/dev/zero of="$datapart" bs=4096 count=1 2>/dev/null
 
 
 In openwrt/target/linux/mediatek/mt7622/base-files/lib/upgrade/platform.sh line 25:
@@ -85,11 +85,11 @@ In openwrt/target/linux/mediatek/mt7622/base-files/lib/upgrade/platform.sh line 
 
 
 In openwrt/target/linux/mediatek/mt7622/base-files/lib/upgrade/platform.sh line 98:
-	dd if="$UPGRADE_BACKUP" of=/dev/$datapart
-                                        ^-------^ SC2086: Double quote to prevent globbing and word splitting.
+	dd if="$UPGRADE_BACKUP" of=$datapart
+                                   ^-------^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-	dd if="$UPGRADE_BACKUP" of=/dev/"$datapart"
+	dd if="$UPGRADE_BACKUP" of="$datapart"
 
 
 In openwrt/target/linux/mediatek/mt7622/base-files/lib/upgrade/platform.sh line 107:

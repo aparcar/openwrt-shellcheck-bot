@@ -126,44 +126,23 @@ Did you mean:
 		if [ "$BOOTDEV_MAJOR" = "$MAJOR" -a $(($BOOTDEV_MINOR + $offset)) = "$MINOR" -a -b "/dev/$DEVNAME" ]; then
 
 
-In openwrt/package/base-files/files/lib/upgrade/common.sh line 224:
-	for partname in /sys/class/block/$1/*/name; do
-                                         ^-- SC2231: Quote expansions in this for loop glob to prevent wordsplitting, e.g. "$dir"/*.txt .
-
-
-In openwrt/package/base-files/files/lib/upgrade/common.sh line 225:
-		[ "$(cat ${partname})" = "$2" ] && {
-                         ^---------^ SC2086: Double quote to prevent globbing and word splitting.
-
-Did you mean: 
-		[ "$(cat "${partname}")" = "$2" ] && {
-
-
-In openwrt/package/base-files/files/lib/upgrade/common.sh line 226:
-			basename ${partname%%/name}
-                                 ^----------------^ SC2086: Double quote to prevent globbing and word splitting.
-
-Did you mean: 
-			basename "${partname%%/name}"
-
-
-In openwrt/package/base-files/files/lib/upgrade/common.sh line 236:
+In openwrt/package/base-files/files/lib/upgrade/common.sh line 227:
 	if [ -b "$disk" -o -f "$disk" ]; then
                         ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
 
 
-In openwrt/package/base-files/files/lib/upgrade/common.sh line 248:
+In openwrt/package/base-files/files/lib/upgrade/common.sh line 239:
 		part_magic_efi "$disk" && {
                                        ^-- SC2015: Note that A && B || C is not if-then-else. C may run when A is true.
 
 
-In openwrt/package/base-files/files/lib/upgrade/common.sh line 252:
+In openwrt/package/base-files/files/lib/upgrade/common.sh line 243:
 				set -- $(hexdump -v -n 48 -s "$((0x380 + $part * 0x80))" -e '4/4 "%08x"" "4/4 "%08x"" "4/4 "0x%08X "' "$disk")
                                        ^-- SC2046: Quote this to prevent word splitting.
                                                                          ^---^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/base-files/files/lib/upgrade/common.sh line 255:
+In openwrt/package/base-files/files/lib/upgrade/common.sh line 246:
 				local lba="$(( $(hex_le32_to_cpu $4) * 0x100000000 + $(hex_le32_to_cpu $3) ))"
                                                                  ^-- SC2086: Double quote to prevent globbing and word splitting.
                                                                                                        ^-- SC2086: Double quote to prevent globbing and word splitting.
@@ -172,7 +151,7 @@ Did you mean:
 				local lba="$(( $(hex_le32_to_cpu "$4") * 0x100000000 + $(hex_le32_to_cpu "$3") ))"
 
 
-In openwrt/package/base-files/files/lib/upgrade/common.sh line 256:
+In openwrt/package/base-files/files/lib/upgrade/common.sh line 247:
 				local end="$(( $(hex_le32_to_cpu $6) * 0x100000000 + $(hex_le32_to_cpu $5) ))"
                                                                  ^-- SC2086: Double quote to prevent globbing and word splitting.
                                                                                                        ^-- SC2086: Double quote to prevent globbing and word splitting.
@@ -181,19 +160,19 @@ Did you mean:
 				local end="$(( $(hex_le32_to_cpu "$6") * 0x100000000 + $(hex_le32_to_cpu "$5") ))"
 
 
-In openwrt/package/base-files/files/lib/upgrade/common.sh line 257:
+In openwrt/package/base-files/files/lib/upgrade/common.sh line 248:
 				local num="$(( $end - $lba ))"
                                                ^--^ SC2004: $/${} is unnecessary on arithmetic variables.
                                                       ^--^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/base-files/files/lib/upgrade/common.sh line 265:
+In openwrt/package/base-files/files/lib/upgrade/common.sh line 256:
 				set -- $(hexdump -v -n 12 -s "$((0x1B2 + $part * 16))" -e '3/4 "0x%08X "' "$disk")
                                        ^-- SC2046: Quote this to prevent word splitting.
                                                                          ^---^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/base-files/files/lib/upgrade/common.sh line 267:
+In openwrt/package/base-files/files/lib/upgrade/common.sh line 258:
 				local type="$(( $(hex_le32_to_cpu $1) % 256))"
                                                                   ^-- SC2086: Double quote to prevent globbing and word splitting.
 
@@ -201,7 +180,7 @@ Did you mean:
 				local type="$(( $(hex_le32_to_cpu "$1") % 256))"
 
 
-In openwrt/package/base-files/files/lib/upgrade/common.sh line 268:
+In openwrt/package/base-files/files/lib/upgrade/common.sh line 259:
 				local lba="$(( $(hex_le32_to_cpu $2) ))"
                                                                  ^-- SC2086: Double quote to prevent globbing and word splitting.
 
@@ -209,7 +188,7 @@ Did you mean:
 				local lba="$(( $(hex_le32_to_cpu "$2") ))"
 
 
-In openwrt/package/base-files/files/lib/upgrade/common.sh line 269:
+In openwrt/package/base-files/files/lib/upgrade/common.sh line 260:
 				local num="$(( $(hex_le32_to_cpu $3) ))"
                                                                  ^-- SC2086: Double quote to prevent globbing and word splitting.
 
@@ -217,7 +196,7 @@ Did you mean:
 				local num="$(( $(hex_le32_to_cpu "$3") ))"
 
 
-In openwrt/package/base-files/files/lib/upgrade/common.sh line 292:
+In openwrt/package/base-files/files/lib/upgrade/common.sh line 283:
 		get_image "$1" "$2" | mtd $MTD_ARGS $MTD_CONFIG_ARGS -j "$UPGRADE_BACKUP" write - "${PART_NAME:-image}"
                                           ^-------^ SC2086: Double quote to prevent globbing and word splitting.
                                                     ^--------------^ SC2086: Double quote to prevent globbing and word splitting.
@@ -226,7 +205,7 @@ Did you mean:
 		get_image "$1" "$2" | mtd "$MTD_ARGS" "$MTD_CONFIG_ARGS" -j "$UPGRADE_BACKUP" write - "${PART_NAME:-image}"
 
 
-In openwrt/package/base-files/files/lib/upgrade/common.sh line 294:
+In openwrt/package/base-files/files/lib/upgrade/common.sh line 285:
 		get_image "$1" "$2" | mtd $MTD_ARGS write - "${PART_NAME:-image}"
                                           ^-------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -234,7 +213,7 @@ Did you mean:
 		get_image "$1" "$2" | mtd "$MTD_ARGS" write - "${PART_NAME:-image}"
 
 
-In openwrt/package/base-files/files/lib/upgrade/common.sh line 296:
+In openwrt/package/base-files/files/lib/upgrade/common.sh line 287:
 	[ $? -ne 0 ] && exit 1
           ^-- SC2181: Check exit code directly with e.g. 'if mycmd;', not indirectly with $?.
 

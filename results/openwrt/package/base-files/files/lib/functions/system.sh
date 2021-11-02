@@ -54,7 +54,7 @@ In openwrt/package/base-files/files/lib/functions/system.sh line 129:
               ^--^ SC2162: read without -r will mangle backslashes.
 
 
-In openwrt/package/base-files/files/lib/functions/system.sh line 145:
+In openwrt/package/base-files/files/lib/functions/system.sh line 154:
 	echo $oui:$nic
              ^--^ SC2086: Double quote to prevent globbing and word splitting.
                   ^--^ SC2086: Double quote to prevent globbing and word splitting.
@@ -63,7 +63,7 @@ Did you mean:
 	echo "$oui":"$nic"
 
 
-In openwrt/package/base-files/files/lib/functions/system.sh line 152:
+In openwrt/package/base-files/files/lib/functions/system.sh line 161:
 	echo ${mac:9:2}$sep${mac:12:2}$sep${mac:15:2}
              ^--------^ SC2086: Double quote to prevent globbing and word splitting.
                        ^--^ SC2086: Double quote to prevent globbing and word splitting.
@@ -73,16 +73,6 @@ In openwrt/package/base-files/files/lib/functions/system.sh line 152:
 
 Did you mean: 
 	echo "${mac:9:2}""$sep""${mac:12:2}""$sep""${mac:15:2}"
-
-
-In openwrt/package/base-files/files/lib/functions/system.sh line 159:
-	[ $bit -gt 0 -a $bit -le 48 ] || return
-          ^--^ SC2086: Double quote to prevent globbing and word splitting.
-                     ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
-                        ^--^ SC2086: Double quote to prevent globbing and word splitting.
-
-Did you mean: 
-	[ "$bit" -gt 0 -a "$bit" -le 48 ] || return
 
 
 In openwrt/package/base-files/files/lib/functions/system.sh line 168:
@@ -95,7 +85,17 @@ Did you mean:
 	[ "$bit" -gt 0 -a "$bit" -le 48 ] || return
 
 
-In openwrt/package/base-files/files/lib/functions/system.sh line 174:
+In openwrt/package/base-files/files/lib/functions/system.sh line 177:
+	[ $bit -gt 0 -a $bit -le 48 ] || return
+          ^--^ SC2086: Double quote to prevent globbing and word splitting.
+                     ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
+                        ^--^ SC2086: Double quote to prevent globbing and word splitting.
+
+Did you mean: 
+	[ "$bit" -gt 0 -a "$bit" -le 48 ] || return
+
+
+In openwrt/package/base-files/files/lib/functions/system.sh line 183:
 	macaddr_setbit $1 7
                        ^-- SC2086: Double quote to prevent globbing and word splitting.
 
@@ -103,7 +103,7 @@ Did you mean:
 	macaddr_setbit "$1" 7
 
 
-In openwrt/package/base-files/files/lib/functions/system.sh line 180:
+In openwrt/package/base-files/files/lib/functions/system.sh line 189:
 	printf "%02x:%s" $((0x${mac%%:*} & ~0x01)) ${mac#*:}
                                                    ^-------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -111,12 +111,12 @@ Did you mean:
 	printf "%02x:%s" $((0x${mac%%:*} & ~0x01)) "${mac#*:}"
 
 
-In openwrt/package/base-files/files/lib/functions/system.sh line 186:
+In openwrt/package/base-files/files/lib/functions/system.sh line 195:
 	echo "$(macaddr_unsetbit_mc "$(macaddr_setbit_la "${randsrc}")")"
              ^-- SC2005: Useless echo? Instead of 'echo $(cmd)', just use 'cmd'.
 
 
-In openwrt/package/base-files/files/lib/functions/system.sh line 192:
+In openwrt/package/base-files/files/lib/functions/system.sh line 201:
 	echo -ne \\x${mac//:/\\x}
                     ^-----------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -124,7 +124,7 @@ Did you mean:
 	echo -ne \\x"${mac//:/\\x}"
 
 
-In openwrt/package/base-files/files/lib/functions/system.sh line 199:
+In openwrt/package/base-files/files/lib/functions/system.sh line 208:
 	mac=$(echo -n $mac | tr -d \")
                       ^--^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -132,7 +132,7 @@ Did you mean:
 	mac=$(echo -n "$mac" | tr -d \")
 
 
-In openwrt/package/base-files/files/lib/functions/system.sh line 225:
+In openwrt/package/base-files/files/lib/functions/system.sh line 234:
 	printf "%02x:%02x:%02x:%02x:%02x:%02x" 0x${canon// / 0x} 2>/dev/null
                ^-----------------------------^ SC2183: This format string has 6 variables, but is passed 1 arguments.
                                                  ^-------------^ SC2086: Double quote to prevent globbing and word splitting.
