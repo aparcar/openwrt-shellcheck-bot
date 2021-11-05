@@ -44,6 +44,16 @@ In openwrt/target/linux/bcm4908/base-files/lib/upgrade/platform.sh line 122:
                     ^----------------^ SC2012: Use find instead of ls to better handle non-alphanumeric filenames.
 
 
+In openwrt/target/linux/bcm4908/base-files/lib/upgrade/platform.sh line 132:
+	idx=$(($(expr $idx + $inc) % 1000))
+                 ^--^ SC2003: expr is antiquated. Consider rewriting this using $((..)), ${} or [[ ]].
+                      ^--^ SC2086: Double quote to prevent globbing and word splitting.
+                             ^--^ SC2086: Double quote to prevent globbing and word splitting.
+
+Did you mean: 
+	idx=$(($(expr "$idx" + "$inc") % 1000))
+
+
 In openwrt/target/linux/bcm4908/base-files/lib/upgrade/platform.sh line 134:
 	echo $(printf "cferam.%03d" $idx)
              ^--------------------------^ SC2046: Quote this to prevent word splitting.
