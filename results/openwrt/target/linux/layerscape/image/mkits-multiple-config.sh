@@ -280,7 +280,17 @@ In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 197:
                                                                          ^-- SC2145: Argument mixes string and array. Use * or separate argument.
 
 
-In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 217:
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 201:
+	shift $(($OPTIND - 1))
+                 ^-----^ SC2004: $/${} is unnecessary on arithmetic variables.
+
+
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 203:
+		echo "Failed to parse all passed arguments (unrecognized: \"$@\")"
+                                                                            ^-- SC2145: Argument mixes string and array. Use * or separate argument.
+
+
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 222:
 	if ! echo $valid | grep -q "$2"; then
                   ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -288,7 +298,7 @@ Did you mean:
 	if ! echo "$valid" | grep -q "$2"; then
 
 
-In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 282:
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 287:
 	emit_cksum ${checksum}
                    ^---------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -296,7 +306,7 @@ Did you mean:
 	emit_cksum "${checksum}"
 
 
-In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 312:
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 317:
 	emit_cksum ${checksum}
                    ^---------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -304,7 +314,7 @@ Did you mean:
 	emit_cksum "${checksum}"
 
 
-In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 339:
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 344:
 	emit_cksum ${checksum}
                    ^---------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -312,12 +322,12 @@ Did you mean:
 	emit_cksum "${checksum}"
 
 
-In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 350:
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 355:
 	csum_list=$@
                   ^-- SC2124: Assigning an array to a string! Assign as array, or use * instead of @ to concatenate.
 
 
-In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 358:
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 363:
 		count=`expr ${count} + 1`
                       ^-----------------^ SC2006: Use $(...) notation instead of legacy backticked `...`.
                        ^--^ SC2003: expr is antiquated. Consider rewriting this using $((..)), ${} or [[ ]].
@@ -326,7 +336,7 @@ Did you mean:
 		count=$(expr ${count} + 1)
 
 
-In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 387:
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 392:
 		if ! echo "$keys" | grep -q $key; then
                                             ^--^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -334,7 +344,7 @@ Did you mean:
 		if ! echo "$keys" | grep -q "$key"; then
 
 
-In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 422:
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 427:
 			count=`expr ${count} + 1`
                               ^-----------------^ SC2006: Use $(...) notation instead of legacy backticked `...`.
                                ^--^ SC2003: expr is antiquated. Consider rewriting this using $((..)), ${} or [[ ]].
@@ -343,22 +353,22 @@ Did you mean:
 			count=$(expr ${count} + 1)
 
 
-In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 434:
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 439:
 	if [ ! -z "${11}" ]; then
              ^-- SC2236: Use -n instead of ! -z.
 
 
-In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 481:
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 486:
 	echo "$@" | sed "s:^ ::g"
         ^-----------------------^ SC2001: See if you can use ${variable//search/replace} instead.
 
 
-In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 497:
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 502:
 		for a in ${img_array[@]}; do
                          ^-------------^ SC2068: Double quote array expansions to avoid re-splitting elements.
 
 
-In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 511:
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 516:
 			img_conf=$(remove_prefix_space $img_conf)
                                                        ^-------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -366,7 +376,7 @@ Did you mean:
 			img_conf=$(remove_prefix_space "$img_conf")
 
 
-In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 512:
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 517:
 			img_hash=$(remove_prefix_space $img_hash)
                                                        ^-------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -374,7 +384,7 @@ Did you mean:
 			img_hash=$(remove_prefix_space "$img_hash")
 
 
-In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 517:
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 522:
 			[ -n "${chk}" ] || eval DEF_$t=$img_count
                                                        ^--------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -382,7 +392,7 @@ Did you mean:
 			[ -n "${chk}" ] || eval DEF_$t="$img_count"
 
 
-In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 538:
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 543:
 				array_put conf$img_c 0 ${img_c}
                                               ^----^ SC2086: Double quote to prevent globbing and word splitting.
                                                        ^------^ SC2086: Double quote to prevent globbing and word splitting.
@@ -391,7 +401,7 @@ Did you mean:
 				array_put conf"$img_c" 0 "${img_c}"
 
 
-In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 544:
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 549:
 				array_put conf$img_c $img_i $img_index
                                               ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -399,7 +409,7 @@ Did you mean:
 				array_put conf"$img_c" $img_i $img_index
 
 
-In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 545:
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 550:
 				array_put conf$img_c $(($img_i + 3)) ${img_sign}
                                               ^----^ SC2086: Double quote to prevent globbing and word splitting.
                                                         ^----^ SC2004: $/${} is unnecessary on arithmetic variables.
@@ -409,7 +419,7 @@ Did you mean:
 				array_put conf"$img_c" $(($img_i + 3)) "${img_sign}"
 
 
-In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 546:
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 551:
 				array_put conf$img_c $(($img_i + 6)) ${img_key}
                                               ^----^ SC2086: Double quote to prevent globbing and word splitting.
                                                         ^----^ SC2004: $/${} is unnecessary on arithmetic variables.
@@ -419,7 +429,7 @@ Did you mean:
 				array_put conf"$img_c" $(($img_i + 6)) "${img_key}"
 
 
-In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 547:
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 552:
 				array_put conf$img_c 10 $img_cname
                                               ^----^ SC2086: Double quote to prevent globbing and word splitting.
                                                         ^--------^ SC2086: Double quote to prevent globbing and word splitting.
@@ -428,7 +438,7 @@ Did you mean:
 				array_put conf"$img_c" 10 "$img_cname"
 
 
-In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 562:
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 567:
 	emit_its confstart $DEF_CONFIG
                            ^---------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -436,12 +446,12 @@ Did you mean:
 	emit_its confstart "$DEF_CONFIG"
 
 
-In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 563:
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 568:
 	for a in ${conf_array[@]}; do
                  ^--------------^ SC2068: Double quote array expansions to avoid re-splitting elements.
 
 
-In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 564:
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 569:
 		count=$(array_get $a 0)
                                   ^-- SC2086: Double quote to prevent globbing and word splitting.
 
@@ -449,7 +459,7 @@ Did you mean:
 		count=$(array_get "$a" 0)
 
 
-In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 565:
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 570:
 		kernel=$(array_get $a 1)
                                    ^-- SC2086: Double quote to prevent globbing and word splitting.
 
@@ -457,7 +467,7 @@ Did you mean:
 		kernel=$(array_get "$a" 1)
 
 
-In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 566:
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 571:
 		fdt=$(array_get $a 2)
                                 ^-- SC2086: Double quote to prevent globbing and word splitting.
 
@@ -465,7 +475,7 @@ Did you mean:
 		fdt=$(array_get "$a" 2)
 
 
-In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 567:
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 572:
 		ramdisk=$(array_get $a 3)
                                     ^-- SC2086: Double quote to prevent globbing and word splitting.
 
@@ -473,7 +483,7 @@ Did you mean:
 		ramdisk=$(array_get "$a" 3)
 
 
-In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 568:
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 573:
 		er_file=$(array_get $a 4)
                                     ^-- SC2086: Double quote to prevent globbing and word splitting.
 
@@ -481,7 +491,7 @@ Did you mean:
 		er_file=$(array_get "$a" 4)
 
 
-In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 569:
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 574:
 		fdt_file=$(array_get $a 5)
                                      ^-- SC2086: Double quote to prevent globbing and word splitting.
 
@@ -489,7 +499,7 @@ Did you mean:
 		fdt_file=$(array_get "$a" 5)
 
 
-In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 570:
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 575:
 		rfs_file=$(array_get $a 6)
                                      ^-- SC2086: Double quote to prevent globbing and word splitting.
 
@@ -497,7 +507,7 @@ Did you mean:
 		rfs_file=$(array_get "$a" 6)
 
 
-In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 571:
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 576:
 		ker_sign=$(array_get $a 7)
                                      ^-- SC2086: Double quote to prevent globbing and word splitting.
 
@@ -505,7 +515,7 @@ Did you mean:
 		ker_sign=$(array_get "$a" 7)
 
 
-In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 572:
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 577:
 		fdt_sign=$(array_get $a 8)
                                      ^-- SC2086: Double quote to prevent globbing and word splitting.
 
@@ -513,7 +523,7 @@ Did you mean:
 		fdt_sign=$(array_get "$a" 8)
 
 
-In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 573:
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 578:
 		rfs_sign=$(array_get $a 9)
                                      ^-- SC2086: Double quote to prevent globbing and word splitting.
 
@@ -521,7 +531,7 @@ Did you mean:
 		rfs_sign=$(array_get "$a" 9)
 
 
-In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 574:
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 579:
 		cname=$(array_get $a 10)
                                   ^-- SC2086: Double quote to prevent globbing and word splitting.
 
@@ -529,7 +539,7 @@ Did you mean:
 		cname=$(array_get "$a" 10)
 
 
-In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 590:
+In openwrt/target/linux/layerscape/image/mkits-multiple-config.sh line 595:
 parse_args $@
            ^-- SC2068: Double quote array expansions to avoid re-splitting elements.
 
