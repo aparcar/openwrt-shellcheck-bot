@@ -18,23 +18,7 @@ In openwrt/target/linux/mediatek/mt7623/base-files/lib/upgrade/platform.sh line 
 		if [ "$diskdev" = "mmcblk0" -a -r /tmp/recovery/eMMCboot.bin ]; then
                                             ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
 
-
-In openwrt/target/linux/mediatek/mt7623/base-files/lib/upgrade/platform.sh line 92:
-		export UPGRADE_MMC_IMAGE_BLOCKS=$(($(get_image "$1" | fwtool -i /dev/null -T - | dd of=$UPGRADE_MMC_PARTDEV bs=512 2>&1 | grep "records out" | cut -d' ' -f1)))
-                                                                                                       ^------------------^ SC2086: Double quote to prevent globbing and word splitting.
-
-Did you mean: 
-		export UPGRADE_MMC_IMAGE_BLOCKS=$(($(get_image "$1" | fwtool -i /dev/null -T - | dd of="$UPGRADE_MMC_PARTDEV" bs=512 2>&1 | grep "records out" | cut -d' ' -f1)))
-
-
-In openwrt/target/linux/mediatek/mt7623/base-files/lib/upgrade/platform.sh line 94:
-		dd if=/dev/zero of=$UPGRADE_MMC_PARTDEV bs=512 seek=$UPGRADE_MMC_IMAGE_BLOCKS count=8
-                                   ^------------------^ SC2086: Double quote to prevent globbing and word splitting.
-
-Did you mean: 
-		dd if=/dev/zero of="$UPGRADE_MMC_PARTDEV" bs=512 seek=$UPGRADE_MMC_IMAGE_BLOCKS count=8
-
 For more information:
   https://www.shellcheck.net/wiki/SC2166 -- Prefer [ p ] && [ q ] as [ p -a q...
   https://www.shellcheck.net/wiki/SC2015 -- Note that A && B || C is not if-t...
-  https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...
+  https://www.shellcheck.net/wiki/SC2162 -- read without -r will mangle backs...
