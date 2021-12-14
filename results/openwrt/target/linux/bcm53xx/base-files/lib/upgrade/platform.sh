@@ -20,18 +20,18 @@ In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 73:
                                               ^---------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 146:
-	[ -n "$expected_image" -a -n "$BCM53XX_FW_BOARD_ID" -a "$expected_image" != "$BCM53XX_FW_FORMAT $BCM53XX_FW_BOARD_ID" ] && {
+In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 148:
+	[ -n "$expected_image" -a -n "$BCM53XX_FW_BOARD_ID" -a "$expected_image" != "$tmp_format $BCM53XX_FW_BOARD_ID" ] && {
                                ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
                                                             ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
 
 
-In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 153:
+In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 155:
 			$(oseama info "$1" -e 0 | grep -q "Meta entry:.*type=firmware") || {
                         ^-- SC2091: Remove surrounding $() to avoid executing output.
 
 
-In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 178:
+In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 180:
 					   ! $BCM53XX_FW_INT_IMG_EXTRACT_CMD < $1 | otrx check -; then
                                                                                ^-- SC2086: Double quote to prevent globbing and word splitting.
 
@@ -39,12 +39,12 @@ Did you mean:
 					   ! $BCM53XX_FW_INT_IMG_EXTRACT_CMD < "$1" | otrx check -; then
 
 
-In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 226:
+In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 228:
 	[ $? -ne 0 ] && {
           ^-- SC2181: Check exit code directly with e.g. 'if mycmd;', not indirectly with $?.
 
 
-In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 246:
+In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 248:
 	[ $kernel_length -gt $linux_length ] && {
           ^------------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -52,37 +52,37 @@ Did you mean:
 	[ "$kernel_length" -gt $linux_length ] && {
 
 
-In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 254:
+In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 256:
 		-f $dir/kernel -b $(($linux_length + 28)) \
                                      ^-----------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 256:
+In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 258:
 	[ $? -ne 0 ] && {
           ^-- SC2181: Check exit code directly with e.g. 'if mycmd;', not indirectly with $?.
 
 
-In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 264:
+In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 266:
 		ubi_length=$(($ubi_length + 131072))
                               ^---------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 267:
+In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 269:
 	[ $? -ne 0 ] && {
           ^-- SC2181: Check exit code directly with e.g. 'if mycmd;', not indirectly with $?.
 
 
-In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 288:
+In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 290:
 	[ $? -ne 0 ] && {
           ^-- SC2181: Check exit code directly with e.g. 'if mycmd;', not indirectly with $?.
 
 
-In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 296:
+In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 298:
 	while [ 1 ]; do
                 ^-- SC2161: Instead of '[ 1 ]', use 'true'.
 
 
-In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 297:
+In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 299:
 		[ $tmp -ge $entity_size ] && break
                            ^----------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -90,28 +90,28 @@ Did you mean:
 		[ $tmp -ge "$entity_size" ] && break
 
 
-In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 302:
+In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 304:
 		tmp=$(($tmp + 131072))
                        ^--^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 310:
+In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 312:
 	while [ "$(dd if=$dir/seama.entity skip=$(($ubi_offset + $ubi_length)) bs=1 count=4 2>/dev/null)" = "UBI#" ]; do
                                                    ^---------^ SC2004: $/${} is unnecessary on arithmetic variables.
                                                                  ^---------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 311:
+In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 313:
 		ubi_length=$(($ubi_length + 131072))
                               ^---------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 314:
+In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 316:
 	dd if=$dir/seama.entity of=$dir/kernel.seama bs=131072 count=$(($ubi_offset / 131072)) 2>/dev/null
                                                                         ^---------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 315:
+In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 317:
 	dd if=$dir/seama.entity of=$dir/root.ubi bs=131072 skip=$(($ubi_offset / 131072)) count=$(($ubi_length / 131072)) 2>/dev/null
                                                                    ^---------^ SC2004: $/${} is unnecessary on arithmetic variables.
                                                                                                    ^---------^ SC2004: $/${} is unnecessary on arithmetic variables.
