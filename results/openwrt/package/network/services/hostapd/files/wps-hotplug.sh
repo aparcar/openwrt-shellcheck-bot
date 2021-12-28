@@ -20,20 +20,15 @@ Did you mean:
 				json_select "$ifc"
 
 
-In openwrt/package/network/services/hostapd/files/wps-hotplug.sh line 41:
-if [ "$ACTION" = "pressed" -a "$BUTTON" = "wps" ]; then
-                           ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
-
-
-In openwrt/package/network/services/hostapd/files/wps-hotplug.sh line 45:
-		ubus -S call $ubusobj wps_start && wps_done=1
-                             ^------^ SC2086: Double quote to prevent globbing and word splitting.
+In openwrt/package/network/services/hostapd/files/wps-hotplug.sh line 51:
+			ubus -S call $ubusobj wps_start && wps_done=1
+                                     ^------^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-		ubus -S call "$ubusobj" wps_start && wps_done=1
+			ubus -S call "$ubusobj" wps_start && wps_done=1
 
 
-In openwrt/package/network/services/hostapd/files/wps-hotplug.sh line 51:
+In openwrt/package/network/services/hostapd/files/wps-hotplug.sh line 58:
 		ifname="$(echo $ubusobj | cut -d'.' -f2 )"
                                ^------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -41,7 +36,7 @@ Did you mean:
 		ifname="$(echo "$ubusobj" | cut -d'.' -f2 )"
 
 
-In openwrt/package/network/services/hostapd/files/wps-hotplug.sh line 54:
+In openwrt/package/network/services/hostapd/files/wps-hotplug.sh line 61:
 			ubus -S call $ubusobj wps_start '{ "multi_ap": true }' && wps_done=1
                                      ^------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -49,7 +44,7 @@ Did you mean:
 			ubus -S call "$ubusobj" wps_start '{ "multi_ap": true }' && wps_done=1
 
 
-In openwrt/package/network/services/hostapd/files/wps-hotplug.sh line 56:
+In openwrt/package/network/services/hostapd/files/wps-hotplug.sh line 63:
 			ubus -S call $ubusobj wps_start && wps_done=1
                                      ^------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -57,6 +52,5 @@ Did you mean:
 			ubus -S call "$ubusobj" wps_start && wps_done=1
 
 For more information:
-  https://www.shellcheck.net/wiki/SC2166 -- Prefer [ p ] && [ q ] as [ p -a q...
   https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...
   https://www.shellcheck.net/wiki/SC2162 -- read without -r will mangle backs...

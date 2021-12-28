@@ -161,7 +161,7 @@ Did you mean:
 
 
 In openwrt/package/base-files/files/lib/upgrade/common.sh line 248:
-				local num="$(( $end - $lba ))"
+				local num="$(( $end - $lba + 1 ))"
                                                ^--^ SC2004: $/${} is unnecessary on arithmetic variables.
                                                       ^--^ SC2004: $/${} is unnecessary on arithmetic variables.
 
