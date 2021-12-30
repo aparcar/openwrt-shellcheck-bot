@@ -1,5 +1,5 @@
 
-In openwrt/target/linux/kirkwood/base-files/lib/upgrade/platform.sh line 18:
+In openwrt/target/linux/kirkwood/base-files/lib/upgrade/platform.sh line 29:
 			CI_KERNPART="$(strings $part | grep bank)"
                                                ^---^ SC2086: Double quote to prevent globbing and word splitting.
 
