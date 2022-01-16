@@ -1,4 +1,12 @@
 
+In openwrt/target/linux/ipq40xx/base-files/lib/upgrade/platform.sh line 11:
+		local ubidev=$(nand_find_ubi $CI_UBIPART)
+                                             ^---------^ SC2086: Double quote to prevent globbing and word splitting.
+
+Did you mean: 
+		local ubidev=$(nand_find_ubi "$CI_UBIPART")
+
+
 In openwrt/target/linux/ipq40xx/base-files/lib/upgrade/platform.sh line 12:
 		local asus_root=$(nand_find_volume $ubidev jffs2)
                                                    ^-----^ SC2086: Double quote to prevent globbing and word splitting.

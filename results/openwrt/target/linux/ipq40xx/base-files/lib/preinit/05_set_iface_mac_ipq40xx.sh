@@ -9,22 +9,32 @@ In openwrt/target/linux/ipq40xx/base-files/lib/preinit/05_set_iface_mac_ipq40xx.
                                              ^--------------------------^ SC2046: Quote this to prevent word splitting.
 
 
+In openwrt/target/linux/ipq40xx/base-files/lib/preinit/05_set_iface_mac_ipq40xx.sh line 11:
+		ip link set dev eth0 address $(mtd_get_mac_binary_ubi Factory 0x1006)
+                                             ^-- SC2046: Quote this to prevent word splitting.
+
+
 In openwrt/target/linux/ipq40xx/base-files/lib/preinit/05_set_iface_mac_ipq40xx.sh line 12:
+		ip link set dev eth1 address $(mtd_get_mac_binary_ubi Factory 0x9006)
+                                             ^-- SC2046: Quote this to prevent word splitting.
+
+
+In openwrt/target/linux/ipq40xx/base-files/lib/preinit/05_set_iface_mac_ipq40xx.sh line 16:
 		ip link set dev eth1 address $(macaddr_add "$base_mac" 1)
                                              ^--------------------------^ SC2046: Quote this to prevent word splitting.
 
 
-In openwrt/target/linux/ipq40xx/base-files/lib/preinit/05_set_iface_mac_ipq40xx.sh line 18:
+In openwrt/target/linux/ipq40xx/base-files/lib/preinit/05_set_iface_mac_ipq40xx.sh line 22:
 		ip link set dev eth1 address $(macaddr_add "$base_mac" 1)
                                              ^--------------------------^ SC2046: Quote this to prevent word splitting.
 
 
-In openwrt/target/linux/ipq40xx/base-files/lib/preinit/05_set_iface_mac_ipq40xx.sh line 26:
+In openwrt/target/linux/ipq40xx/base-files/lib/preinit/05_set_iface_mac_ipq40xx.sh line 30:
 		ip link set dev eth0 address $(macaddr_add "$base_mac" 2)
                                              ^--------------------------^ SC2046: Quote this to prevent word splitting.
 
 
-In openwrt/target/linux/ipq40xx/base-files/lib/preinit/05_set_iface_mac_ipq40xx.sh line 27:
+In openwrt/target/linux/ipq40xx/base-files/lib/preinit/05_set_iface_mac_ipq40xx.sh line 31:
 		ip link set dev eth1 address $(macaddr_add "$base_mac" 3)
                                              ^--------------------------^ SC2046: Quote this to prevent word splitting.
 
