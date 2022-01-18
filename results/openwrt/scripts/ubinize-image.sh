@@ -43,11 +43,6 @@ if [ ! -r "$rootfs" -a ! -r "$kernel" -a ! "$outfile" ]; then
                                       ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
 
 
-In openwrt/scripts/ubinize-image.sh line 137:
-ubinize="$( which ubinize )"
-            ^---^ SC2230: which is non-standard. Use builtin 'command -v' instead.
-
-
 In openwrt/scripts/ubinize-image.sh line 152:
 ubinize $ubinize_seq -o "$outfile" $ubinize_param "$ubinizecfg"
         ^----------^ SC2086: Double quote to prevent globbing and word splitting.
