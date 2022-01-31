@@ -129,7 +129,7 @@ Did you mean:
 	_procd_add_array_data "run_script" /etc/init.d/"$name" "$action"
 
 
-In openwrt/package/system/procd/files/procd.sh line 367:
+In openwrt/package/system/procd/files/procd.sh line 371:
 	local name=$(basename ${script:-$initscript})
                               ^--------------------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -137,31 +137,15 @@ Did you mean:
 	local name=$(basename "${script:-$initscript}")
 
 
-In openwrt/package/system/procd/files/procd.sh line 373:
-	_procd_add_mount_trigger mount.add $action "$@"
+In openwrt/package/system/procd/files/procd.sh line 374:
+	_procd_add_mount_trigger mount.add $action "$mountpoints"
                                            ^-----^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-	_procd_add_mount_trigger mount.add "$action" "$@"
+	_procd_add_mount_trigger mount.add "$action" "$mountpoints"
 
 
-In openwrt/package/system/procd/files/procd.sh line 398:
-		_procd_add_action_mount_trigger restart $mountpoints
-                                                        ^----------^ SC2086: Double quote to prevent globbing and word splitting.
-
-Did you mean: 
-		_procd_add_action_mount_trigger restart "$mountpoints"
-
-
-In openwrt/package/system/procd/files/procd.sh line 404:
-		_procd_add_action_mount_trigger reload $mountpoints
-                                                       ^----------^ SC2086: Double quote to prevent globbing and word splitting.
-
-Did you mean: 
-		_procd_add_action_mount_trigger reload "$mountpoints"
-
-
-In openwrt/package/system/procd/files/procd.sh line 427:
+In openwrt/package/system/procd/files/procd.sh line 424:
 	local name=$(basename ${script:-$initscript})
                               ^--------------------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -169,7 +153,7 @@ Did you mean:
 	local name=$(basename "${script:-$initscript}")
 
 
-In openwrt/package/system/procd/files/procd.sh line 432:
+In openwrt/package/system/procd/files/procd.sh line 429:
 		_procd_add_config_trigger "config.change" "$file" /etc/init.d/$name reload
                                                                               ^---^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -177,17 +161,17 @@ Did you mean:
 		_procd_add_config_trigger "config.change" "$file" /etc/init.d/"$name" reload
 
 
-In openwrt/package/system/procd/files/procd.sh line 439:
+In openwrt/package/system/procd/files/procd.sh line 436:
 	$@
         ^-- SC2068: Double quote array expansions to avoid re-splitting elements.
 
 
-In openwrt/package/system/procd/files/procd.sh line 448:
+In openwrt/package/system/procd/files/procd.sh line 445:
 	[ $? = 0 ] || {
           ^-- SC2181: Check exit code directly with e.g. 'if mycmd;', not indirectly with $?.
 
 
-In openwrt/package/system/procd/files/procd.sh line 475:
+In openwrt/package/system/procd/files/procd.sh line 472:
 			_procd_add_array_data ${respawn_threshold:-3600} ${respawn_timeout:-5} ${respawn_retry:-5}
                                               ^------------------------^ SC2086: Double quote to prevent globbing and word splitting.
                                                                          ^-------------------^ SC2086: Double quote to prevent globbing and word splitting.
@@ -197,22 +181,22 @@ Did you mean:
 			_procd_add_array_data "${respawn_threshold:-3600}" "${respawn_timeout:-5}" "${respawn_retry:-5}"
 
 
-In openwrt/package/system/procd/files/procd.sh line 484:
+In openwrt/package/system/procd/files/procd.sh line 481:
 	_procd_open_instance
         ^------------------^ SC2119: Use _procd_open_instance "$@" if function's $1 should mean script's $1.
 
 
-In openwrt/package/system/procd/files/procd.sh line 522:
+In openwrt/package/system/procd/files/procd.sh line 519:
 	[ -n "$instance" -a "$instance" != "*" ] && json_add_string instance "$instance"
                          ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
 
 
-In openwrt/package/system/procd/files/procd.sh line 552:
+In openwrt/package/system/procd/files/procd.sh line 549:
 procd_open_data() {
 ^-- SC2120: procd_open_data references arguments, but none are ever passed.
 
 
-In openwrt/package/system/procd/files/procd.sh line 560:
+In openwrt/package/system/procd/files/procd.sh line 557:
 	json_set_namespace $__procd_old_cb
                            ^-------------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -220,12 +204,12 @@ Did you mean:
 	json_set_namespace "$__procd_old_cb"
 
 
-In openwrt/package/system/procd/files/procd.sh line 592:
+In openwrt/package/system/procd/files/procd.sh line 589:
 	procd_open_data
         ^-------------^ SC2119: Use procd_open_data "$@" if function's $1 should mean script's $1.
 
 
-In openwrt/package/system/procd/files/procd.sh line 610:
+In openwrt/package/system/procd/files/procd.sh line 607:
 	[ "$_error" = "0" ] || $(/sbin/validate_data "$_package" "$_type" "$_name" "$@" 1> /dev/null)
                                ^-- SC2091: Remove surrounding $() to avoid executing output.
 
