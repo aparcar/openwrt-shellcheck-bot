@@ -53,13 +53,12 @@ Did you mean:
 
 
 In openwrt/target/linux/bcm4908/base-files/lib/upgrade/platform.sh line 115:
-	$cmd < $1 | fdtget -p - /images/$image_name | egrep -q "^data$" && {
+	$cmd < $1 | fdtget -p - /images/$image_name | grep -Eq "^data$" && {
                ^-- SC2086: Double quote to prevent globbing and word splitting.
                                         ^---------^ SC2086: Double quote to prevent globbing and word splitting.
-                                                      ^---^ SC2196: egrep is non-standard and deprecated. Use grep -E instead.
 
 Did you mean: 
-	$cmd < "$1" | fdtget -p - /images/"$image_name" | egrep -q "^data$" && {
+	$cmd < "$1" | fdtget -p - /images/"$image_name" | grep -Eq "^data$" && {
 
 
 In openwrt/target/linux/bcm4908/base-files/lib/upgrade/platform.sh line 116:
@@ -72,13 +71,12 @@ Did you mean:
 
 
 In openwrt/target/linux/bcm4908/base-files/lib/upgrade/platform.sh line 120:
-	$cmd < $1 | fdtget -p - /images/$image_name | egrep -q "^data-position$" && {
+	$cmd < $1 | fdtget -p - /images/$image_name | grep -Eq "^data-position$" && {
                ^-- SC2086: Double quote to prevent globbing and word splitting.
                                         ^---------^ SC2086: Double quote to prevent globbing and word splitting.
-                                                      ^---^ SC2196: egrep is non-standard and deprecated. Use grep -E instead.
 
 Did you mean: 
-	$cmd < "$1" | fdtget -p - /images/"$image_name" | egrep -q "^data-position$" && {
+	$cmd < "$1" | fdtget -p - /images/"$image_name" | grep -Eq "^data-position$" && {
 
 
 In openwrt/target/linux/bcm4908/base-files/lib/upgrade/platform.sh line 121:
@@ -110,13 +108,12 @@ Did you mean:
 
 
 In openwrt/target/linux/bcm4908/base-files/lib/upgrade/platform.sh line 127:
-	$cmd < $1 | fdtget -p - /images/$image_name | egrep -q "^data-offset" && {
+	$cmd < $1 | fdtget -p - /images/$image_name | grep -Eq "^data-offset" && {
                ^-- SC2086: Double quote to prevent globbing and word splitting.
                                         ^---------^ SC2086: Double quote to prevent globbing and word splitting.
-                                                      ^---^ SC2196: egrep is non-standard and deprecated. Use grep -E instead.
 
 Did you mean: 
-	$cmd < "$1" | fdtget -p - /images/"$image_name" | egrep -q "^data-offset" && {
+	$cmd < "$1" | fdtget -p - /images/"$image_name" | grep -Eq "^data-offset" && {
 
 
 In openwrt/target/linux/bcm4908/base-files/lib/upgrade/platform.sh line 128:
