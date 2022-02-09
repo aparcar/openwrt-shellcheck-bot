@@ -7,7 +7,7 @@ Did you mean:
 	if [ "${route_allowed_ips}" -ne 0 ]; then
 
 
-In openwrt/package/network/utils/wireguard-tools/files/wireguard.sh line 146:
+In openwrt/package/network/utils/wireguard-tools/files/wireguard.sh line 165:
 	${WG} setconf ${config} "${wg_cfg}"
                       ^-------^ SC2086: Double quote to prevent globbing and word splitting.
 
