@@ -251,23 +251,7 @@ Did you mean:
 		if ! ubimkvol /dev/"$ubidev" -N "$CI_ROOTPART" "$rootfs_size_param"; then
 
 
-In openwrt/package/base-files/files/lib/upgrade/nand.sh line 196:
-		local availeb=$(cat /sys/devices/virtual/ubi/$ubidev/avail_eraseblocks)
-                                                             ^-----^ SC2086: Double quote to prevent globbing and word splitting.
-
-Did you mean: 
-		local availeb=$(cat /sys/devices/virtual/ubi/"$ubidev"/avail_eraseblocks)
-
-
-In openwrt/package/base-files/files/lib/upgrade/nand.sh line 197:
-		local ebsize=$(cat /sys/devices/virtual/ubi/$ubidev/eraseblock_size)
-                                                            ^-----^ SC2086: Double quote to prevent globbing and word splitting.
-
-Did you mean: 
-		local ebsize=$(cat /sys/devices/virtual/ubi/"$ubidev"/eraseblock_size)
-
-
-In openwrt/package/base-files/files/lib/upgrade/nand.sh line 205:
+In openwrt/package/base-files/files/lib/upgrade/nand.sh line 200:
 		if ! ubimkvol /dev/$ubidev -N rootfs_data $rootfs_data_size_param; then
                                    ^-----^ SC2086: Double quote to prevent globbing and word splitting.
                                                           ^---------------------^ SC2086: Double quote to prevent globbing and word splitting.
@@ -276,7 +260,15 @@ Did you mean:
 		if ! ubimkvol /dev/"$ubidev" -N rootfs_data "$rootfs_data_size_param"; then
 
 
-In openwrt/package/base-files/files/lib/upgrade/nand.sh line 250:
+In openwrt/package/base-files/files/lib/upgrade/nand.sh line 201:
+			if ! ubimkvol /dev/$ubidev -N rootfs_data -m; then
+                                           ^-----^ SC2086: Double quote to prevent globbing and word splitting.
+
+Did you mean: 
+			if ! ubimkvol /dev/"$ubidev" -N rootfs_data -m; then
+
+
+In openwrt/package/base-files/files/lib/upgrade/nand.sh line 247:
 	local rootfs_length=$( (cat $1 | wc -c) 2> /dev/null)
                                     ^-- SC2086: Double quote to prevent globbing and word splitting.
                                     ^-- SC2002: Useless cat. Consider 'cmd < file | ..' or 'cmd file | ..' instead.
@@ -285,7 +277,7 @@ Did you mean:
 	local rootfs_length=$( (cat "$1" | wc -c) 2> /dev/null)
 
 
-In openwrt/package/base-files/files/lib/upgrade/nand.sh line 255:
+In openwrt/package/base-files/files/lib/upgrade/nand.sh line 252:
 	local root_ubivol="$(nand_find_volume $ubidev $CI_ROOTPART)"
                                               ^-----^ SC2086: Double quote to prevent globbing and word splitting.
                                                       ^----------^ SC2086: Double quote to prevent globbing and word splitting.
@@ -294,7 +286,7 @@ Did you mean:
 	local root_ubivol="$(nand_find_volume "$ubidev" "$CI_ROOTPART")"
 
 
-In openwrt/package/base-files/files/lib/upgrade/nand.sh line 256:
+In openwrt/package/base-files/files/lib/upgrade/nand.sh line 253:
 	ubiupdatevol /dev/$root_ubivol -s $rootfs_length $1
                           ^----------^ SC2086: Double quote to prevent globbing and word splitting.
                                           ^------------^ SC2086: Double quote to prevent globbing and word splitting.
@@ -304,7 +296,7 @@ Did you mean:
 	ubiupdatevol /dev/"$root_ubivol" -s "$rootfs_length" "$1"
 
 
-In openwrt/package/base-files/files/lib/upgrade/nand.sh line 268:
+In openwrt/package/base-files/files/lib/upgrade/nand.sh line 265:
 	local fit_ubivol="$(nand_find_volume $fit_ubidev "$CI_KERNPART")"
                                              ^---------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -312,7 +304,7 @@ Did you mean:
 	local fit_ubivol="$(nand_find_volume "$fit_ubidev" "$CI_KERNPART")"
 
 
-In openwrt/package/base-files/files/lib/upgrade/nand.sh line 269:
+In openwrt/package/base-files/files/lib/upgrade/nand.sh line 266:
 	ubiupdatevol /dev/$fit_ubivol -s $fit_length $fit_file
                           ^---------^ SC2086: Double quote to prevent globbing and word splitting.
                                          ^---------^ SC2086: Double quote to prevent globbing and word splitting.
@@ -322,7 +314,7 @@ Did you mean:
 	ubiupdatevol /dev/"$fit_ubivol" -s "$fit_length" "$fit_file"
 
 
-In openwrt/package/base-files/files/lib/upgrade/nand.sh line 276:
+In openwrt/package/base-files/files/lib/upgrade/nand.sh line 273:
 	local kernel_mtd="$(find_mtd_index $CI_KERNPART)"
                                            ^----------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -330,7 +322,7 @@ Did you mean:
 	local kernel_mtd="$(find_mtd_index "$CI_KERNPART")"
 
 
-In openwrt/package/base-files/files/lib/upgrade/nand.sh line 281:
+In openwrt/package/base-files/files/lib/upgrade/nand.sh line 278:
 	kernel_length=$( (tar xf "$tar_file" ${board_dir}/kernel -O | wc -c) 2> /dev/null)
                                              ^----------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -338,7 +330,7 @@ Did you mean:
 	kernel_length=$( (tar xf "$tar_file" "${board_dir}"/kernel -O | wc -c) 2> /dev/null)
 
 
-In openwrt/package/base-files/files/lib/upgrade/nand.sh line 286:
+In openwrt/package/base-files/files/lib/upgrade/nand.sh line 283:
 	tar tf "$tar_file" ${board_dir}/root 1>/dev/null 2>/dev/null && has_rootfs=1
                            ^----------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -346,7 +338,7 @@ Did you mean:
 	tar tf "$tar_file" "${board_dir}"/root 1>/dev/null 2>/dev/null && has_rootfs=1
 
 
-In openwrt/package/base-files/files/lib/upgrade/nand.sh line 288:
+In openwrt/package/base-files/files/lib/upgrade/nand.sh line 285:
 		rootfs_length=$( (tar xf "$tar_file" ${board_dir}/root -O | wc -c) 2> /dev/null)
                                                      ^----------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -354,7 +346,7 @@ Did you mean:
 		rootfs_length=$( (tar xf "$tar_file" "${board_dir}"/root -O | wc -c) 2> /dev/null)
 
 
-In openwrt/package/base-files/files/lib/upgrade/nand.sh line 289:
+In openwrt/package/base-files/files/lib/upgrade/nand.sh line 286:
 		rootfs_type="$(identify_tar "$tar_file" ${board_dir}/root)"
                                                         ^----------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -362,12 +354,12 @@ Did you mean:
 		rootfs_type="$(identify_tar "$tar_file" "${board_dir}"/root)"
 
 
-In openwrt/package/base-files/files/lib/upgrade/nand.sh line 295:
+In openwrt/package/base-files/files/lib/upgrade/nand.sh line 292:
 	[ "$kernel_length" != 0 -a -n "$kernel_mtd" ] && {
                                 ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
 
 
-In openwrt/package/base-files/files/lib/upgrade/nand.sh line 296:
+In openwrt/package/base-files/files/lib/upgrade/nand.sh line 293:
 		tar xf "$tar_file" ${board_dir}/kernel -O | mtd write - $CI_KERNPART
                                    ^----------^ SC2086: Double quote to prevent globbing and word splitting.
                                                                         ^----------^ SC2086: Double quote to prevent globbing and word splitting.
@@ -376,13 +368,13 @@ Did you mean:
 		tar xf "$tar_file" "${board_dir}"/kernel -O | mtd write - "$CI_KERNPART"
 
 
-In openwrt/package/base-files/files/lib/upgrade/nand.sh line 298:
+In openwrt/package/base-files/files/lib/upgrade/nand.sh line 295:
 	[ "$kernel_length" = 0 -o ! -z "$kernel_mtd" ] && has_kernel=
                                ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
                                   ^-- SC2236: Use -n instead of ! -z.
 
 
-In openwrt/package/base-files/files/lib/upgrade/nand.sh line 305:
+In openwrt/package/base-files/files/lib/upgrade/nand.sh line 302:
 		local kern_ubivol="$( nand_find_volume $ubidev $CI_KERNPART )"
                                                        ^-----^ SC2086: Double quote to prevent globbing and word splitting.
                                                                ^----------^ SC2086: Double quote to prevent globbing and word splitting.
@@ -391,7 +383,7 @@ Did you mean:
 		local kern_ubivol="$( nand_find_volume "$ubidev" "$CI_KERNPART" )"
 
 
-In openwrt/package/base-files/files/lib/upgrade/nand.sh line 306:
+In openwrt/package/base-files/files/lib/upgrade/nand.sh line 303:
 		tar xf "$tar_file" ${board_dir}/kernel -O | \
                                    ^----------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -399,7 +391,7 @@ Did you mean:
 		tar xf "$tar_file" "${board_dir}"/kernel -O | \
 
 
-In openwrt/package/base-files/files/lib/upgrade/nand.sh line 307:
+In openwrt/package/base-files/files/lib/upgrade/nand.sh line 304:
 			ubiupdatevol /dev/$kern_ubivol -s $kernel_length -
                                           ^----------^ SC2086: Double quote to prevent globbing and word splitting.
                                                           ^------------^ SC2086: Double quote to prevent globbing and word splitting.
@@ -408,7 +400,7 @@ Did you mean:
 			ubiupdatevol /dev/"$kern_ubivol" -s "$kernel_length" -
 
 
-In openwrt/package/base-files/files/lib/upgrade/nand.sh line 311:
+In openwrt/package/base-files/files/lib/upgrade/nand.sh line 308:
 		local root_ubivol="$( nand_find_volume $ubidev $CI_ROOTPART )"
                                                        ^-----^ SC2086: Double quote to prevent globbing and word splitting.
                                                                ^----------^ SC2086: Double quote to prevent globbing and word splitting.
@@ -417,7 +409,7 @@ Did you mean:
 		local root_ubivol="$( nand_find_volume "$ubidev" "$CI_ROOTPART" )"
 
 
-In openwrt/package/base-files/files/lib/upgrade/nand.sh line 312:
+In openwrt/package/base-files/files/lib/upgrade/nand.sh line 309:
 		tar xf "$tar_file" ${board_dir}/root -O | \
                                    ^----------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -425,7 +417,7 @@ Did you mean:
 		tar xf "$tar_file" "${board_dir}"/root -O | \
 
 
-In openwrt/package/base-files/files/lib/upgrade/nand.sh line 313:
+In openwrt/package/base-files/files/lib/upgrade/nand.sh line 310:
 			ubiupdatevol /dev/$root_ubivol -s $rootfs_length -
                                           ^----------^ SC2086: Double quote to prevent globbing and word splitting.
                                                           ^------------^ SC2086: Double quote to prevent globbing and word splitting.
@@ -434,7 +426,7 @@ Did you mean:
 			ubiupdatevol /dev/"$root_ubivol" -s "$rootfs_length" -
 
 
-In openwrt/package/base-files/files/lib/upgrade/nand.sh line 320:
+In openwrt/package/base-files/files/lib/upgrade/nand.sh line 317:
 	local file_type=$(identify $1)
                                    ^-- SC2086: Double quote to prevent globbing and word splitting.
 
@@ -442,7 +434,7 @@ Did you mean:
 	local file_type=$(identify "$1")
 
 
-In openwrt/package/base-files/files/lib/upgrade/nand.sh line 325:
+In openwrt/package/base-files/files/lib/upgrade/nand.sh line 322:
 		"fit")		nand_upgrade_fit $1;;
                                                  ^-- SC2086: Double quote to prevent globbing and word splitting.
 
@@ -450,7 +442,7 @@ Did you mean:
 		"fit")		nand_upgrade_fit "$1";;
 
 
-In openwrt/package/base-files/files/lib/upgrade/nand.sh line 326:
+In openwrt/package/base-files/files/lib/upgrade/nand.sh line 323:
 		"ubi")		nand_upgrade_ubinized $1;;
                                                       ^-- SC2086: Double quote to prevent globbing and word splitting.
 
@@ -458,7 +450,7 @@ Did you mean:
 		"ubi")		nand_upgrade_ubinized "$1";;
 
 
-In openwrt/package/base-files/files/lib/upgrade/nand.sh line 327:
+In openwrt/package/base-files/files/lib/upgrade/nand.sh line 324:
 		"ubifs")	nand_upgrade_ubifs $1;;
                                                    ^-- SC2086: Double quote to prevent globbing and word splitting.
 
@@ -466,7 +458,7 @@ Did you mean:
 		"ubifs")	nand_upgrade_ubifs "$1";;
 
 
-In openwrt/package/base-files/files/lib/upgrade/nand.sh line 328:
+In openwrt/package/base-files/files/lib/upgrade/nand.sh line 325:
 		*)		nand_upgrade_tar $1;;
                                                  ^-- SC2086: Double quote to prevent globbing and word splitting.
 
@@ -474,7 +466,7 @@ Did you mean:
 		*)		nand_upgrade_tar "$1";;
 
 
-In openwrt/package/base-files/files/lib/upgrade/nand.sh line 348:
+In openwrt/package/base-files/files/lib/upgrade/nand.sh line 345:
 	local control_length=$( (tar xf $tar_file sysupgrade-$board_name/CONTROL -O | wc -c) 2> /dev/null)
                                         ^-------^ SC2086: Double quote to prevent globbing and word splitting.
                                                              ^---------^ SC2086: Double quote to prevent globbing and word splitting.
@@ -483,7 +475,7 @@ Did you mean:
 	local control_length=$( (tar xf "$tar_file" sysupgrade-"$board_name"/CONTROL -O | wc -c) 2> /dev/null)
 
 
-In openwrt/package/base-files/files/lib/upgrade/nand.sh line 349:
+In openwrt/package/base-files/files/lib/upgrade/nand.sh line 346:
 	local file_type="$(identify $2)"
                                     ^-- SC2086: Double quote to prevent globbing and word splitting.
 
@@ -491,7 +483,7 @@ Did you mean:
 	local file_type="$(identify "$2")"
 
 
-In openwrt/package/base-files/files/lib/upgrade/nand.sh line 351:
+In openwrt/package/base-files/files/lib/upgrade/nand.sh line 348:
 	[ "$control_length" = 0 -a "$file_type" != "ubi" -a "$file_type" != "ubifs" -a "$file_type" != "fit" ] && {
                                 ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
                                                          ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
