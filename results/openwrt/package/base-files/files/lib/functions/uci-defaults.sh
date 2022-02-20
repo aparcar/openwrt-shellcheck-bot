@@ -55,7 +55,7 @@ Did you mean:
 		if [ -n "$num" ] && [ "$num" -eq "$port" ]; then
 
 
-In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 455:
+In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 464:
 	_ucidef_set_led_timer $1 $2 $3 "oneshot" $4 $5
                               ^-- SC2086: Double quote to prevent globbing and word splitting.
                                  ^-- SC2086: Double quote to prevent globbing and word splitting.
@@ -67,7 +67,7 @@ Did you mean:
 	_ucidef_set_led_timer "$1" "$2" "$3" "oneshot" "$4" "$5"
 
 
-In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 527:
+In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 536:
 	_ucidef_set_led_timer $1 $2 $3 "timer" $4 $5
                               ^-- SC2086: Double quote to prevent globbing and word splitting.
                                  ^-- SC2086: Double quote to prevent globbing and word splitting.
@@ -79,7 +79,7 @@ Did you mean:
 	_ucidef_set_led_timer "$1" "$2" "$3" "timer" "$4" "$5"
 
 
-In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 634:
+In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 643:
 	[ -f ${CFG} ] && json_load "$(cat ${CFG})"
              ^----^ SC2086: Double quote to prevent globbing and word splitting.
                                           ^----^ SC2086: Double quote to prevent globbing and word splitting.
@@ -88,7 +88,7 @@ Did you mean:
 	[ -f "${CFG}" ] && json_load "$(cat "${CFG}")"
 
 
-In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 648:
+In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 657:
 	json_dump -i -o ${CFG}
                         ^----^ SC2086: Double quote to prevent globbing and word splitting.
 

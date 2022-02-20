@@ -168,11 +168,11 @@ In openwrt/package/network/services/hostapd/files/hostapd.sh line 878:
 
 
 In openwrt/package/network/services/hostapd/files/hostapd.sh line 879:
-					key=`echo -n "$mobility_domain/$auth_secret" | md5sum | awk '{print $1}'`
-                                            ^-- SC2006: Use $(...) notation instead of legacy backticked `...`.
+					ft_key=`echo -n "$mobility_domain/${auth_secret:-${key}}" | md5sum | awk '{print $1}'`
+                                               ^-- SC2006: Use $(...) notation instead of legacy backticked `...`.
 
 Did you mean: 
-					key=$(echo -n "$mobility_domain/$auth_secret" | md5sum | awk '{print $1}')
+					ft_key=$(echo -n "$mobility_domain/${auth_secret:-${key}}" | md5sum | awk '{print $1}')
 
 
 In openwrt/package/network/services/hostapd/files/hostapd.sh line 909:
