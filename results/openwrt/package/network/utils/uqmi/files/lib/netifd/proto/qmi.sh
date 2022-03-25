@@ -50,17 +50,17 @@ In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 87:
                         ^-------------------------^ SC2219: Instead of 'let expr', prefer (( expr )) .
 
 
-In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 171:
+In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 174:
 		elif [ "$mcc" -ne "${plmn:0:3}" -o "$mnc" -ne "${plmn:3}" ]; then
                                                 ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
 
 
-In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 181:
+In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 184:
 	if [ -n "$mcc" -a -n "$mnc" ]; then
                        ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
 
 
-In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 203:
+In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 206:
 		[ -f /sys/class/net/$ifname/qmi/raw_ip ] || {
                                     ^-----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -68,7 +68,7 @@ Did you mean:
 		[ -f /sys/class/net/"$ifname"/qmi/raw_ip ] || {
 
 
-In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 209:
+In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 212:
 		echo "Y" > /sys/class/net/$ifname/qmi/raw_ip
                                           ^-----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -76,33 +76,33 @@ Did you mean:
 		echo "Y" > /sys/class/net/"$ifname"/qmi/raw_ip
 
 
-In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 231:
+In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 234:
 				let registration_timeout++
                                 ^------------------------^ SC2219: Instead of 'let expr', prefer (( expr )) .
 
 
-In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 251:
+In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 255:
 	[ "$pdptype" = "ip" -o "$pdptype" = "ipv6" -o "$pdptype" = "ipv4v6" ] || pdptype="ip"
                             ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
                                                    ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
 
 
-In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 260:
+In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 264:
 	[ "$pdptype" = "ip" -o "$pdptype" = "ipv4v6" ] && {
                             ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
 
 
-In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 297:
+In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 301:
 	[ "$pdptype" = "ipv6" -o "$pdptype" = "ipv4v6" ] && {
                               ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
 
 
-In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 352:
+In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 356:
 		if [ -z "$dhcpv6" -o "$dhcpv6" = 0 ]; then
                                   ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
 
 
-In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 353:
+In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 357:
 			json_load "$(uqmi -s -d $device --set-client-id wds,$cid_6 --get-current-settings)"
                                                 ^-----^ SC2086: Double quote to prevent globbing and word splitting.
                                                                             ^----^ SC2086: Double quote to prevent globbing and word splitting.
@@ -111,7 +111,7 @@ Did you mean:
 			json_load "$(uqmi -s -d "$device" --set-client-id wds,"$cid_6" --get-current-settings)"
 
 
-In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 394:
+In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 398:
 			json_load "$(uqmi -s -d $device --set-client-id wds,$cid_4 --get-current-settings)"
                                                 ^-----^ SC2086: Double quote to prevent globbing and word splitting.
                                                                             ^----^ SC2086: Double quote to prevent globbing and word splitting.
@@ -120,7 +120,7 @@ Did you mean:
 			json_load "$(uqmi -s -d "$device" --set-client-id wds,"$cid_4" --get-current-settings)"
 
 
-In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 460:
+In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 464:
 	json_load "$(ubus call network.interface.$interface status)"
                                                  ^--------^ SC2086: Double quote to prevent globbing and word splitting.
 
