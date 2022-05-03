@@ -227,7 +227,7 @@ Did you mean:
 	sed -i "s/$grp/$grp$delim$2/g" "${IPKG_INSTROOT}"/etc/group
 
 
-In openwrt/package/base-files/files/lib/functions.sh line 401:
+In openwrt/package/base-files/files/lib/functions.sh line 404:
 		uids=$(cut -d: -f3 ${IPKG_INSTROOT}/etc/passwd)
                                    ^--------------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -235,7 +235,7 @@ Did you mean:
 		uids=$(cut -d: -f3 "${IPKG_INSTROOT}"/etc/passwd)
 
 
-In openwrt/package/base-files/files/lib/functions.sh line 410:
+In openwrt/package/base-files/files/lib/functions.sh line 413:
 	echo "${name}:x:${uid}:${gid}:${desc}:${home}:${shell}" >> ${IPKG_INSTROOT}/etc/passwd
                                                                    ^--------------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -243,7 +243,7 @@ Did you mean:
 	echo "${name}:x:${uid}:${gid}:${desc}:${home}:${shell}" >> "${IPKG_INSTROOT}"/etc/passwd
 
 
-In openwrt/package/base-files/files/lib/functions.sh line 411:
+In openwrt/package/base-files/files/lib/functions.sh line 414:
 	echo "${name}:x:0:0:99999:7:::" >> ${IPKG_INSTROOT}/etc/shadow
                                            ^--------------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -251,7 +251,7 @@ Did you mean:
 	echo "${name}:x:0:0:99999:7:::" >> "${IPKG_INSTROOT}"/etc/shadow
 
 
-In openwrt/package/base-files/files/lib/functions.sh line 416:
+In openwrt/package/base-files/files/lib/functions.sh line 419:
 	grep -qs "^${1}:" ${IPKG_INSTROOT}/etc/passwd
                           ^--------------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -259,12 +259,12 @@ Did you mean:
 	grep -qs "^${1}:" "${IPKG_INSTROOT}"/etc/passwd
 
 
-In openwrt/package/base-files/files/lib/functions.sh line 427:
+In openwrt/package/base-files/files/lib/functions.sh line 430:
 	for cmdlinevar in $(cat /proc/cmdline); do
                           ^------------------^ SC2013: To read lines rather than words, pipe/redirect to a 'while read' loop.
 
 
-In openwrt/package/base-files/files/lib/functions.sh line 429:
+In openwrt/package/base-files/files/lib/functions.sh line 432:
 		[ "=" = "${tmp:0:1}" ] && echo ${tmp:1}
                                                ^------^ SC2086: Double quote to prevent globbing and word splitting.
 
