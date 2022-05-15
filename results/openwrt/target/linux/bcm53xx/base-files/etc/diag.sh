@@ -15,7 +15,7 @@ Did you mean:
 		status_led=$(basename "$status_led_file")
 
 
-In openwrt/target/linux/bcm53xx/base-files/etc/diag.sh line 41:
+In openwrt/target/linux/bcm53xx/base-files/etc/diag.sh line 38:
 	done)
         ^-- SC1010: Use semicolon or linefeed before 'done' (or quote to make it literal).
 
