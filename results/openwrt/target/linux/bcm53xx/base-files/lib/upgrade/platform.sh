@@ -39,12 +39,12 @@ Did you mean:
 					   ! $BCM53XX_FW_INT_IMG_EXTRACT_CMD < "$1" | otrx check -; then
 
 
-In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 228:
+In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 232:
 	[ $? -ne 0 ] && {
           ^-- SC2181: Check exit code directly with e.g. 'if mycmd;', not indirectly with $?.
 
 
-In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 248:
+In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 252:
 	[ $kernel_length -gt $linux_length ] && {
           ^------------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -52,37 +52,37 @@ Did you mean:
 	[ "$kernel_length" -gt $linux_length ] && {
 
 
-In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 256:
+In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 260:
 		-f $dir/kernel -b $(($linux_length + 28)) \
                                      ^-----------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 258:
+In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 262:
 	[ $? -ne 0 ] && {
           ^-- SC2181: Check exit code directly with e.g. 'if mycmd;', not indirectly with $?.
 
 
-In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 266:
+In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 270:
 		ubi_length=$(($ubi_length + 131072))
                               ^---------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 269:
+In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 273:
 	[ $? -ne 0 ] && {
           ^-- SC2181: Check exit code directly with e.g. 'if mycmd;', not indirectly with $?.
 
 
-In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 290:
+In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 294:
 	[ $? -ne 0 ] && {
           ^-- SC2181: Check exit code directly with e.g. 'if mycmd;', not indirectly with $?.
 
 
-In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 298:
+In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 302:
 	while [ 1 ]; do
                 ^-- SC2161: Instead of '[ 1 ]', use 'true'.
 
 
-In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 299:
+In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 303:
 		[ $tmp -ge $entity_size ] && break
                            ^----------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -90,28 +90,28 @@ Did you mean:
 		[ $tmp -ge "$entity_size" ] && break
 
 
-In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 304:
+In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 308:
 		tmp=$(($tmp + 131072))
                        ^--^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 312:
+In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 316:
 	while [ "$(dd if=$dir/seama.entity skip=$(($ubi_offset + $ubi_length)) bs=1 count=4 2>/dev/null)" = "UBI#" ]; do
                                                    ^---------^ SC2004: $/${} is unnecessary on arithmetic variables.
                                                                  ^---------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 313:
+In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 317:
 		ubi_length=$(($ubi_length + 131072))
                               ^---------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 316:
+In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 320:
 	dd if=$dir/seama.entity of=$dir/kernel.seama bs=131072 count=$(($ubi_offset / 131072)) 2>/dev/null
                                                                         ^---------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 317:
+In openwrt/target/linux/bcm53xx/base-files/lib/upgrade/platform.sh line 321:
 	dd if=$dir/seama.entity of=$dir/root.ubi bs=131072 skip=$(($ubi_offset / 131072)) count=$(($ubi_length / 131072)) 2>/dev/null
                                                                    ^---------^ SC2004: $/${} is unnecessary on arithmetic variables.
                                                                                                    ^---------^ SC2004: $/${} is unnecessary on arithmetic variables.
