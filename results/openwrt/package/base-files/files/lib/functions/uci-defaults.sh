@@ -20,7 +20,7 @@ In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 42:
                                                                 ^-- SC2015: Note that A && B || C is not if-then-else. C may run when A is true.
 
 
-In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 184:
+In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 192:
 				if [ ${need_tag:-0} -eq 1 -o ${want_untag:-0} -ne 1 ]; then
                                      ^------------^ SC2086: Double quote to prevent globbing and word splitting.
                                                           ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
@@ -30,7 +30,7 @@ Did you mean:
 				if [ "${need_tag:-0}" -eq 1 -o "${want_untag:-0}" -ne 1 ]; then
 
 
-In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 222:
+In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 230:
 			json_add_int ar8xxx_mib_type $type
                                                      ^---^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -38,7 +38,7 @@ Did you mean:
 			json_add_int ar8xxx_mib_type "$type"
 
 
-In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 223:
+In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 231:
 			json_add_int ar8xxx_mib_poll_interval $interval
                                                               ^-------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -46,7 +46,7 @@ Did you mean:
 			json_add_int ar8xxx_mib_poll_interval "$interval"
 
 
-In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 313:
+In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 321:
 		if [ -n "$num" ] && [ $num -eq $port ]; then
                                       ^--^ SC2086: Double quote to prevent globbing and word splitting.
                                                ^---^ SC2086: Double quote to prevent globbing and word splitting.
@@ -55,7 +55,7 @@ Did you mean:
 		if [ -n "$num" ] && [ "$num" -eq "$port" ]; then
 
 
-In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 464:
+In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 472:
 	_ucidef_set_led_timer $1 $2 $3 "oneshot" $4 $5
                               ^-- SC2086: Double quote to prevent globbing and word splitting.
                                  ^-- SC2086: Double quote to prevent globbing and word splitting.
@@ -67,7 +67,7 @@ Did you mean:
 	_ucidef_set_led_timer "$1" "$2" "$3" "oneshot" "$4" "$5"
 
 
-In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 536:
+In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 544:
 	_ucidef_set_led_timer $1 $2 $3 "timer" $4 $5
                               ^-- SC2086: Double quote to prevent globbing and word splitting.
                                  ^-- SC2086: Double quote to prevent globbing and word splitting.
@@ -79,7 +79,7 @@ Did you mean:
 	_ucidef_set_led_timer "$1" "$2" "$3" "timer" "$4" "$5"
 
 
-In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 643:
+In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 651:
 	[ -f ${CFG} ] && json_load "$(cat ${CFG})"
              ^----^ SC2086: Double quote to prevent globbing and word splitting.
                                           ^----^ SC2086: Double quote to prevent globbing and word splitting.
@@ -88,7 +88,7 @@ Did you mean:
 	[ -f "${CFG}" ] && json_load "$(cat "${CFG}")"
 
 
-In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 657:
+In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 665:
 	json_dump -i -o ${CFG}
                         ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
