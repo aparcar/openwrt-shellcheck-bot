@@ -30,7 +30,7 @@ Did you mean:
 	local errorstring=$(ppp_exitcode_tostring "$ERROR")
 
 
-In openwrt/package/network/services/ppp/files/ppp.sh line 278:
+In openwrt/package/network/services/ppp/files/ppp.sh line 274:
 		${atmdev:+$atmdev.}${vpi:-8}.${vci:-35} \
                                    ^-------^ SC2086: Double quote to prevent globbing and word splitting.
                                              ^--------^ SC2086: Double quote to prevent globbing and word splitting.
@@ -39,7 +39,7 @@ Did you mean:
 		${atmdev:+$atmdev.}"${vpi:-8}"."${vci:-35}" \
 
 
-In openwrt/package/network/services/ppp/files/ppp.sh line 303:
+In openwrt/package/network/services/ppp/files/ppp.sh line 299:
 			( proto_add_host_dependency "$config" "$ip" $interface )
                                                                     ^--------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -47,7 +47,7 @@ Did you mean:
 			( proto_add_host_dependency "$config" "$ip" "$interface" )
 
 
-In openwrt/package/network/services/ppp/files/ppp.sh line 324:
+In openwrt/package/network/services/ppp/files/ppp.sh line 315:
 		pptp_server $server \
                             ^-----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -55,17 +55,17 @@ Did you mean:
 		pptp_server "$server" \
 
 
-In openwrt/package/network/services/ppp/files/ppp.sh line 334:
+In openwrt/package/network/services/ppp/files/ppp.sh line 325:
 	[ -f /usr/lib/pppd/*/pppoe.so ] && add_protocol pppoe
              ^----------------------^ SC2144: -f doesn't work with globs. Use a for loop.
 
 
-In openwrt/package/network/services/ppp/files/ppp.sh line 335:
+In openwrt/package/network/services/ppp/files/ppp.sh line 326:
 	[ -f /usr/lib/pppd/*/pppoatm.so ] && add_protocol pppoa
              ^------------------------^ SC2144: -f doesn't work with globs. Use a for loop.
 
 
-In openwrt/package/network/services/ppp/files/ppp.sh line 336:
+In openwrt/package/network/services/ppp/files/ppp.sh line 327:
 	[ -f /usr/lib/pppd/*/pptp.so ] && add_protocol pptp
              ^---------------------^ SC2144: -f doesn't work with globs. Use a for loop.
 
