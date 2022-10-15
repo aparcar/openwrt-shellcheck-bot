@@ -603,21 +603,46 @@ In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 58
                             ^-^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 585:
-	[ -n "$phy" -a -d /sys/class/ieee80211/$phy ] && return 0
-                    ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
-                                               ^--^ SC2086: Double quote to prevent globbing and word splitting.
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 590:
+		local key="$2"
+                      ^-^ SC2030: Modification of key is local (to subshell caused by (..) group).
+
+
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 613:
+	[ -z "$new_phy" -o "$new_phy" = "$phy" ] && return
+                        ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
+
+
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 619:
+	local phy="$1"
+              ^-^ SC2030: Modification of phy is local (to subshell caused by (..) group).
+
+
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 637:
+	[ -n "$phy" ] && {
+              ^--^ SC2031: phy was modified in a subshell. That change might be lost.
+
+
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 638:
+		rename_board_phy_by_name "$phy"
+                                          ^--^ SC2031: phy was modified in a subshell. That change might be lost.
+
+
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 639:
+		[ -d /sys/class/ieee80211/$phy ] && return 0
+                                          ^--^ SC2031: phy was modified in a subshell. That change might be lost.
+                                          ^--^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-	[ -n "$phy" -a -d /sys/class/ieee80211/"$phy" ] && return 0
+		[ -d /sys/class/ieee80211/"$phy" ] && return 0
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 591:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 649:
 		for phy in $(ls /sys/class/ieee80211 2>/dev/null); do
                            ^-- SC2045: Iterating over ls output is fragile. Use globs.
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 610:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 672:
 	iw phy "$phy" interface add "$ifname" type "$type" $wdsflag >/dev/null 2>&1
                                                            ^------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -625,7 +650,7 @@ Did you mean:
 	iw phy "$phy" interface add "$ifname" type "$type" "$wdsflag" >/dev/null 2>&1
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 617:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 679:
 		iw phy "$phy" interface add "$ifname" type "$type" $wdsflag >/dev/null 2>&1
                                                                    ^------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -633,7 +658,7 @@ Did you mean:
 		iw phy "$phy" interface add "$ifname" type "$type" "$wdsflag" >/dev/null 2>&1
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 624:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 686:
 		case "$(iw dev $ifname info | grep "^\ttype" | cut -d' ' -f2- 2>/dev/null)" in
                                ^-----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -641,12 +666,12 @@ Did you mean:
 		case "$(iw dev "$ifname" info | grep "^\ttype" | cut -d' ' -f2- 2>/dev/null)" in
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 645:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 707:
 		[ "$?" = 0 ] && {
                   ^--^ SC2181: Check exit code directly with e.g. 'if mycmd;', not indirectly with $?.
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 648:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 710:
 			iw phy "$phy" interface add "$ifname" type "$type" $wdsflag >/dev/null 2>&1
                                                                            ^------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -654,7 +679,7 @@ Did you mean:
 			iw phy "$phy" interface add "$ifname" type "$type" "$wdsflag" >/dev/null 2>&1
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 684:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 761:
 		macaddr="$(mac80211_generate_mac $phy)"
                                                  ^--^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -662,17 +687,17 @@ Did you mean:
 		macaddr="$(mac80211_generate_mac "$phy")"
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 685:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 762:
 		macidx="$(($macidx + 1))"
                            ^-----^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 731:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 808:
 			[ "$enable" = 0 ] || staidx="$(($staidx + 1))"
                                                         ^-----^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 746:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 823:
 			[ "$auto_channel" -gt 0 ] || iw dev "$ifname" set channel "$channel" $iw_htmode
                                                                                              ^--------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -680,7 +705,7 @@ Did you mean:
 			[ "$auto_channel" -gt 0 ] || iw dev "$ifname" set channel "$channel" "$iw_htmode"
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 764:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 841:
 	local spobj="$(ubus -S list | grep wpa_supplicant.${ifname})"
                                                           ^-------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -688,7 +713,7 @@ Did you mean:
 	local spobj="$(ubus -S list | grep wpa_supplicant."${ifname}")"
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 767:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 844:
 		ubus call wpa_supplicant.${phy} config_remove "{\"iface\":\"$ifname\"}"
                                          ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -696,7 +721,7 @@ Did you mean:
 		ubus call wpa_supplicant."${phy}" config_remove "{\"iface\":\"$ifname\"}"
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 791:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 868:
 	NEW_MD5_SP=$(test -e "${_config}" && md5sum ${_config})
                                                     ^--------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -704,7 +729,7 @@ Did you mean:
 	NEW_MD5_SP=$(test -e "${_config}" && md5sum "${_config}")
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 792:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 869:
 	OLD_MD5_SP=$(uci -q -P /var/state get wireless._${phy}.md5_${ifname})
                                                         ^----^ SC2086: Double quote to prevent globbing and word splitting.
                                                                    ^-------^ SC2086: Double quote to prevent globbing and word splitting.
@@ -713,7 +738,7 @@ Did you mean:
 	OLD_MD5_SP=$(uci -q -P /var/state get wireless._"${phy}".md5_"${ifname}")
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 796:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 873:
 		[ "${NEW_MD5_SP}" == "${OLD_MD5_SP}" ] || ubus call $spobj reload
                                                                     ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -721,7 +746,7 @@ Did you mean:
 		[ "${NEW_MD5_SP}" == "${OLD_MD5_SP}" ] || ubus call "$spobj" reload
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 798:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 875:
 	uci -q -P /var/state set wireless._${phy}.md5_${ifname}="${NEW_MD5_SP}"
                                            ^----^ SC2086: Double quote to prevent globbing and word splitting.
                                                       ^-------^ SC2086: Double quote to prevent globbing and word splitting.
@@ -730,7 +755,7 @@ Did you mean:
 	uci -q -P /var/state set wireless._"${phy}".md5_"${ifname}"="${NEW_MD5_SP}"
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 804:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 881:
 	local spobj="$(ubus -S list | grep wpa_supplicant.${ifname})"
                                                           ^-------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -738,7 +763,7 @@ Did you mean:
 	local spobj="$(ubus -S list | grep wpa_supplicant."${ifname}")"
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 821:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 898:
 		ubus call $spobj reload
                           ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -746,25 +771,36 @@ Did you mean:
 		ubus call "$spobj" reload
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 844:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 921:
 					case "$(( ($channel / 4) % 2 ))" in
                                                    ^------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 883:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 953:
+		case "$key" in
+                      ^--^ SC2031: key was modified in a subshell. That change might be lost.
+
+
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 960:
 						ikey="$(($idx - 1)):$(prepare_key_wep "$ikey")"
                                                          ^--^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 884:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 961:
 						[ $idx -eq $key ] && ikey="d:$ikey"
+                                                           ^--^ SC2031: key was modified in a subshell. That change might be lost.
                                                            ^--^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
 						[ $idx -eq "$key" ] && ikey="d:$ikey"
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 904:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 967:
+				append keyspec "d:0:$(prepare_key_wep "$key")"
+                                                                       ^--^ SC2031: key was modified in a subshell. That change might be lost.
+
+
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 981:
 	iw dev "$ifname" ibss join "$ssid" $freq $iw_htmode fixed-freq $bssid \
                                            ^---^ SC2086: Double quote to prevent globbing and word splitting.
                                                                        ^----^ SC2086: Double quote to prevent globbing and word splitting.
@@ -773,7 +809,7 @@ Did you mean:
 	iw dev "$ifname" ibss join "$ssid" "$freq" $iw_htmode fixed-freq "$bssid" \
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 905:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 982:
 		beacon-interval $beacon_int \
                                 ^---------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -781,7 +817,7 @@ Did you mean:
 		beacon-interval "$beacon_int" \
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 926:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1003:
 	iw dev "$ifname" mesh join "$ssid" freq $freq $iw_htmode \
                                                 ^---^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -789,7 +825,7 @@ Did you mean:
 	iw dev "$ifname" mesh join "$ssid" freq "$freq" $iw_htmode \
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 928:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1005:
 		beacon-interval $beacon_int
                                 ^---------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -797,12 +833,12 @@ Did you mean:
 		beacon-interval "$beacon_int"
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 959:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1036:
 			if [ "$wpa" -gt 0 -o "$auto_channel" -gt 0 ] || chan_is_dfs "$phy" "$channel"; then
                                           ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 960:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1037:
 				mac80211_setup_supplicant $vif_enable || failed=1
                                                           ^---------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -810,7 +846,7 @@ Did you mean:
 				mac80211_setup_supplicant "$vif_enable" || failed=1
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 962:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1039:
 				mac80211_setup_mesh $vif_enable
                                                     ^---------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -818,12 +854,12 @@ Did you mean:
 				mac80211_setup_mesh "$vif_enable"
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 971:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1048:
 			if [ "$wpa" -gt 0 -o "$auto_channel" -gt 0 ]; then
                                           ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 972:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1049:
 				mac80211_setup_supplicant_noctl $vif_enable || failed=1
                                                                 ^---------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -831,7 +867,7 @@ Did you mean:
 				mac80211_setup_supplicant_noctl "$vif_enable" || failed=1
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 974:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1051:
 				mac80211_setup_adhoc $vif_enable
                                                      ^---------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -839,7 +875,7 @@ Did you mean:
 				mac80211_setup_adhoc "$vif_enable"
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 978:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1055:
 			mac80211_setup_supplicant $vif_enable || failed=1
                                                   ^---------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -847,7 +883,7 @@ Did you mean:
 			mac80211_setup_supplicant "$vif_enable" || failed=1
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1024:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1101:
 		[ "$service" != "none" ] && ubus call ${service} config_remove "{\"iface\":\"$wdev\"}"
                                                       ^--------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -855,7 +891,7 @@ Did you mean:
 		[ "$service" != "none" ] && ubus call "${service}" config_remove "{\"iface\":\"$wdev\"}"
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1032:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1109:
 	local primary_ap=$(uci -q -P /var/state get wireless._${phy}.aplist)
                                                               ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -863,7 +899,7 @@ Did you mean:
 	local primary_ap=$(uci -q -P /var/state get wireless._"${phy}".aplist)
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1036:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1113:
 	mac80211_vap_cleanup wpa_supplicant "$(uci -q -P /var/state get wireless._${phy}.splist)"
                                                                                   ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -871,7 +907,7 @@ Did you mean:
 	mac80211_vap_cleanup wpa_supplicant "$(uci -q -P /var/state get wireless._"${phy}".splist)"
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1037:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1114:
 	mac80211_vap_cleanup none "$(uci -q -P /var/state get wireless._${phy}.umlist)"
                                                                         ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -879,7 +915,7 @@ Did you mean:
 	mac80211_vap_cleanup none "$(uci -q -P /var/state get wireless._"${phy}".umlist)"
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1067:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1144:
 	[ -z "$(uci -q -P /var/state show wireless._${phy})" ] && uci -q -P /var/state set wireless._${phy}=phy
                                                     ^----^ SC2086: Double quote to prevent globbing and word splitting.
                                                                                                      ^----^ SC2086: Double quote to prevent globbing and word splitting.
@@ -888,7 +924,7 @@ Did you mean:
 	[ -z "$(uci -q -P /var/state show wireless._"${phy}")" ] && uci -q -P /var/state set wireless._"${phy}"=phy
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1069:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1146:
 	OLDAPLIST=$(uci -q -P /var/state get wireless._${phy}.aplist)
                                                        ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -896,7 +932,7 @@ Did you mean:
 	OLDAPLIST=$(uci -q -P /var/state get wireless._"${phy}".aplist)
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1070:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1147:
 	OLDSPLIST=$(uci -q -P /var/state get wireless._${phy}.splist)
                                                        ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -904,7 +940,7 @@ Did you mean:
 	OLDSPLIST=$(uci -q -P /var/state get wireless._"${phy}".splist)
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1071:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1148:
 	OLDUMLIST=$(uci -q -P /var/state get wireless._${phy}.umlist)
                                                        ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -912,12 +948,12 @@ Did you mean:
 	OLDUMLIST=$(uci -q -P /var/state get wireless._"${phy}".umlist)
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1108:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1185:
 		for file in /sys/kernel/debug/ieee80211/$phy/ath9k*/chanbw /sys/kernel/debug/ieee80211/$phy/ath5k/bwmode; do
                                                         ^--^ SC2231: Quote expansions in this for loop glob to prevent wordsplitting, e.g. "$dir"/*.txt .
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1122:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1199:
 	iw phy "$phy" set antenna_gain $antenna_gain >/dev/null 2>&1
                                        ^-----------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -925,7 +961,7 @@ Did you mean:
 	iw phy "$phy" set antenna_gain "$antenna_gain" >/dev/null 2>&1
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1149:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1226:
 	NEW_MD5=$(test -e "${hostapd_conf_file}" && md5sum ${hostapd_conf_file})
                                                            ^------------------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -933,7 +969,7 @@ Did you mean:
 	NEW_MD5=$(test -e "${hostapd_conf_file}" && md5sum "${hostapd_conf_file}")
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1150:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1227:
 	OLD_MD5=$(uci -q -P /var/state get wireless._${phy}.md5)
                                                      ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -941,12 +977,12 @@ Did you mean:
 	OLD_MD5=$(uci -q -P /var/state get wireless._"${phy}".md5)
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1159:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1236:
 		if [ -n "$(ubus list | grep hostapd.$primary_ap)" ]; then
                      ^-- SC2143: Use grep -q instead of comparing output with [ -n .. ].
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1166:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1243:
 					mac80211_vap_cleanup wpa_supplicant "$(uci -q -P /var/state get wireless._${phy}.splist)"
                                                                                                                   ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -954,7 +990,7 @@ Did you mean:
 					mac80211_vap_cleanup wpa_supplicant "$(uci -q -P /var/state get wireless._"${phy}".splist)"
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1167:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1244:
 					mac80211_vap_cleanup none "$(uci -q -P /var/state get wireless._${phy}.umlist)"
                                                                                                         ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -962,12 +998,12 @@ Did you mean:
 					mac80211_vap_cleanup none "$(uci -q -P /var/state get wireless._"${phy}".umlist)"
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1179:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1256:
 			[ "$ret" != 0 -o -z "$hostapd_res" ] && {
                                       ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1186:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1263:
 	uci -q -P /var/state set wireless._${phy}.aplist="${NEWAPLIST}"
                                            ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -975,7 +1011,7 @@ Did you mean:
 	uci -q -P /var/state set wireless._"${phy}".aplist="${NEWAPLIST}"
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1187:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1264:
 	uci -q -P /var/state set wireless._${phy}.md5="${NEW_MD5}"
                                            ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -983,7 +1019,7 @@ Did you mean:
 	uci -q -P /var/state set wireless._"${phy}".md5="${NEW_MD5}"
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1197:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1274:
 	uci -q -P /var/state set wireless._${phy}.splist="${NEWSPLIST}"
                                            ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -991,7 +1027,7 @@ Did you mean:
 	uci -q -P /var/state set wireless._"${phy}".splist="${NEWSPLIST}"
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1198:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1275:
 	uci -q -P /var/state set wireless._${phy}.umlist="${NEWUMLIST}"
                                            ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -999,12 +1035,12 @@ Did you mean:
 	uci -q -P /var/state set wireless._"${phy}".umlist="${NEWUMLIST}"
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1218:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1295:
 		ls "/sys/class/ieee80211/${phy}/device" 2>/dev/null | grep net: | sed -e 's,net:,,g'
                 ^-- SC2010: Don't use ls | grep. Use a glob or a for loop with a condition to allow non-alphanumeric filenames.
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1241:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1318:
 	uci -q -P /var/state revert wireless._${phy}
                                               ^----^ SC2086: Double quote to prevent globbing and word splitting.
 

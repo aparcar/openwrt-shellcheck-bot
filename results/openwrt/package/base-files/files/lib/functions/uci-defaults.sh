@@ -79,7 +79,7 @@ Did you mean:
 	_ucidef_set_led_timer "$1" "$2" "$3" "timer" "$4" "$5"
 
 
-In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 651:
+In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 666:
 	[ -f ${CFG} ] && json_load "$(cat ${CFG})"
              ^----^ SC2086: Double quote to prevent globbing and word splitting.
                                           ^----^ SC2086: Double quote to prevent globbing and word splitting.
@@ -88,7 +88,7 @@ Did you mean:
 	[ -f "${CFG}" ] && json_load "$(cat "${CFG}")"
 
 
-In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 665:
+In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 680:
 	json_dump -i -o ${CFG}
                         ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
