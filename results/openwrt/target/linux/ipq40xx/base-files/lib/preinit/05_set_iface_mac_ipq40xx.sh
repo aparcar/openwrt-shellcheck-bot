@@ -40,8 +40,8 @@ In openwrt/target/linux/ipq40xx/base-files/lib/preinit/05_set_iface_mac_ipq40xx.
 
 
 In openwrt/target/linux/ipq40xx/base-files/lib/preinit/05_set_iface_mac_ipq40xx.sh line 30:
-		ip link set dev eth1 address $(macaddr_add "$base_mac" 1)
-                                             ^--------------------------^ SC2046: Quote this to prevent word splitting.
+		ip link set dev sw-eth2 address $(macaddr_add "$base_mac" 1)
+                                                ^--------------------------^ SC2046: Quote this to prevent word splitting.
 
 
 In openwrt/target/linux/ipq40xx/base-files/lib/preinit/05_set_iface_mac_ipq40xx.sh line 34:
