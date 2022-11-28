@@ -74,17 +74,17 @@ In openwrt/target/linux/ipq40xx/base-files/lib/preinit/05_set_iface_mac_ipq40xx.
                                              ^-----------------------------^ SC2046: Quote this to prevent word splitting.
 
 
-In openwrt/target/linux/ipq40xx/base-files/lib/preinit/05_set_iface_mac_ipq40xx.sh line 35:
+In openwrt/target/linux/ipq40xx/base-files/lib/preinit/05_set_iface_mac_ipq40xx.sh line 37:
 		ip link set dev sw-eth2 address $(macaddr_add "$base_mac" 1)
                                                 ^--------------------------^ SC2046: Quote this to prevent word splitting.
 
 
-In openwrt/target/linux/ipq40xx/base-files/lib/preinit/05_set_iface_mac_ipq40xx.sh line 39:
+In openwrt/target/linux/ipq40xx/base-files/lib/preinit/05_set_iface_mac_ipq40xx.sh line 41:
 		ip link set dev eth0 address $(macaddr_add "$base_mac" 2)
                                              ^--------------------------^ SC2046: Quote this to prevent word splitting.
 
 
-In openwrt/target/linux/ipq40xx/base-files/lib/preinit/05_set_iface_mac_ipq40xx.sh line 40:
+In openwrt/target/linux/ipq40xx/base-files/lib/preinit/05_set_iface_mac_ipq40xx.sh line 42:
 		ip link set dev eth1 address $(macaddr_add "$base_mac" 3)
                                              ^--------------------------^ SC2046: Quote this to prevent word splitting.
 
