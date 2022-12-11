@@ -264,6 +264,11 @@ In openwrt/package/network/services/hostapd/files/hostapd.sh line 1218:
                                              ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
 
 
+In openwrt/package/network/services/hostapd/files/hostapd.sh line 1333:
+		[ "$encryption" = "none" -o -z "$encryption" ] || append wpa_key_mgmt "SAE"
+                                         ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
+
+
 In openwrt/package/network/services/hostapd/files/hostapd.sh line 1385:
 			if [ "$ca_cert_usesystem" -eq "1" -a -f "/etc/ssl/certs/ca-certificates.crt" ]; then
                                                           ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.

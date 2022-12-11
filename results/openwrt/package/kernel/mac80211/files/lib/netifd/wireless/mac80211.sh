@@ -834,8 +834,8 @@ Did you mean:
 
 
 In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1036:
-			if [ "$wpa" -gt 0 -o "$auto_channel" -gt 0 ] || chan_is_dfs "$phy" "$channel"; then
-                                          ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
+			if wpa_supplicant -vmesh || [ "$wpa" -gt 0 -o "$auto_channel" -gt 0 ] || chan_is_dfs "$phy" "$channel"; then
+                                                                   ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
 
 
 In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1037:
