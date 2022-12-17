@@ -30,7 +30,12 @@ Did you mean:
 		macaddr="$(cat /sys/class/ieee80211/"${dev}"/macaddress)"
 
 
-In openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh line 181:
+In openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh line 172:
+		[ -n "$path" -o -n "$macaddr" ] || continue
+                             ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
+
+
+In openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh line 185:
 		devidx=$(($devidx + 1))
                           ^-----^ SC2004: $/${} is unnecessary on arithmetic variables.
 
