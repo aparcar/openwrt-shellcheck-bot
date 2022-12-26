@@ -119,7 +119,20 @@ Did you mean:
 	echo "$oui":"$nic"
 
 
-In openwrt/package/base-files/files/lib/functions/system.sh line 211:
+In openwrt/package/base-files/files/lib/functions/system.sh line 210:
+	local sd_hash=$(sha256sum /sys/class/block/$mmc_dev/device/cid)
+                                                   ^------^ SC2086: Double quote to prevent globbing and word splitting.
+
+Did you mean: 
+	local sd_hash=$(sha256sum /sys/class/block/"$mmc_dev"/device/cid)
+
+
+In openwrt/package/base-files/files/lib/functions/system.sh line 212:
+	echo "$(macaddr_unsetbit_mc "$(macaddr_setbit_la "${mac_base}")")"
+             ^-- SC2005: Useless echo? Instead of 'echo $(cmd)', just use 'cmd'.
+
+
+In openwrt/package/base-files/files/lib/functions/system.sh line 219:
 	echo ${mac:9:2}$sep${mac:12:2}$sep${mac:15:2}
              ^--------^ SC2086: Double quote to prevent globbing and word splitting.
                        ^--^ SC2086: Double quote to prevent globbing and word splitting.
@@ -131,7 +144,7 @@ Did you mean:
 	echo "${mac:9:2}""$sep""${mac:12:2}""$sep""${mac:15:2}"
 
 
-In openwrt/package/base-files/files/lib/functions/system.sh line 218:
+In openwrt/package/base-files/files/lib/functions/system.sh line 226:
 	[ $bit -gt 0 -a $bit -le 48 ] || return
           ^--^ SC2086: Double quote to prevent globbing and word splitting.
                      ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
@@ -141,7 +154,7 @@ Did you mean:
 	[ "$bit" -gt 0 -a "$bit" -le 48 ] || return
 
 
-In openwrt/package/base-files/files/lib/functions/system.sh line 227:
+In openwrt/package/base-files/files/lib/functions/system.sh line 235:
 	[ $bit -gt 0 -a $bit -le 48 ] || return
           ^--^ SC2086: Double quote to prevent globbing and word splitting.
                      ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
@@ -151,7 +164,7 @@ Did you mean:
 	[ "$bit" -gt 0 -a "$bit" -le 48 ] || return
 
 
-In openwrt/package/base-files/files/lib/functions/system.sh line 233:
+In openwrt/package/base-files/files/lib/functions/system.sh line 241:
 	macaddr_setbit $1 7
                        ^-- SC2086: Double quote to prevent globbing and word splitting.
 
@@ -159,7 +172,7 @@ Did you mean:
 	macaddr_setbit "$1" 7
 
 
-In openwrt/package/base-files/files/lib/functions/system.sh line 239:
+In openwrt/package/base-files/files/lib/functions/system.sh line 247:
 	printf "%02x:%s" $((0x${mac%%:*} & ~0x01)) ${mac#*:}
                                                    ^-------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -167,12 +180,12 @@ Did you mean:
 	printf "%02x:%s" $((0x${mac%%:*} & ~0x01)) "${mac#*:}"
 
 
-In openwrt/package/base-files/files/lib/functions/system.sh line 245:
+In openwrt/package/base-files/files/lib/functions/system.sh line 253:
 	echo "$(macaddr_unsetbit_mc "$(macaddr_setbit_la "${randsrc}")")"
              ^-- SC2005: Useless echo? Instead of 'echo $(cmd)', just use 'cmd'.
 
 
-In openwrt/package/base-files/files/lib/functions/system.sh line 251:
+In openwrt/package/base-files/files/lib/functions/system.sh line 259:
 	echo -ne \\x${mac//:/\\x}
                     ^-----------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -180,7 +193,7 @@ Did you mean:
 	echo -ne \\x"${mac//:/\\x}"
 
 
-In openwrt/package/base-files/files/lib/functions/system.sh line 258:
+In openwrt/package/base-files/files/lib/functions/system.sh line 266:
 	mac=$(echo -n $mac | tr -d \")
                       ^--^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -188,7 +201,7 @@ Did you mean:
 	mac=$(echo -n "$mac" | tr -d \")
 
 
-In openwrt/package/base-files/files/lib/functions/system.sh line 284:
+In openwrt/package/base-files/files/lib/functions/system.sh line 292:
 	printf "%02x:%02x:%02x:%02x:%02x:%02x" 0x${canon// / 0x} 2>/dev/null
                ^-----------------------------^ SC2183: This format string has 6 variables, but is passed 1 arguments.
                                                  ^-------------^ SC2086: Double quote to prevent globbing and word splitting.
