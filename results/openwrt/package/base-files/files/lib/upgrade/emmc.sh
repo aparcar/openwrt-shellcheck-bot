@@ -81,14 +81,6 @@ Did you mean:
 	[ "$CI_KERNPART" -a -z "$EMMC_KERN_DEV" ] && export EMMC_KERN_DEV="$(find_mmc_part "$CI_KERNPART" "$CI_ROOTDEV")"
 
 
-In openwrt/package/base-files/files/lib/upgrade/emmc.sh line 61:
-	local file_type=$(identify $1)
-                                   ^-- SC2086: Double quote to prevent globbing and word splitting.
-
-Did you mean: 
-	local file_type=$(identify "$1")
-
-
 In openwrt/package/base-files/files/lib/upgrade/emmc.sh line 64:
 		"fit")  emmc_upgrade_fit $1;;
                                          ^-- SC2086: Double quote to prevent globbing and word splitting.
