@@ -421,14 +421,22 @@ Did you mean:
 
 
 In openwrt/package/base-files/files/lib/upgrade/nand.sh line 456:
-	local control_length=$( (tar xO${gz}f "$file" "sysupgrade-$board_name/CONTROL" | wc -c) 2> /dev/null)
+	local control_length=$( (tar xO${gz}f "$file" "sysupgrade-${board_name//,/_}/CONTROL" | wc -c) 2> /dev/null)
                                        ^---^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-	local control_length=$( (tar xO"${gz}"f "$file" "sysupgrade-$board_name/CONTROL" | wc -c) 2> /dev/null)
+	local control_length=$( (tar xO"${gz}"f "$file" "sysupgrade-${board_name//,/_}/CONTROL" | wc -c) 2> /dev/null)
 
 
-In openwrt/package/base-files/files/lib/upgrade/nand.sh line 462:
+In openwrt/package/base-files/files/lib/upgrade/nand.sh line 459:
+		control_length=$( (tar xO${gz}f "$file" "sysupgrade-${board_name//_/,}/CONTROL" | wc -c) 2> /dev/null)
+                                         ^---^ SC2086: Double quote to prevent globbing and word splitting.
+
+Did you mean: 
+		control_length=$( (tar xO"${gz}"f "$file" "sysupgrade-${board_name//_/,}/CONTROL" | wc -c) 2> /dev/null)
+
+
+In openwrt/package/base-files/files/lib/upgrade/nand.sh line 466:
 		if [ "$file_type" != "fit" -a "$file_type" != "ubi" -a "$file_type" != "ubifs" ]; then
                                            ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
                                                                     ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
