@@ -113,17 +113,11 @@ In openwrt/package/base-files/files/lib/upgrade/common.sh line 233:
 
 
 In openwrt/package/base-files/files/lib/upgrade/common.sh line 235:
-		if [ $BOOTDEV_MAJOR = $MAJOR -a $(($BOOTDEV_MINOR + $offset)) = $MINOR -a -b "/dev/$DEVNAME" ]; then
-                     ^------------^ SC2086: Double quote to prevent globbing and word splitting.
-                                      ^----^ SC2086: Double quote to prevent globbing and word splitting.
-                                             ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
-                                                   ^------------^ SC2004: $/${} is unnecessary on arithmetic variables.
-                                                                    ^-----^ SC2004: $/${} is unnecessary on arithmetic variables.
-                                                                                ^----^ SC2086: Double quote to prevent globbing and word splitting.
-                                                                                       ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
-
-Did you mean: 
 		if [ "$BOOTDEV_MAJOR" = "$MAJOR" -a $(($BOOTDEV_MINOR + $offset)) = "$MINOR" -a -b "/dev/$DEVNAME" ]; then
+                                                 ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
+                                                       ^------------^ SC2004: $/${} is unnecessary on arithmetic variables.
+                                                                        ^-----^ SC2004: $/${} is unnecessary on arithmetic variables.
+                                                                                             ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
 
 
 In openwrt/package/base-files/files/lib/upgrade/common.sh line 256:
