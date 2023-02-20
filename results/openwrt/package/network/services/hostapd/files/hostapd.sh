@@ -24,8 +24,8 @@ Did you mean:
 
 
 In openwrt/package/network/services/hostapd/files/hostapd.sh line 27:
-				zidx=$(($idx - 1))
-                                        ^--^ SC2004: $/${} is unnecessary on arithmetic variables.
+				zidx="$(($idx - 1))"
+                                         ^--^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
 In openwrt/package/network/services/hostapd/files/hostapd.sh line 30:
@@ -147,9 +147,9 @@ In openwrt/package/network/services/hostapd/files/hostapd.sh line 760:
 
 
 In openwrt/package/network/services/hostapd/files/hostapd.sh line 790:
-	local auth_algs=$((($auth_mode_shared << 1) | $auth_mode_open))
-                            ^---------------^ SC2004: $/${} is unnecessary on arithmetic variables.
-                                                      ^-------------^ SC2004: $/${} is unnecessary on arithmetic variables.
+	local auth_algs="$((($auth_mode_shared << 1) | $auth_mode_open))"
+                             ^---------------^ SC2004: $/${} is unnecessary on arithmetic variables.
+                                                       ^-------------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
 In openwrt/package/network/services/hostapd/files/hostapd.sh line 806:
@@ -212,11 +212,11 @@ Did you mean:
 
 
 In openwrt/package/network/services/hostapd/files/hostapd.sh line 1159:
-	bss_md5sum=$(echo $bss_conf | md5sum | cut -d" " -f1)
-                          ^-------^ SC2086: Double quote to prevent globbing and word splitting.
+	bss_md5sum="$(echo $bss_conf | md5sum | cut -d" " -f1)"
+                           ^-------^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-	bss_md5sum=$(echo "$bss_conf" | md5sum | cut -d" " -f1)
+	bss_md5sum="$(echo "$bss_conf" | md5sum | cut -d" " -f1)"
 
 
 In openwrt/package/network/services/hostapd/files/hostapd.sh line 1182:
