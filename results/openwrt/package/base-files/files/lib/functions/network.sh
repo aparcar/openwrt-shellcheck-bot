@@ -4,32 +4,32 @@ In openwrt/package/base-files/files/lib/functions/network.sh line 18:
                                                                                                                         ^--^ SC2016: Expressions don't expand in single quotes, use double quotes for that.
 
 
-In openwrt/package/base-files/files/lib/functions/network.sh line 137:
+In openwrt/package/base-files/files/lib/functions/network.sh line 144:
 	if [ -n "$__addr" -o -n "$__addr6" ]; then
                           ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
 
 
-In openwrt/package/base-files/files/lib/functions/network.sh line 198:
+In openwrt/package/base-files/files/lib/functions/network.sh line 212:
 	[ "$3" = 1 -o "$3" = "true" ] && \
                    ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
 
 
-In openwrt/package/base-files/files/lib/functions/network.sh line 210:
+In openwrt/package/base-files/files/lib/functions/network.sh line 224:
 	[ "$3" = 1 -o "$3" = "true" ] && \
                    ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
 
 
-In openwrt/package/base-files/files/lib/functions/network.sh line 221:
-	[ "$3" = 1 -o "$3" = "true" ] && \
-                   ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
-
-
-In openwrt/package/base-files/files/lib/functions/network.sh line 232:
+In openwrt/package/base-files/files/lib/functions/network.sh line 235:
 	[ "$3" = 1 -o "$3" = "true" ] && \
                    ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
 
 
 In openwrt/package/base-files/files/lib/functions/network.sh line 246:
+	[ "$3" = 1 -o "$3" = "true" ] && \
+                   ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
+
+
+In openwrt/package/base-files/files/lib/functions/network.sh line 260:
 	[ "$3" = 1 -o "$3" = "true" ] && \
                    ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
 
