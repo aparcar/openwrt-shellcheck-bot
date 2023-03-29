@@ -68,28 +68,22 @@ Did you mean:
 		ifname="$(ls $(ls -1 -d "$ifpath" | head -n 1))"
 
 
-In openwrt/package/network/utils/comgt/files/ncm.sh line 92:
-	[ $? -ne 0 -o -z "$manufacturer" ] && {
-          ^-- SC2181: Check exit code directly with e.g. 'if mycmd;', not indirectly with $?.
-                   ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
-
-
-In openwrt/package/network/utils/comgt/files/ncm.sh line 100:
+In openwrt/package/network/utils/comgt/files/ncm.sh line 115:
 	[ $? -ne 0 ] && {
           ^-- SC2181: Check exit code directly with e.g. 'if mycmd;', not indirectly with $?.
 
 
-In openwrt/package/network/utils/comgt/files/ncm.sh line 171:
+In openwrt/package/network/utils/comgt/files/ncm.sh line 186:
 	[ "$pdptype" = "IP" -o "$pdptype" = "IPV4V6" ] && {
                             ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
 
 
-In openwrt/package/network/utils/comgt/files/ncm.sh line 184:
+In openwrt/package/network/utils/comgt/files/ncm.sh line 199:
 	[ "$pdptype" = "IPV6" -o "$pdptype" = "IPV4V6" ] && {
                               ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
 
 
-In openwrt/package/network/utils/comgt/files/ncm.sh line 224:
+In openwrt/package/network/utils/comgt/files/ncm.sh line 239:
 	device="$(readlink -f $device)"
                               ^-----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -97,7 +91,7 @@ Did you mean:
 	device="$(readlink -f "$device")"
 
 
-In openwrt/package/network/utils/comgt/files/ncm.sh line 235:
+In openwrt/package/network/utils/comgt/files/ncm.sh line 250:
 	json_load "$(ubus call network.interface.$interface status)"
                                                  ^--------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -105,13 +99,13 @@ Did you mean:
 	json_load "$(ubus call network.interface."$interface" status)"
 
 
-In openwrt/package/network/utils/comgt/files/ncm.sh line 238:
+In openwrt/package/network/utils/comgt/files/ncm.sh line 253:
 	[ $? -ne 0 -o -z "$manufacturer" ] && {
           ^-- SC2181: Check exit code directly with e.g. 'if mycmd;', not indirectly with $?.
                    ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
 
 
-In openwrt/package/network/utils/comgt/files/ncm.sh line 241:
+In openwrt/package/network/utils/comgt/files/ncm.sh line 256:
 		[ $? -ne 0 -o -z "$manufacturer" ] && {
                   ^-- SC2181: Check exit code directly with e.g. 'if mycmd;', not indirectly with $?.
                            ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
