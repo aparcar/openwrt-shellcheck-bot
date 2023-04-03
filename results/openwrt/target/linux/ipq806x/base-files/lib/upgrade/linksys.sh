@@ -37,7 +37,7 @@ Did you mean:
 			[ "$squash_ubivol" ] && ubirmvol /dev/"$ubidev" -N squashfs || true
 
 
-In openwrt/target/linux/ipq806x/base-files/lib/upgrade/linksys.sh line 100:
+In openwrt/target/linux/ipq806x/base-files/lib/upgrade/linksys.sh line 105:
 		get_image "$1" | mtd write - $part_label
                                              ^---------^ SC2086: Double quote to prevent globbing and word splitting.
 
