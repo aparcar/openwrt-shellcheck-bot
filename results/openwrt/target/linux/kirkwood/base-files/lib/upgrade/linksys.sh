@@ -20,7 +20,7 @@ Did you mean:
 	local target_mtd=$(find_mtd_part "$part_label")
 
 
-In openwrt/target/linux/kirkwood/base-files/lib/upgrade/linksys.sh line 74:
+In openwrt/target/linux/kirkwood/base-files/lib/upgrade/linksys.sh line 79:
 		get_image "$1" | mtd write - $part_label
                                              ^---------^ SC2086: Double quote to prevent globbing and word splitting.
 
