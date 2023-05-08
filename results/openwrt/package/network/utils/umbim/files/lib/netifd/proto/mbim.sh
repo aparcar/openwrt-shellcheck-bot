@@ -167,14 +167,34 @@ Did you mean:
 	local mbimconfig="$(umbim "$DBG" -n -t $tid -d "$device" config)"
 
 
+In openwrt/package/network/utils/umbim/files/lib/netifd/proto/mbim.sh line 210:
+		if [ -n "$ipv4address" -a "$dhcp" != 1 ]; then
+                                       ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
+
+
 In openwrt/package/network/utils/umbim/files/lib/netifd/proto/mbim.sh line 219:
 			json_add_string gateway $(_proto_mbim_get_field ipv4gateway "$mbimconfig")
                                                 ^-- SC2046: Quote this to prevent word splitting.
 
 
+In openwrt/package/network/utils/umbim/files/lib/netifd/proto/mbim.sh line 225:
+		[ "$peerdns" = 0 -a "$dhcp" != 1 ] || {
+                                 ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
+
+
+In openwrt/package/network/utils/umbim/files/lib/netifd/proto/mbim.sh line 245:
+		if [ -n "$ipv6address" -a "$dhcpv6" != 1 ]; then
+                                       ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
+
+
 In openwrt/package/network/utils/umbim/files/lib/netifd/proto/mbim.sh line 260:
 			json_add_string ip6gw $(_proto_mbim_get_field ipv6gateway "$mbimconfig")
                                               ^-- SC2046: Quote this to prevent word splitting.
+
+
+In openwrt/package/network/utils/umbim/files/lib/netifd/proto/mbim.sh line 268:
+		[ "$peerdns" = 0 -a "$dhcpv6" != 1 ] || {
+                                 ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
 
 
 In openwrt/package/network/utils/umbim/files/lib/netifd/proto/mbim.sh line 291:
