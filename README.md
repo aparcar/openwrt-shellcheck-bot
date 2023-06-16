@@ -1,6 +1,6 @@
 # OpenWrt shellcheck bot
 
-Total of 199 files affected
+Total of 198 files affected
 
-Last updated Thu Jun 15 00:15:48 UTC 2023
+Last updated Fri Jun 16 00:15:47 UTC 2023
 
