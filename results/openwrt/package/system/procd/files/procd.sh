@@ -191,12 +191,12 @@ In openwrt/package/system/procd/files/procd.sh line 519:
                          ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
 
 
-In openwrt/package/system/procd/files/procd.sh line 549:
+In openwrt/package/system/procd/files/procd.sh line 571:
 procd_open_data() {
 ^-- SC2120: procd_open_data references arguments, but none are ever passed.
 
 
-In openwrt/package/system/procd/files/procd.sh line 557:
+In openwrt/package/system/procd/files/procd.sh line 579:
 	json_set_namespace $__procd_old_cb
                            ^-------------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -204,12 +204,12 @@ Did you mean:
 	json_set_namespace "$__procd_old_cb"
 
 
-In openwrt/package/system/procd/files/procd.sh line 589:
+In openwrt/package/system/procd/files/procd.sh line 611:
 	procd_open_data
         ^-------------^ SC2119: Use procd_open_data "$@" if function's $1 should mean script's $1.
 
 
-In openwrt/package/system/procd/files/procd.sh line 607:
+In openwrt/package/system/procd/files/procd.sh line 629:
 	[ "$_error" = "0" ] || $(/sbin/validate_data "$_package" "$_type" "$_name" "$@" 1> /dev/null)
                                ^-- SC2091: Remove surrounding $() to avoid executing output.
 
