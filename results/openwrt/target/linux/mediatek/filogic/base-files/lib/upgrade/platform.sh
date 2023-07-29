@@ -1,20 +1,18 @@
 
-In openwrt/target/linux/mediatek/filogic/base-files/lib/upgrade/platform.sh line 40:
-	case "$board" in
-        ^-- SC1009: The mentioned syntax error was in this case expression.
+In openwrt/target/linux/mediatek/filogic/base-files/lib/upgrade/platform.sh line 21:
+	ubiformat /dev/mtd$mtdnum -y
+                          ^-----^ SC2086: Double quote to prevent globbing and word splitting.
+
+Did you mean: 
+	ubiformat /dev/mtd"$mtdnum" -y
 
 
-In openwrt/target/linux/mediatek/filogic/base-files/lib/upgrade/platform.sh line 41:
-	xiaomi,mi-router-wr30u-stock)
-        ^-- SC1073: Couldn't parse this case item. Fix to allow more checks.
+In openwrt/target/linux/mediatek/filogic/base-files/lib/upgrade/platform.sh line 24:
+	ubiformat /dev/mtd$kern_mtdnum -y
+                          ^----------^ SC2086: Double quote to prevent globbing and word splitting.
 
-
-In openwrt/target/linux/mediatek/filogic/base-files/lib/upgrade/platform.sh line 43:
-	xiaomi,redmi-router-ax6000-stock)
-                                        ^-- SC1072:  Fix any mentioned problems and try again.
-                                        ^-- SC1074: Did you forget the ;; after the previous case item?
+Did you mean: 
+	ubiformat /dev/mtd"$kern_mtdnum" -y
 
 For more information:
-  https://www.shellcheck.net/wiki/SC1074 -- Did you forget the ;; after the p...
-  https://www.shellcheck.net/wiki/SC1072 --  Fix any mentioned problems and t...
-  https://www.shellcheck.net/wiki/SC1073 -- Couldn't parse this case item. Fi...
+  https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...
