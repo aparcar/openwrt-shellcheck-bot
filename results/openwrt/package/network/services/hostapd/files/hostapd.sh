@@ -296,11 +296,6 @@ In openwrt/package/network/services/hostapd/files/hostapd.sh line 1530:
 Did you mean: 
 			append network_data "eap=$(echo "$eap_type" | tr 'a-z' 'A-Z')" "$N$T"
 
-
-In openwrt/package/network/services/hostapd/files/hostapd.sh line 1610:
-	[ "$ret" != 0 -o -z "$supplicant_res" ] && wireless_setup_vif_failed WPA_SUPPLICANT_FAILED
-                      ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
-
 For more information:
   https://www.shellcheck.net/wiki/SC1007 -- Remove space after = if trying to...
   https://www.shellcheck.net/wiki/SC2115 -- Use "${var:?}" to ensure this nev...
