@@ -738,12 +738,17 @@ In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 10
                         ^-----------------------^ SC2119: Use mac80211_setup_supplicant "$@" if function's $1 should mean script's $1.
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1120:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1124:
 		for file in /sys/kernel/debug/ieee80211/$phy/ath9k*/chanbw /sys/kernel/debug/ieee80211/$phy/ath5k/bwmode; do
                                                         ^--^ SC2231: Quote expansions in this for loop glob to prevent wordsplitting, e.g. "$dir"/*.txt .
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1134:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1137:
+	[ "$rxantenna" = "$prev_rxantenna" -a "$txantenna" = "$prev_txantenna" ] || mac80211_reset_config "$phy"
+                                           ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
+
+
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1141:
 	iw phy "$phy" set antenna_gain $antenna_gain >/dev/null 2>&1
                                        ^-----------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -751,7 +756,7 @@ Did you mean:
 	iw phy "$phy" set antenna_gain "$antenna_gain" >/dev/null 2>&1
 
 
-In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1188:
+In openwrt/package/kernel/mac80211/files/lib/netifd/wireless/mac80211.sh line 1195:
 		ls "/sys/class/ieee80211/${phy}/device" 2>/dev/null | grep net: | sed -e 's,net:,,g'
                 ^-- SC2010: Don't use ls | grep. Use a glob or a for loop with a condition to allow non-alphanumeric filenames.
 
