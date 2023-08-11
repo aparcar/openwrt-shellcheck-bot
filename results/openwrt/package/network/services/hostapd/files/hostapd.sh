@@ -211,75 +211,67 @@ Did you mean:
 	set_default disable_dgaf "$hs20"
 
 
-In openwrt/package/network/services/hostapd/files/hostapd.sh line 1162:
-	bss_md5sum="$(echo $bss_conf | md5sum | cut -d" " -f1)"
-                           ^-------^ SC2086: Double quote to prevent globbing and word splitting.
-
-Did you mean: 
-	bss_md5sum="$(echo "$bss_conf" | md5sum | cut -d" " -f1)"
-
-
-In openwrt/package/network/services/hostapd/files/hostapd.sh line 1185:
+In openwrt/package/network/services/hostapd/files/hostapd.sh line 1182:
 		($log_80211  << 0) | \
                  ^--------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/network/services/hostapd/files/hostapd.sh line 1186:
+In openwrt/package/network/services/hostapd/files/hostapd.sh line 1183:
 		($log_8021x  << 1) | \
                  ^--------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/network/services/hostapd/files/hostapd.sh line 1187:
+In openwrt/package/network/services/hostapd/files/hostapd.sh line 1184:
 		($log_radius << 2) | \
                  ^---------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/network/services/hostapd/files/hostapd.sh line 1188:
+In openwrt/package/network/services/hostapd/files/hostapd.sh line 1185:
 		($log_wpa    << 3) | \
                  ^------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/network/services/hostapd/files/hostapd.sh line 1189:
+In openwrt/package/network/services/hostapd/files/hostapd.sh line 1186:
 		($log_driver << 4) | \
                  ^---------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/network/services/hostapd/files/hostapd.sh line 1190:
+In openwrt/package/network/services/hostapd/files/hostapd.sh line 1187:
 		($log_iapp   << 5) | \
                  ^-------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/network/services/hostapd/files/hostapd.sh line 1191:
+In openwrt/package/network/services/hostapd/files/hostapd.sh line 1188:
 		($log_mlme   << 6)   \
                  ^-------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/network/services/hostapd/files/hostapd.sh line 1211:
+In openwrt/package/network/services/hostapd/files/hostapd.sh line 1208:
 	rm -rf "$_rpath/$1" "$_config"
                ^----------^ SC2115: Use "${var:?}" to ensure this never expands to / .
 
 
-In openwrt/package/network/services/hostapd/files/hostapd.sh line 1229:
+In openwrt/package/network/services/hostapd/files/hostapd.sh line 1226:
 				[ "$wds" = 1 -o "$multi_ap" = 1 ] || fail=1
                                              ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
 
 
-In openwrt/package/network/services/hostapd/files/hostapd.sh line 1344:
+In openwrt/package/network/services/hostapd/files/hostapd.sh line 1341:
 		[ "$encryption" = "none" -o -z "$encryption" ] || append wpa_key_mgmt "SAE"
                                          ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
 
 
-In openwrt/package/network/services/hostapd/files/hostapd.sh line 1396:
+In openwrt/package/network/services/hostapd/files/hostapd.sh line 1393:
 			if [ "$ca_cert_usesystem" -eq "1" -a -f "/etc/ssl/certs/ca-certificates.crt" ]; then
                                                           ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
 
 
-In openwrt/package/network/services/hostapd/files/hostapd.sh line 1445:
+In openwrt/package/network/services/hostapd/files/hostapd.sh line 1442:
 						if [ "$ca_cert2_usesystem" -eq "1" -a -f "/etc/ssl/certs/ca-certificates.crt" ]; then
                                                                                    ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
 
 
-In openwrt/package/network/services/hostapd/files/hostapd.sh line 1493:
+In openwrt/package/network/services/hostapd/files/hostapd.sh line 1490:
 							auth="$(echo $auth | cut -b 5- )"
                                                                      ^---^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -287,7 +279,7 @@ Did you mean:
 							auth="$(echo "$auth" | cut -b 5- )"
 
 
-In openwrt/package/network/services/hostapd/files/hostapd.sh line 1530:
+In openwrt/package/network/services/hostapd/files/hostapd.sh line 1527:
 			append network_data "eap=$(echo $eap_type | tr 'a-z' 'A-Z')" "$N$T"
                                                         ^-------^ SC2086: Double quote to prevent globbing and word splitting.
                                                                        ^---^ SC2018: Use '[:lower:]' to support accents and foreign alphabets.
