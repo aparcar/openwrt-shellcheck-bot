@@ -126,7 +126,18 @@ Did you mean:
 		. "$file"
 
 
-In openwrt/package/base-files/files/lib/functions.sh line 322:
+In openwrt/package/base-files/files/lib/functions.sh line 319:
+	set -- $(ipcalc.sh "$@")
+               ^---------------^ SC2046: Quote this to prevent word splitting.
+
+
+In openwrt/package/base-files/files/lib/functions.sh line 320:
+	[ $? -eq 0 ] && export -- "$@"
+          ^-- SC2181: Check exit code directly with e.g. 'if mycmd;', not indirectly with $?.
+                                  ^--^ SC2163: This does not export '@'. Remove $/${} for that, or use ${var?} to quiet.
+
+
+In openwrt/package/base-files/files/lib/functions.sh line 327:
 	echo ${INDEX}
              ^------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -134,12 +145,12 @@ Did you mean:
 	echo "${INDEX}"
 
 
-In openwrt/package/base-files/files/lib/functions.sh line 346:
+In openwrt/package/base-files/files/lib/functions.sh line 351:
 	for DEVNAME in /sys/block/$ROOTDEV/mmcblk*p*; do
                                   ^------^ SC2231: Quote expansions in this for loop glob to prevent wordsplitting, e.g. "$dir"/*.txt .
 
 
-In openwrt/package/base-files/files/lib/functions.sh line 347:
+In openwrt/package/base-files/files/lib/functions.sh line 352:
 		PARTNAME="$(grep PARTNAME ${DEVNAME}/uevent | cut -f2 -d'=')"
                                           ^--------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -147,7 +158,7 @@ Did you mean:
 		PARTNAME="$(grep PARTNAME "${DEVNAME}"/uevent | cut -f2 -d'=')"
 
 
-In openwrt/package/base-files/files/lib/functions.sh line 348:
+In openwrt/package/base-files/files/lib/functions.sh line 353:
 		[ "$PARTNAME" = "$1" ] && echo "/dev/$(basename $DEVNAME)" && return 0
                                                                 ^------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -155,7 +166,7 @@ Did you mean:
 		[ "$PARTNAME" = "$1" ] && echo "/dev/$(basename "$DEVNAME")" && return 0
 
 
-In openwrt/package/base-files/files/lib/functions.sh line 358:
+In openwrt/package/base-files/files/lib/functions.sh line 363:
 	echo "${name}:x:${gid}:" >> ${IPKG_INSTROOT}/etc/group
                                     ^--------------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -163,7 +174,7 @@ Did you mean:
 	echo "${name}:x:${gid}:" >> "${IPKG_INSTROOT}"/etc/group
 
 
-In openwrt/package/base-files/files/lib/functions.sh line 363:
+In openwrt/package/base-files/files/lib/functions.sh line 368:
 	grep -qs "^${1}:" ${IPKG_INSTROOT}/etc/group
                           ^--------------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -171,7 +182,7 @@ Did you mean:
 	grep -qs "^${1}:" "${IPKG_INSTROOT}"/etc/group
 
 
-In openwrt/package/base-files/files/lib/functions.sh line 368:
+In openwrt/package/base-files/files/lib/functions.sh line 373:
 	gid=$(grep -s "^${1}:" ${IPKG_INSTROOT}/etc/group | cut -d: -f3)
                                ^--------------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -179,7 +190,7 @@ Did you mean:
 	gid=$(grep -s "^${1}:" "${IPKG_INSTROOT}"/etc/group | cut -d: -f3)
 
 
-In openwrt/package/base-files/files/lib/functions.sh line 370:
+In openwrt/package/base-files/files/lib/functions.sh line 375:
 		echo $gid
                      ^--^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -187,7 +198,7 @@ Did you mean:
 		echo "$gid"
 
 
-In openwrt/package/base-files/files/lib/functions.sh line 373:
+In openwrt/package/base-files/files/lib/functions.sh line 378:
 	gids=$(cut -d: -f3 ${IPKG_INSTROOT}/etc/group)
                            ^--------------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -195,7 +206,7 @@ Did you mean:
 	gids=$(cut -d: -f3 "${IPKG_INSTROOT}"/etc/group)
 
 
-In openwrt/package/base-files/files/lib/functions.sh line 378:
+In openwrt/package/base-files/files/lib/functions.sh line 383:
 	group_add $1 $gid
                   ^-- SC2086: Double quote to prevent globbing and word splitting.
 
@@ -203,7 +214,7 @@ Did you mean:
 	group_add "$1" $gid
 
 
-In openwrt/package/base-files/files/lib/functions.sh line 384:
+In openwrt/package/base-files/files/lib/functions.sh line 389:
 	grp=$(grep -s "^${1}:" ${IPKG_INSTROOT}/etc/group)
                                ^--------------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -211,7 +222,7 @@ Did you mean:
 	grp=$(grep -s "^${1}:" "${IPKG_INSTROOT}"/etc/group)
 
 
-In openwrt/package/base-files/files/lib/functions.sh line 385:
+In openwrt/package/base-files/files/lib/functions.sh line 390:
 	echo "$grp" | cut -d: -f4 | grep -q $2 && return
                                             ^-- SC2086: Double quote to prevent globbing and word splitting.
 
@@ -219,7 +230,7 @@ Did you mean:
 	echo "$grp" | cut -d: -f4 | grep -q "$2" && return
 
 
-In openwrt/package/base-files/files/lib/functions.sh line 388:
+In openwrt/package/base-files/files/lib/functions.sh line 393:
 	sed -i "s/$grp/$grp$delim$2/g" ${IPKG_INSTROOT}/etc/group
                                        ^--------------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -227,7 +238,7 @@ Did you mean:
 	sed -i "s/$grp/$grp$delim$2/g" "${IPKG_INSTROOT}"/etc/group
 
 
-In openwrt/package/base-files/files/lib/functions.sh line 404:
+In openwrt/package/base-files/files/lib/functions.sh line 409:
 		uids=$(cut -d: -f3 ${IPKG_INSTROOT}/etc/passwd)
                                    ^--------------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -235,7 +246,7 @@ Did you mean:
 		uids=$(cut -d: -f3 "${IPKG_INSTROOT}"/etc/passwd)
 
 
-In openwrt/package/base-files/files/lib/functions.sh line 413:
+In openwrt/package/base-files/files/lib/functions.sh line 418:
 	echo "${name}:x:${uid}:${gid}:${desc}:${home}:${shell}" >> ${IPKG_INSTROOT}/etc/passwd
                                                                    ^--------------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -243,7 +254,7 @@ Did you mean:
 	echo "${name}:x:${uid}:${gid}:${desc}:${home}:${shell}" >> "${IPKG_INSTROOT}"/etc/passwd
 
 
-In openwrt/package/base-files/files/lib/functions.sh line 414:
+In openwrt/package/base-files/files/lib/functions.sh line 419:
 	echo "${name}:x:0:0:99999:7:::" >> ${IPKG_INSTROOT}/etc/shadow
                                            ^--------------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -251,7 +262,7 @@ Did you mean:
 	echo "${name}:x:0:0:99999:7:::" >> "${IPKG_INSTROOT}"/etc/shadow
 
 
-In openwrt/package/base-files/files/lib/functions.sh line 419:
+In openwrt/package/base-files/files/lib/functions.sh line 424:
 	grep -qs "^${1}:" ${IPKG_INSTROOT}/etc/passwd
                           ^--------------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -259,12 +270,12 @@ Did you mean:
 	grep -qs "^${1}:" "${IPKG_INSTROOT}"/etc/passwd
 
 
-In openwrt/package/base-files/files/lib/functions.sh line 430:
+In openwrt/package/base-files/files/lib/functions.sh line 435:
 	for cmdlinevar in $(cat /proc/cmdline); do
                           ^------------------^ SC2013: To read lines rather than words, pipe/redirect to a 'while read' loop.
 
 
-In openwrt/package/base-files/files/lib/functions.sh line 432:
+In openwrt/package/base-files/files/lib/functions.sh line 437:
 		[ "=" = "${tmp:0:1}" ] && echo ${tmp:1}
                                                ^------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -273,5 +284,5 @@ Did you mean:
 
 For more information:
   https://www.shellcheck.net/wiki/SC2045 -- Iterating over ls output is fragi...
+  https://www.shellcheck.net/wiki/SC2046 -- Quote this to prevent word splitt...
   https://www.shellcheck.net/wiki/SC2153 -- Possible misspelling: CONFIG_SECT...
-  https://www.shellcheck.net/wiki/SC2013 -- To read lines rather than words, ...
