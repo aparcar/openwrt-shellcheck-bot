@@ -4,22 +4,22 @@ In openwrt/target/linux/armsr/base-files/lib/upgrade/platform.sh line 12:
                           ^-- SC2015: Note that A && B || C is not if-then-else. C may run when A is true.
 
 
-In openwrt/target/linux/armsr/base-files/lib/upgrade/platform.sh line 77:
+In openwrt/target/linux/armsr/base-files/lib/upgrade/platform.sh line 78:
 	for d in $(find "${NEW_ESP_DIR}/efi/" -mindepth 1 -maxdepth 1 -type d); do
                  ^-- SC2044: For loops over find output are fragile. Use find -exec or a while read loop.
 
 
-In openwrt/target/linux/armsr/base-files/lib/upgrade/platform.sh line 92:
+In openwrt/target/linux/armsr/base-files/lib/upgrade/platform.sh line 93:
 	export_bootdevice && export_partdevice diskdev 0 || {
                           ^-- SC2015: Note that A && B || C is not if-then-else. C may run when A is true.
 
 
-In openwrt/target/linux/armsr/base-files/lib/upgrade/platform.sh line 132:
+In openwrt/target/linux/armsr/base-files/lib/upgrade/platform.sh line 133:
 	while read part start size; do
               ^--^ SC2162: read without -r will mangle backslashes.
 
 
-In openwrt/target/linux/armsr/base-files/lib/upgrade/platform.sh line 133:
+In openwrt/target/linux/armsr/base-files/lib/upgrade/platform.sh line 134:
 		if export_partdevice partdev $part; then
                                              ^---^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -27,7 +27,7 @@ Did you mean:
 		if export_partdevice partdev "$part"; then
 
 
-In openwrt/target/linux/armsr/base-files/lib/upgrade/platform.sh line 137:
+In openwrt/target/linux/armsr/base-files/lib/upgrade/platform.sh line 138:
 					$1 $partdev $start $size || return 1
                                         ^-- SC2086: Double quote to prevent globbing and word splitting.
                                            ^------^ SC2086: Double quote to prevent globbing and word splitting.
