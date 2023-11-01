@@ -1,5 +1,5 @@
 
-In openwrt/target/linux/mediatek/filogic/base-files/lib/preinit/10_fix_eth_mac.sh line 21:
+In openwrt/target/linux/mediatek/filogic/base-files/lib/preinit/10_fix_eth_mac.sh line 22:
 		ip link set dev eth1 address "$(macaddr_add $addr 1)"
                                                             ^---^ SC2086: Double quote to prevent globbing and word splitting.
 
