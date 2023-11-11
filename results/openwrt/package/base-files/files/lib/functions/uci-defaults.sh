@@ -20,7 +20,43 @@ In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 42:
                                                                 ^-- SC2015: Note that A && B || C is not if-then-else. C may run when A is true.
 
 
-In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 192:
+In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 118:
+	_ucidef_set_network_device_common $1 macaddr $2
+                                          ^-- SC2086: Double quote to prevent globbing and word splitting.
+                                                     ^-- SC2086: Double quote to prevent globbing and word splitting.
+
+Did you mean: 
+	_ucidef_set_network_device_common "$1" macaddr "$2"
+
+
+In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 122:
+	_ucidef_set_network_device_common $1 path $2
+                                          ^-- SC2086: Double quote to prevent globbing and word splitting.
+                                                  ^-- SC2086: Double quote to prevent globbing and word splitting.
+
+Did you mean: 
+	_ucidef_set_network_device_common "$1" path "$2"
+
+
+In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 126:
+	_ucidef_set_network_device_common $1 gro $2
+                                          ^-- SC2086: Double quote to prevent globbing and word splitting.
+                                                 ^-- SC2086: Double quote to prevent globbing and word splitting.
+
+Did you mean: 
+	_ucidef_set_network_device_common "$1" gro "$2"
+
+
+In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 130:
+	_ucidef_set_network_device_common $1 conduit $2
+                                          ^-- SC2086: Double quote to prevent globbing and word splitting.
+                                                     ^-- SC2086: Double quote to prevent globbing and word splitting.
+
+Did you mean: 
+	_ucidef_set_network_device_common "$1" conduit "$2"
+
+
+In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 200:
 				if [ ${need_tag:-0} -eq 1 -o ${want_untag:-0} -ne 1 ]; then
                                      ^------------^ SC2086: Double quote to prevent globbing and word splitting.
                                                           ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
@@ -30,7 +66,7 @@ Did you mean:
 				if [ "${need_tag:-0}" -eq 1 -o "${want_untag:-0}" -ne 1 ]; then
 
 
-In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 230:
+In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 238:
 			json_add_int ar8xxx_mib_type $type
                                                      ^---^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -38,7 +74,7 @@ Did you mean:
 			json_add_int ar8xxx_mib_type "$type"
 
 
-In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 231:
+In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 239:
 			json_add_int ar8xxx_mib_poll_interval $interval
                                                               ^-------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -46,7 +82,7 @@ Did you mean:
 			json_add_int ar8xxx_mib_poll_interval "$interval"
 
 
-In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 321:
+In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 329:
 		if [ -n "$num" ] && [ $num -eq $port ]; then
                                       ^--^ SC2086: Double quote to prevent globbing and word splitting.
                                                ^---^ SC2086: Double quote to prevent globbing and word splitting.
@@ -55,7 +91,7 @@ Did you mean:
 		if [ -n "$num" ] && [ "$num" -eq "$port" ]; then
 
 
-In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 472:
+In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 480:
 	_ucidef_set_led_timer $1 $2 $3 "oneshot" $4 $5
                               ^-- SC2086: Double quote to prevent globbing and word splitting.
                                  ^-- SC2086: Double quote to prevent globbing and word splitting.
@@ -67,7 +103,7 @@ Did you mean:
 	_ucidef_set_led_timer "$1" "$2" "$3" "oneshot" "$4" "$5"
 
 
-In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 544:
+In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 552:
 	_ucidef_set_led_timer $1 $2 $3 "timer" $4 $5
                               ^-- SC2086: Double quote to prevent globbing and word splitting.
                                  ^-- SC2086: Double quote to prevent globbing and word splitting.
@@ -79,7 +115,7 @@ Did you mean:
 	_ucidef_set_led_timer "$1" "$2" "$3" "timer" "$4" "$5"
 
 
-In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 666:
+In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 674:
 	[ -f ${CFG} ] && json_load "$(cat ${CFG})"
              ^----^ SC2086: Double quote to prevent globbing and word splitting.
                                           ^----^ SC2086: Double quote to prevent globbing and word splitting.
@@ -88,7 +124,7 @@ Did you mean:
 	[ -f "${CFG}" ] && json_load "$(cat "${CFG}")"
 
 
-In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 680:
+In openwrt/package/base-files/files/lib/functions/uci-defaults.sh line 688:
 	json_dump -i -o ${CFG}
                         ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
