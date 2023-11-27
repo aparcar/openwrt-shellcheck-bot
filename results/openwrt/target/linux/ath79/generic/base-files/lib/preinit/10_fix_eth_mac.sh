@@ -31,21 +31,16 @@ In openwrt/target/linux/ath79/generic/base-files/lib/preinit/10_fix_eth_mac.sh l
 
 
 In openwrt/target/linux/ath79/generic/base-files/lib/preinit/10_fix_eth_mac.sh line 29:
-		ip link set dev eth0 address $(mtd_get_mac_text u-boot 0x3ff80 12)
-                                             ^-- SC2046: Quote this to prevent word splitting.
-
-
-In openwrt/target/linux/ath79/generic/base-files/lib/preinit/10_fix_eth_mac.sh line 32:
 		ip link set dev eth0 address $(mtd_get_mac_ascii u-boot-env mac_addr)
                                              ^-- SC2046: Quote this to prevent word splitting.
 
 
-In openwrt/target/linux/ath79/generic/base-files/lib/preinit/10_fix_eth_mac.sh line 35:
+In openwrt/target/linux/ath79/generic/base-files/lib/preinit/10_fix_eth_mac.sh line 32:
 		base_mac=$(mtd_get_mac_encrypted_deco $(find_mtd_part config))
                                                       ^---------------------^ SC2046: Quote this to prevent word splitting.
 
 
-In openwrt/target/linux/ath79/generic/base-files/lib/preinit/10_fix_eth_mac.sh line 36:
+In openwrt/target/linux/ath79/generic/base-files/lib/preinit/10_fix_eth_mac.sh line 33:
 		ip link set dev eth0 address $base_mac
                                              ^-------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -53,7 +48,7 @@ Did you mean:
 		ip link set dev eth0 address "$base_mac"
 
 
-In openwrt/target/linux/ath79/generic/base-files/lib/preinit/10_fix_eth_mac.sh line 40:
+In openwrt/target/linux/ath79/generic/base-files/lib/preinit/10_fix_eth_mac.sh line 37:
 		ip link set dev eth0 address $(macaddr_add $ethaddr 2)
                                              ^-----------------------^ SC2046: Quote this to prevent word splitting.
                                                            ^------^ SC2086: Double quote to prevent globbing and word splitting.
@@ -62,7 +57,7 @@ Did you mean:
 		ip link set dev eth0 address $(macaddr_add "$ethaddr" 2)
 
 
-In openwrt/target/linux/ath79/generic/base-files/lib/preinit/10_fix_eth_mac.sh line 41:
+In openwrt/target/linux/ath79/generic/base-files/lib/preinit/10_fix_eth_mac.sh line 38:
 		ip link set dev eth1 address $(macaddr_add $ethaddr 3)
                                              ^-----------------------^ SC2046: Quote this to prevent word splitting.
                                                            ^------^ SC2086: Double quote to prevent globbing and word splitting.
