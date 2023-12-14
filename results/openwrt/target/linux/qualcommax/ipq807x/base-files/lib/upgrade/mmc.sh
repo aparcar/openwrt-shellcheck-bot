@@ -1,18 +1,18 @@
 
 In openwrt/target/linux/qualcommax/ipq807x/base-files/lib/upgrade/mmc.sh line 21:
-			[ -z "$kernel" ] && kernel=$(find_mmc_part ${kernelname})
-                                                                   ^-----------^ SC2086: Double quote to prevent globbing and word splitting.
+	[ -z "$kernel" ] && kernel=$(find_mmc_part ${kernelname})
+                                                   ^-----------^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-			[ -z "$kernel" ] && kernel=$(find_mmc_part "${kernelname}")
+	[ -z "$kernel" ] && kernel=$(find_mmc_part "${kernelname}")
 
 
 In openwrt/target/linux/qualcommax/ipq807x/base-files/lib/upgrade/mmc.sh line 22:
-			[ -z "$rootfs" ] && rootfs=$(find_mmc_part ${rootfsname})
-                                                                   ^-----------^ SC2086: Double quote to prevent globbing and word splitting.
+	[ -z "$rootfs" ] && rootfs=$(find_mmc_part ${rootfsname})
+                                                   ^-----------^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-			[ -z "$rootfs" ] && rootfs=$(find_mmc_part "${rootfsname}")
+	[ -z "$rootfs" ] && rootfs=$(find_mmc_part "${rootfsname}")
 
 
 In openwrt/target/linux/qualcommax/ipq807x/base-files/lib/upgrade/mmc.sh line 27:
