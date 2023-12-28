@@ -74,7 +74,7 @@ Did you mean:
 	local pkgname="$(basename "${1%.*}")"
 
 
-In openwrt/package/base-files/files/lib/functions.sh line 279:
+In openwrt/package/base-files/files/lib/functions.sh line 274:
 		cp -R $root/rootfs-overlay/. $root/
                       ^---^ SC2086: Double quote to prevent globbing and word splitting.
                                              ^---^ SC2086: Double quote to prevent globbing and word splitting.
@@ -83,7 +83,7 @@ Did you mean:
 		cp -R "$root"/rootfs-overlay/. "$root"/
 
 
-In openwrt/package/base-files/files/lib/functions.sh line 280:
+In openwrt/package/base-files/files/lib/functions.sh line 275:
 		rm -fR $root/rootfs-overlay/
                        ^---^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -91,12 +91,12 @@ Did you mean:
 		rm -fR "$root"/rootfs-overlay/
 
 
-In openwrt/package/base-files/files/lib/functions.sh line 294:
+In openwrt/package/base-files/files/lib/functions.sh line 289:
 			for i in $(grep -s "^/etc/uci-defaults/" "$filelist"); do
                                  ^-- SC2013: To read lines rather than words, pipe/redirect to a 'while read' loop.
 
 
-In openwrt/package/base-files/files/lib/functions.sh line 295:
+In openwrt/package/base-files/files/lib/functions.sh line 290:
 				( [ -f "$i" ] && cd "$(dirname $i)" && . "$i" ) && rm -f "$i"
                                                                ^-- SC2086: Double quote to prevent globbing and word splitting.
 
