@@ -15,7 +15,7 @@ Did you mean:
 	ubiformat /dev/mtd"$kern_mtdnum" -y
 
 
-In openwrt/target/linux/qualcommax/ipq807x/base-files/lib/upgrade/platform.sh line 121:
+In openwrt/target/linux/qualcommax/ipq807x/base-files/lib/upgrade/platform.sh line 136:
 		part_num="$(hexdump -e '1/1 "%01x|"' -n 1 -s 168 -C /dev/mtd$config_mtdnum | cut -f 1 -d "|" | head -n1)"
                                                                             ^------------^ SC2086: Double quote to prevent globbing and word splitting.
 
