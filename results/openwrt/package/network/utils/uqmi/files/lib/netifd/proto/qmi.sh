@@ -113,21 +113,21 @@ In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 409:
 
 
 In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 410:
-			json_load "$(uqmi -s -d $device --set-client-id wds,$cid_6 --get-current-settings)"
+			json_load "$(uqmi -s -d $device -t 1000 --set-client-id wds,$cid_6 --get-current-settings)"
                                                 ^-----^ SC2086: Double quote to prevent globbing and word splitting.
-                                                                            ^----^ SC2086: Double quote to prevent globbing and word splitting.
+                                                                                    ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-			json_load "$(uqmi -s -d "$device" --set-client-id wds,"$cid_6" --get-current-settings)"
+			json_load "$(uqmi -s -d "$device" -t 1000 --set-client-id wds,"$cid_6" --get-current-settings)"
 
 
 In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 452:
-			json_load "$(uqmi -s -d $device --set-client-id wds,$cid_4 --get-current-settings)"
+			json_load "$(uqmi -s -d $device -t 1000 --set-client-id wds,$cid_4 --get-current-settings)"
                                                 ^-----^ SC2086: Double quote to prevent globbing and word splitting.
-                                                                            ^----^ SC2086: Double quote to prevent globbing and word splitting.
+                                                                                    ^----^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-			json_load "$(uqmi -s -d "$device" --set-client-id wds,"$cid_4" --get-current-settings)"
+			json_load "$(uqmi -s -d "$device" -t 1000 --set-client-id wds,"$cid_4" --get-current-settings)"
 
 
 In openwrt/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh line 518:
