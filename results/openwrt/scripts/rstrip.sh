@@ -1,10 +1,10 @@
 
 In openwrt/scripts/rstrip.sh line 23:
-find $TARGETS -type f -a -exec file {} \; | \
+find $TARGETS -not -path \*/lib/firmware/\* -a -type f -a -exec file {} \; | \
      ^------^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-find "$TARGETS" -type f -a -exec file {} \; | \
+find "$TARGETS" -not -path \*/lib/firmware/\* -a -type f -a -exec file {} \; | \
 
 
 In openwrt/scripts/rstrip.sh line 27:
