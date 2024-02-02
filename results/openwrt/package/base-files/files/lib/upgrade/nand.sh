@@ -129,8 +129,8 @@ Did you mean:
 
 
 In openwrt/package/base-files/files/lib/upgrade/nand.sh line 114:
-		umount "/dev/$ubiblk" && echo "unmounted /dev/$ubiblk" || :
-                                      ^-- SC2015: Note that A && B || C is not if-then-else. C may run when A is true.
+		umount "/dev/$ubiblk" 2>/dev/null && echo "unmounted /dev/$ubiblk" || :
+                                                  ^-- SC2015: Note that A && B || C is not if-then-else. C may run when A is true.
 
 
 In openwrt/package/base-files/files/lib/upgrade/nand.sh line 138:
