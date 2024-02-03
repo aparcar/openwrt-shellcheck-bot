@@ -1,5 +1,5 @@
 
-In openwrt/target/linux/lantiq/xrx200/base-files/lib/upgrade/platform.sh line 21:
+In openwrt/target/linux/lantiq/xrx200/base-files/lib/upgrade/platform.sh line 27:
 		nand_do_upgrade $1
                                 ^-- SC2086: Double quote to prevent globbing and word splitting.
 
