@@ -14,13 +14,5 @@ In openwrt/target/linux/mediatek/filogic/base-files/lib/upgrade/platform.sh line
 Did you mean: 
 	ubiformat /dev/mtd"$kern_mtdnum" -y
 
-
-In openwrt/target/linux/mediatek/filogic/base-files/lib/upgrade/platform.sh line 68:
-		if [ "$rootdisk" = "$(cat $handle)" ]; then
-                                          ^-----^ SC2086: Double quote to prevent globbing and word splitting.
-
-Did you mean: 
-		if [ "$rootdisk" = "$(cat "$handle")" ]; then
-
 For more information:
   https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...
