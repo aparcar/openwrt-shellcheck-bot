@@ -142,7 +142,7 @@ In openwrt/package/base-files/files/lib/functions/system.sh line 191:
               ^--^ SC2162: read without -r will mangle backslashes.
 
 
-In openwrt/package/base-files/files/lib/functions/system.sh line 229:
+In openwrt/package/base-files/files/lib/functions/system.sh line 230:
 	echo $oui:$nic
              ^--^ SC2086: Double quote to prevent globbing and word splitting.
                   ^--^ SC2086: Double quote to prevent globbing and word splitting.
@@ -151,7 +151,7 @@ Did you mean:
 	echo "$oui":"$nic"
 
 
-In openwrt/package/base-files/files/lib/functions/system.sh line 235:
+In openwrt/package/base-files/files/lib/functions/system.sh line 236:
 	local sd_hash=$(sha256sum /sys/class/block/$mmc_dev/device/cid)
                                                    ^------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -159,12 +159,12 @@ Did you mean:
 	local sd_hash=$(sha256sum /sys/class/block/"$mmc_dev"/device/cid)
 
 
-In openwrt/package/base-files/files/lib/functions/system.sh line 237:
+In openwrt/package/base-files/files/lib/functions/system.sh line 238:
 	echo "$(macaddr_unsetbit_mc "$(macaddr_setbit_la "${mac_base}")")"
              ^-- SC2005: Useless echo? Instead of 'echo $(cmd)', just use 'cmd'.
 
 
-In openwrt/package/base-files/files/lib/functions/system.sh line 244:
+In openwrt/package/base-files/files/lib/functions/system.sh line 245:
 	echo ${mac:9:2}$sep${mac:12:2}$sep${mac:15:2}
              ^--------^ SC2086: Double quote to prevent globbing and word splitting.
                        ^--^ SC2086: Double quote to prevent globbing and word splitting.
@@ -176,7 +176,7 @@ Did you mean:
 	echo "${mac:9:2}""$sep""${mac:12:2}""$sep""${mac:15:2}"
 
 
-In openwrt/package/base-files/files/lib/functions/system.sh line 251:
+In openwrt/package/base-files/files/lib/functions/system.sh line 252:
 	[ $bit -gt 0 -a $bit -le 48 ] || return
           ^--^ SC2086: Double quote to prevent globbing and word splitting.
                      ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
@@ -186,7 +186,7 @@ Did you mean:
 	[ "$bit" -gt 0 -a "$bit" -le 48 ] || return
 
 
-In openwrt/package/base-files/files/lib/functions/system.sh line 260:
+In openwrt/package/base-files/files/lib/functions/system.sh line 261:
 	[ $bit -gt 0 -a $bit -le 48 ] || return
           ^--^ SC2086: Double quote to prevent globbing and word splitting.
                      ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
@@ -196,7 +196,7 @@ Did you mean:
 	[ "$bit" -gt 0 -a "$bit" -le 48 ] || return
 
 
-In openwrt/package/base-files/files/lib/functions/system.sh line 266:
+In openwrt/package/base-files/files/lib/functions/system.sh line 267:
 	macaddr_setbit $1 7
                        ^-- SC2086: Double quote to prevent globbing and word splitting.
 
@@ -204,7 +204,7 @@ Did you mean:
 	macaddr_setbit "$1" 7
 
 
-In openwrt/package/base-files/files/lib/functions/system.sh line 272:
+In openwrt/package/base-files/files/lib/functions/system.sh line 273:
 	printf "%02x:%s" $((0x${mac%%:*} & ~0x01)) ${mac#*:}
                                                    ^-------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -212,12 +212,12 @@ Did you mean:
 	printf "%02x:%s" $((0x${mac%%:*} & ~0x01)) "${mac#*:}"
 
 
-In openwrt/package/base-files/files/lib/functions/system.sh line 278:
+In openwrt/package/base-files/files/lib/functions/system.sh line 279:
 	echo "$(macaddr_unsetbit_mc "$(macaddr_setbit_la "${randsrc}")")"
              ^-- SC2005: Useless echo? Instead of 'echo $(cmd)', just use 'cmd'.
 
 
-In openwrt/package/base-files/files/lib/functions/system.sh line 284:
+In openwrt/package/base-files/files/lib/functions/system.sh line 285:
 	echo -ne \\x${mac//:/\\x}
                     ^-----------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -225,7 +225,7 @@ Did you mean:
 	echo -ne \\x"${mac//:/\\x}"
 
 
-In openwrt/package/base-files/files/lib/functions/system.sh line 291:
+In openwrt/package/base-files/files/lib/functions/system.sh line 292:
 	mac=$(echo -n $mac | tr -d \")
                       ^--^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -233,7 +233,7 @@ Did you mean:
 	mac=$(echo -n "$mac" | tr -d \")
 
 
-In openwrt/package/base-files/files/lib/functions/system.sh line 317:
+In openwrt/package/base-files/files/lib/functions/system.sh line 318:
 	printf "%02x:%02x:%02x:%02x:%02x:%02x" 0x${canon// / 0x} 2>/dev/null
                ^-----------------------------^ SC2183: This format string has 6 variables, but is passed 1 arguments.
                                                  ^-------------^ SC2086: Double quote to prevent globbing and word splitting.
