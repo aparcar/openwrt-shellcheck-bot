@@ -16,7 +16,12 @@ In openwrt/target/linux/mvebu/cortexa72/base-files/lib/upgrade/emmc-puzzle.sh li
 Did you mean: 
 		if export_partdevice partdev "$part"; then
 
+
+In openwrt/target/linux/mvebu/cortexa72/base-files/lib/upgrade/emmc-puzzle.sh line 35:
+	dd if=/dev/zero of=$(find_mmc_part rootfs_data) bs=512 count=8
+                           ^--------------------------^ SC2046: Quote this to prevent word splitting.
+
 For more information:
+  https://www.shellcheck.net/wiki/SC2046 -- Quote this to prevent word splitt...
   https://www.shellcheck.net/wiki/SC2015 -- Note that A && B || C is not if-t...
   https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...
-  https://www.shellcheck.net/wiki/SC2162 -- read without -r will mangle backs...
