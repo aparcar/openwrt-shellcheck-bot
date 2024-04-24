@@ -217,15 +217,7 @@ In openwrt/package/base-files/files/lib/functions/system.sh line 279:
              ^-- SC2005: Useless echo? Instead of 'echo $(cmd)', just use 'cmd'.
 
 
-In openwrt/package/base-files/files/lib/functions/system.sh line 285:
-	echo -ne \\x${mac//:/\\x}
-                    ^-----------^ SC2086: Double quote to prevent globbing and word splitting.
-
-Did you mean: 
-	echo -ne \\x"${mac//:/\\x}"
-
-
-In openwrt/package/base-files/files/lib/functions/system.sh line 292:
+In openwrt/package/base-files/files/lib/functions/system.sh line 286:
 	mac=$(echo -n $mac | tr -d \")
                       ^--^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -233,7 +225,7 @@ Did you mean:
 	mac=$(echo -n "$mac" | tr -d \")
 
 
-In openwrt/package/base-files/files/lib/functions/system.sh line 318:
+In openwrt/package/base-files/files/lib/functions/system.sh line 312:
 	printf "%02x:%02x:%02x:%02x:%02x:%02x" 0x${canon// / 0x} 2>/dev/null
                ^-----------------------------^ SC2183: This format string has 6 variables, but is passed 1 arguments.
                                                  ^-------------^ SC2086: Double quote to prevent globbing and word splitting.

@@ -69,12 +69,12 @@ Did you mean:
 
 
 In openwrt/package/base-files/files/lib/functions/caldata.sh line 73:
-	reversed=$(hexdump -v -s $offset -n $count -e '/1 "%02x "' $mtd)
+	reversed=$(hexdump -v -s $offset -n $count -e '1/1 "%02x "' $mtd)
                                  ^-----^ SC2086: Double quote to prevent globbing and word splitting.
-                                                                   ^--^ SC2086: Double quote to prevent globbing and word splitting.
+                                                                    ^--^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-	reversed=$(hexdump -v -s "$offset" -n $count -e '/1 "%02x "' "$mtd")
+	reversed=$(hexdump -v -s "$offset" -n $count -e '1/1 "%02x "' "$mtd")
 
 
 In openwrt/package/base-files/files/lib/functions/caldata.sh line 79:
@@ -116,54 +116,93 @@ Did you mean:
 	magic=$(hexdump -v -n 2 -e '1/1 "%02x"' "$target")
 
 
-In openwrt/package/base-files/files/lib/functions/caldata.sh line 137:
-	xor_fw_mac=$(hexdump -v -n 6 -s $mac_offset -e '/1 "%02x"' /lib/firmware/$FIRMWARE)
-                                                                                 ^-------^ SC2086: Double quote to prevent globbing and word splitting.
+In openwrt/package/base-files/files/lib/functions/caldata.sh line 134:
+	[ -z "$data" -o -z "$data_offset" ] && return
+                     ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
+
+
+In openwrt/package/base-files/files/lib/functions/caldata.sh line 138:
+	fw_data=$(hexdump -v -n $data_count -s $data_offset -e '1/1 "%02x"' $target)
+                                                                            ^-----^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-	xor_fw_mac=$(hexdump -v -n 6 -s $mac_offset -e '/1 "%02x"' /lib/firmware/"$FIRMWARE")
+	fw_data=$(hexdump -v -n $data_count -s $data_offset -e '1/1 "%02x"' "$target")
 
 
-In openwrt/package/base-files/files/lib/functions/caldata.sh line 140:
-	xor_fw_chksum=$(hexdump -v -n 2 -s $chksum_offset -e '/1 "%02x"' /lib/firmware/$FIRMWARE)
-                                                                                       ^-------^ SC2086: Double quote to prevent globbing and word splitting.
-
-Did you mean: 
-	xor_fw_chksum=$(hexdump -v -n 2 -s $chksum_offset -e '/1 "%02x"' /lib/firmware/"$FIRMWARE")
-
-
-In openwrt/package/base-files/files/lib/functions/caldata.sh line 141:
-	xor_fw_chksum=$(xor $xor_fw_chksum $xor_fw_mac $xor_mac)
-                            ^------------^ SC2086: Double quote to prevent globbing and word splitting.
-                                           ^---------^ SC2086: Double quote to prevent globbing and word splitting.
-                                                       ^------^ SC2086: Double quote to prevent globbing and word splitting.
+In openwrt/package/base-files/files/lib/functions/caldata.sh line 143:
+			fw_chksum=$(hexdump -v -n 2 -s $chksum_offset -e '1/1 "%02x"' $target)
+                                                                                      ^-----^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-	xor_fw_chksum=$(xor "$xor_fw_chksum" "$xor_fw_mac" "$xor_mac")
+			fw_chksum=$(hexdump -v -n 2 -s $chksum_offset -e '1/1 "%02x"' "$target")
 
 
 In openwrt/package/base-files/files/lib/functions/caldata.sh line 144:
-		dd of=$target conv=notrunc bs=1 seek=$chksum_offset count=2
-                      ^-----^ SC2086: Double quote to prevent globbing and word splitting.
+			fw_chksum=$(xor $fw_chksum $(data_2xor_val $fw_data) $(data_2xor_val $data))
+                                        ^--------^ SC2086: Double quote to prevent globbing and word splitting.
+                                                   ^-----------------------^ SC2046: Quote this to prevent word splitting.
+                                                                   ^------^ SC2086: Double quote to prevent globbing and word splitting.
+                                                                             ^--------------------^ SC2046: Quote this to prevent word splitting.
+                                                                                             ^---^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-		dd of="$target" conv=notrunc bs=1 seek=$chksum_offset count=2
+			fw_chksum=$(xor "$fw_chksum" $(data_2xor_val "$fw_data") $(data_2xor_val "$data"))
 
 
-In openwrt/package/base-files/files/lib/functions/caldata.sh line 153:
-	[ -z "$mac" -o -z "$mac_offset" ] && return
-                    ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
-
-
-In openwrt/package/base-files/files/lib/functions/caldata.sh line 159:
-	macaddr_2bin $mac | dd of=$target conv=notrunc oflag=seek_bytes bs=6 seek=$mac_offset count=1 || \
-                     ^--^ SC2086: Double quote to prevent globbing and word splitting.
-                                  ^-----^ SC2086: Double quote to prevent globbing and word splitting.
+In openwrt/package/base-files/files/lib/functions/caldata.sh line 146:
+			data_2bin $fw_chksum | \
+                                  ^--------^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-	macaddr_2bin "$mac" | dd of="$target" conv=notrunc oflag=seek_bytes bs=6 seek=$mac_offset count=1 || \
+			data_2bin "$fw_chksum" | \
+
+
+In openwrt/package/base-files/files/lib/functions/caldata.sh line 147:
+				dd of=$target conv=notrunc bs=1 seek=$chksum_offset count=2 || \
+                                      ^-----^ SC2086: Double quote to prevent globbing and word splitting.
+
+Did you mean: 
+				dd of="$target" conv=notrunc bs=1 seek=$chksum_offset count=2 || \
+
+
+In openwrt/package/base-files/files/lib/functions/caldata.sh line 151:
+		data_2bin $data | \
+                          ^---^ SC2086: Double quote to prevent globbing and word splitting.
+
+Did you mean: 
+		data_2bin "$data" | \
+
+
+In openwrt/package/base-files/files/lib/functions/caldata.sh line 152:
+			dd of=$target conv=notrunc bs=1 seek=$data_offset count=$data_count || \
+                              ^-----^ SC2086: Double quote to prevent globbing and word splitting.
+
+Did you mean: 
+			dd of="$target" conv=notrunc bs=1 seek=$data_offset count=$data_count || \
+
+
+In openwrt/package/base-files/files/lib/functions/caldata.sh line 188:
+	caldata_patch_data "${mac//:/}" $(printf "0x%x" $(($mac_id * 0x6 + 0xe))) 0xa "$target"
+                                        ^-- SC2046: Quote this to prevent word splitting.
+                                                           ^-----^ SC2004: $/${} is unnecessary on arithmetic variables.
+
+
+In openwrt/package/base-files/files/lib/functions/caldata.sh line 202:
+	regdomain=$(hexdump -v -n 2 -s 0x34 -e '1/1 "%02x"' $target)
+                                                            ^-----^ SC2086: Double quote to prevent globbing and word splitting.
+
+Did you mean: 
+	regdomain=$(hexdump -v -n 2 -s 0x34 -e '1/1 "%02x"' "$target")
+
+
+In openwrt/package/base-files/files/lib/functions/caldata.sh line 206:
+		regdomain_data=$(hexdump -v -n 2 -s $offset -e '1/1 "%02x"' $target)
+                                                                            ^-----^ SC2086: Double quote to prevent globbing and word splitting.
+
+Did you mean: 
+		regdomain_data=$(hexdump -v -n 2 -s $offset -e '1/1 "%02x"' "$target")
 
 For more information:
+  https://www.shellcheck.net/wiki/SC2046 -- Quote this to prevent word splitt...
   https://www.shellcheck.net/wiki/SC2166 -- Prefer [ p ] || [ q ] as [ p -o q...
   https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...
-  https://www.shellcheck.net/wiki/SC2181 -- Check exit code directly with e.g...
