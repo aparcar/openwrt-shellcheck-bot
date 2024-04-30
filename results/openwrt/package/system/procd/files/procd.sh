@@ -204,12 +204,12 @@ Did you mean:
 	json_set_namespace "$__procd_old_cb"
 
 
-In openwrt/package/system/procd/files/procd.sh line 611:
+In openwrt/package/system/procd/files/procd.sh line 614:
 	procd_open_data
         ^-------------^ SC2119: Use procd_open_data "$@" if function's $1 should mean script's $1.
 
 
-In openwrt/package/system/procd/files/procd.sh line 629:
+In openwrt/package/system/procd/files/procd.sh line 632:
 	[ "$_error" = "0" ] || $(/sbin/validate_data "$_package" "$_type" "$_name" "$@" 1> /dev/null)
                                ^-- SC2091: Remove surrounding $() to avoid executing output.
 
