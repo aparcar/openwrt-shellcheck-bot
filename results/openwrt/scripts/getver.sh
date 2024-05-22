@@ -19,9 +19,9 @@ Did you mean:
 
 
 In openwrt/scripts/getver.sh line 29:
-		[ -n "$ORIGIN" ] || ORIGIN="$(git rev-parse --verify --symbolic-full-name master@{u} 2>/dev/null)"
-                                                                                                 ^-- SC1083: This { is literal. Check expression (missing ;/\n?) or quote it.
-                                                                                                   ^-- SC1083: This } is literal. Check expression (missing ;/\n?) or quote it.
+		[ -n "$ORIGIN" ] || ORIGIN="$(git rev-parse --verify --symbolic-full-name main@{u} 2>/dev/null)"
+                                                                                               ^-- SC1083: This { is literal. Check expression (missing ;/\n?) or quote it.
+                                                                                                 ^-- SC1083: This } is literal. Check expression (missing ;/\n?) or quote it.
 
 
 In openwrt/scripts/getver.sh line 30:
