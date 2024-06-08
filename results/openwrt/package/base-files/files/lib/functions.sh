@@ -349,6 +349,11 @@ In openwrt/package/base-files/files/lib/functions.sh line 532:
 Did you mean: 
 		[ "=" = "${tmp:0:1}" ] && echo "${tmp:1}"
 
+
+In openwrt/package/base-files/files/lib/functions.sh line 536:
+[ -z "$IPKG_INSTROOT" ] && ( [ -f /lib/config/uci.sh ] && . /lib/config/uci.sh ) || true
+                        ^-- SC2015: Note that A && B || C is not if-then-else. C may run when A is true.
+
 For more information:
   https://www.shellcheck.net/wiki/SC2045 -- Iterating over ls output is fragi...
   https://www.shellcheck.net/wiki/SC2046 -- Quote this to prevent word splitt...
