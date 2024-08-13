@@ -69,7 +69,7 @@ In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 
                    ^-- SC1007: Remove space after = if trying to assign a value (for empty string, use var='' ... ).
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 392:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 395:
 	echo "${vid} ${ifname}-${name}" >> /var/run/hostapd-${ifname}.vlan
                                                             ^-------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -77,7 +77,7 @@ Did you mean:
 	echo "${vid} ${ifname}-${name}" >> /var/run/hostapd-"${ifname}".vlan
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 399:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 402:
 	rm -f /var/run/hostapd-${ifname}.vlan
                                ^-------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -85,7 +85,7 @@ Did you mean:
 	rm -f /var/run/hostapd-"${ifname}".vlan
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 400:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 403:
 	for_each_vlan hostapd_set_vlan_file ${ifname}
                                             ^-------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -93,7 +93,7 @@ Did you mean:
 	for_each_vlan hostapd_set_vlan_file "${ifname}"
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 411:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 414:
 	echo "${vlan_id} ${mac} ${key}" >> /var/run/hostapd-${ifname}.psk
                                                             ^-------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -101,7 +101,7 @@ Did you mean:
 	echo "${vlan_id} ${mac} ${key}" >> /var/run/hostapd-"${ifname}".psk
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 417:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 420:
 	rm -f /var/run/hostapd-${ifname}.psk
                                ^-------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -109,7 +109,7 @@ Did you mean:
 	rm -f /var/run/hostapd-"${ifname}".psk
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 418:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 421:
 	for_each_station hostapd_set_psk_file ${ifname}
                                               ^-------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -117,7 +117,7 @@ Did you mean:
 	for_each_station hostapd_set_psk_file "${ifname}"
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 690:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 694:
 			[ -z "$wpa_psk_file" ] && set_default wpa_psk_file /var/run/hostapd-$ifname.psk
                                                                                             ^-----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -125,54 +125,54 @@ Did you mean:
 			[ -z "$wpa_psk_file" ] && set_default wpa_psk_file /var/run/hostapd-"$ifname".psk
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 695:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 699:
 			[ "$eapol_version" -ge "1" -a "$eapol_version" -le "2" ] && append bss_conf "eapol_version=$eapol_version" "$N"
                                                    ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 738:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 742:
 					[ -z "$fils_dhcp" -a -n "$network_bridge" -a -n "$network_ifname" ] && \
                                                           ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
                                                                                   ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 752:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 756:
 			[ -n "$dae_client" -a -n "$dae_secret" ] && {
                                            ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 768:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 772:
 			[ "$eapol_version" -ge "1" -a "$eapol_version" -le "2" ] && append bss_conf "eapol_version=$eapol_version" "$N"
                                                    ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 796:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 800:
 	local auth_algs="$((($auth_mode_shared << 1) | $auth_mode_open))"
                              ^---------------^ SC2004: $/${} is unnecessary on arithmetic variables.
                                                        ^-------------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 812:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 816:
 	[ -n "$wps_possible" -a -n "$config_methods" ] && {
                              ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 822:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 826:
 		[ "$ext_registrar" -gt 0 -a -n "$network_bridge" ] && append bss_conf "upnp_iface=$network_bridge" "$N"
                                          ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 945:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 949:
 				[ -n "$r0kh" -a -n "$r1kh" ] || {
                                              ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 946:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 950:
 					if [ -z "$auth_secret" -a -z "$key" ]; then
                                                                ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 950:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 954:
 					ft_key=`echo -n "$mobility_domain/${auth_secret:-${key}}" | md5sum | awk '{print $1}'`
                                                ^-- SC2006: Use $(...) notation instead of legacy backticked `...`.
 
@@ -180,27 +180,27 @@ Did you mean:
 					ft_key=$(echo -n "$mobility_domain/${auth_secret:-${key}}" | md5sum | awk '{print $1}')
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 969:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 973:
 		if [ -n "$network_bridge" -a "$rsn_preauth" = 1 ]; then
                                           ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 985:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 989:
 		[ "$auth_cache" = 0 -a "$fils" = 0 ] && append bss_conf "disable_pmksa_caching=1" "$N"
                                     ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1033:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1037:
 			[ -n "$macfile" -a -f "$macfile" ] && cat "$macfile"
                                         ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1037:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1041:
 	[ -n "$vlan_possible" -a -n "$dynamic_vlan" ] && {
                               ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1040:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1044:
 		[ -z "$vlan_file" ] && set_default vlan_file /var/run/hostapd-$ifname.vlan
                                                                               ^-----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -208,7 +208,7 @@ Did you mean:
 		[ -z "$vlan_file" ] && set_default vlan_file /var/run/hostapd-"$ifname".vlan
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1118:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1122:
 	set_default disable_dgaf $hs20
                                  ^---^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -216,67 +216,67 @@ Did you mean:
 	set_default disable_dgaf "$hs20"
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1191:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1205:
 		($log_80211  << 0) | \
                  ^--------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1192:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1206:
 		($log_8021x  << 1) | \
                  ^--------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1193:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1207:
 		($log_radius << 2) | \
                  ^---------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1194:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1208:
 		($log_wpa    << 3) | \
                  ^------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1195:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1209:
 		($log_driver << 4) | \
                  ^---------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1196:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1210:
 		($log_iapp   << 5) | \
                  ^-------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1197:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1211:
 		($log_mlme   << 6)   \
                  ^-------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1217:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1231:
 	rm -rf "$_rpath/$1" "$_config"
                ^----------^ SC2115: Use "${var:?}" to ensure this never expands to / .
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1235:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1249:
 				[ "$wds" = 1 -o "$multi_ap" = 1 ] || fail=1
                                              ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1350:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1364:
 		[ "$encryption" = "none" -o -z "$encryption" ] || append wpa_key_mgmt "SAE"
                                          ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1402:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1416:
 			if [ "$ca_cert_usesystem" -eq "1" -a -f "/etc/ssl/certs/ca-certificates.crt" ]; then
                                                           ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1451:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1465:
 						if [ "$ca_cert2_usesystem" -eq "1" -a -f "/etc/ssl/certs/ca-certificates.crt" ]; then
                                                                                    ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1499:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1513:
 							auth="$(echo $auth | cut -b 5- )"
                                                                      ^---^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -284,7 +284,7 @@ Did you mean:
 							auth="$(echo "$auth" | cut -b 5- )"
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1536:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1550:
 			append network_data "eap=$(echo $eap_type | tr 'a-z' 'A-Z')" "$N$T"
                                                         ^-------^ SC2086: Double quote to prevent globbing and word splitting.
                                                                        ^---^ SC2018: Use '[:lower:]' to support accents and foreign alphabets.
