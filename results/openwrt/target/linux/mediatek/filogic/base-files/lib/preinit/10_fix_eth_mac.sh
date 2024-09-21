@@ -15,7 +15,7 @@ Did you mean:
 		lan_addr=$(macaddr_add "$addr" 1)
 
 
-In openwrt/target/linux/mediatek/filogic/base-files/lib/preinit/10_fix_eth_mac.sh line 42:
+In openwrt/target/linux/mediatek/filogic/base-files/lib/preinit/10_fix_eth_mac.sh line 43:
 		ip link set dev lan address "$(macaddr_add $addr 1)"
                                                            ^---^ SC2086: Double quote to prevent globbing and word splitting.
 
