@@ -216,67 +216,67 @@ Did you mean:
 	set_default disable_dgaf "$hs20"
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1205:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1207:
 		($log_80211  << 0) | \
                  ^--------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1206:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1208:
 		($log_8021x  << 1) | \
                  ^--------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1207:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1209:
 		($log_radius << 2) | \
                  ^---------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1208:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1210:
 		($log_wpa    << 3) | \
                  ^------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1209:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1211:
 		($log_driver << 4) | \
                  ^---------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1210:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1212:
 		($log_iapp   << 5) | \
                  ^-------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1211:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1213:
 		($log_mlme   << 6)   \
                  ^-------^ SC2004: $/${} is unnecessary on arithmetic variables.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1231:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1233:
 	rm -rf "$_rpath/$1" "$_config"
                ^----------^ SC2115: Use "${var:?}" to ensure this never expands to / .
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1249:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1251:
 				[ "$wds" = 1 -o "$multi_ap" = 1 ] || fail=1
                                              ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1364:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1366:
 		[ "$encryption" = "none" -o -z "$encryption" ] || append wpa_key_mgmt "SAE"
                                          ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1416:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1418:
 			if [ "$ca_cert_usesystem" -eq "1" -a -f "/etc/ssl/certs/ca-certificates.crt" ]; then
                                                           ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1465:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1467:
 						if [ "$ca_cert2_usesystem" -eq "1" -a -f "/etc/ssl/certs/ca-certificates.crt" ]; then
                                                                                    ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1513:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1515:
 							auth="$(echo $auth | cut -b 5- )"
                                                                      ^---^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -284,7 +284,7 @@ Did you mean:
 							auth="$(echo "$auth" | cut -b 5- )"
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1550:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/hostapd.sh line 1552:
 			append network_data "eap=$(echo $eap_type | tr 'a-z' 'A-Z')" "$N$T"
                                                         ^-------^ SC2086: Double quote to prevent globbing and word splitting.
                                                                        ^---^ SC2018: Use '[:lower:]' to support accents and foreign alphabets.

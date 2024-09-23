@@ -44,14 +44,14 @@ Did you mean:
 	[ "$1" -eq 100 ] && [ "$2" -ge  64 ] && [ "$2" -le 127 ] && return 1
 
 
-In openwrt/package/network/ipv6/6in4/files/6in4.sh line 100:
+In openwrt/package/network/ipv6/6in4/files/6in4.sh line 117:
 	[ -n "$tunnelid" -a -n "$username" -a \( -n "$password" -o -n "$updatekey" \) ] && {
                          ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
                                            ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
                                                                 ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
 
 
-In openwrt/package/network/ipv6/6in4/files/6in4.sh line 109:
+In openwrt/package/network/ipv6/6in4/files/6in4.sh line 126:
 		[ "$http" = "https" -a -z "$(find $ca_path -name "*.0" 2>/dev/null)" ] && {
                                     ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
                                                   ^------^ SC2086: Double quote to prevent globbing and word splitting.
@@ -60,7 +60,7 @@ Did you mean:
 		[ "$http" = "https" -a -z "$(find "$ca_path" -name "*.0" 2>/dev/null)" ] && {
 
 
-In openwrt/package/network/ipv6/6in4/files/6in4.sh line 125:
+In openwrt/package/network/ipv6/6in4/files/6in4.sh line 142:
 				if proto_6in4_update $urlget $urlget_opts --user="$username" --password="$password" "$url" 2>&1 | \
                                                              ^----------^ SC2086: Double quote to prevent globbing and word splitting.
 
