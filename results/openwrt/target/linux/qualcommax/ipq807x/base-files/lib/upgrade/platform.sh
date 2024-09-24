@@ -15,7 +15,7 @@ Did you mean:
 	ubiformat /dev/mtd"$kern_mtdnum" -y
 
 
-In openwrt/target/linux/qualcommax/ipq807x/base-files/lib/upgrade/platform.sh line 230:
+In openwrt/target/linux/qualcommax/ipq807x/base-files/lib/upgrade/platform.sh line 235:
 		part_num="$(hexdump -e '1/1 "%01x|"' -n 1 -s 168 -C /dev/mtd$mtdnum | cut -f 1 -d "|" | head -n1)"
                                                                             ^-----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -23,7 +23,7 @@ Did you mean:
 		part_num="$(hexdump -e '1/1 "%01x|"' -n 1 -s 168 -C /dev/mtd"$mtdnum" | cut -f 1 -d "|" | head -n1)"
 
 
-In openwrt/target/linux/qualcommax/ipq807x/base-files/lib/upgrade/platform.sh line 234:
+In openwrt/target/linux/qualcommax/ipq807x/base-files/lib/upgrade/platform.sh line 239:
 			mtd erase /dev/mtd$mtdnum
                                           ^-----^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -31,7 +31,7 @@ Did you mean:
 			mtd erase /dev/mtd"$mtdnum"
 
 
-In openwrt/target/linux/qualcommax/ipq807x/base-files/lib/upgrade/platform.sh line 235:
+In openwrt/target/linux/qualcommax/ipq807x/base-files/lib/upgrade/platform.sh line 240:
 			mtd erase /dev/mtd$alt_mtdnum
                                           ^---------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -39,7 +39,7 @@ Did you mean:
 			mtd erase /dev/mtd"$alt_mtdnum"
 
 
-In openwrt/target/linux/qualcommax/ipq807x/base-files/lib/upgrade/platform.sh line 247:
+In openwrt/target/linux/qualcommax/ipq807x/base-files/lib/upgrade/platform.sh line 252:
 		part_num="$(hexdump -e '1/1 "%01x|"' -n 1 -s 168 -C /dev/mtd$config_mtdnum | cut -f 1 -d "|" | head -n1)"
                                                                             ^------------^ SC2086: Double quote to prevent globbing and word splitting.
 
