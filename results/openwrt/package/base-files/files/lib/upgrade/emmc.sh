@@ -46,24 +46,16 @@ Did you mean:
 
 
 In openwrt/package/base-files/files/lib/upgrade/emmc.sh line 19:
-	[ "$has_kernel" = 1 -a "$EMMC_KERN_DEV" ] &&
-                            ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
-
-
-In openwrt/package/base-files/files/lib/upgrade/emmc.sh line 20:
-		export EMMC_KERNEL_BLOCKS=$(($(tar xf "$tar_file" ${board_dir}/kernel -O | dd of="$EMMC_KERN_DEV" bs=512 2>&1 | grep "records out" | cut -d' ' -f1)))
-                                                                  ^----------^ SC2086: Double quote to prevent globbing and word splitting.
-
-Did you mean: 
-		export EMMC_KERNEL_BLOCKS=$(($(tar xf "$tar_file" "${board_dir}"/kernel -O | dd of="$EMMC_KERN_DEV" bs=512 2>&1 | grep "records out" | cut -d' ' -f1)))
-
-
-In openwrt/package/base-files/files/lib/upgrade/emmc.sh line 22:
 	[ "$has_rootfs" = 1 -a "$EMMC_ROOT_DEV" ] && {
                             ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
 
 
-In openwrt/package/base-files/files/lib/upgrade/emmc.sh line 23:
+In openwrt/package/base-files/files/lib/upgrade/emmc.sh line 21:
+		[ "$has_kernel" = 1 -a "$EMMC_KERN_DEV" ] && {
+                                    ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
+
+
+In openwrt/package/base-files/files/lib/upgrade/emmc.sh line 26:
 		export EMMC_ROOTFS_BLOCKS=$(($(tar xf "$tar_file" ${board_dir}/root -O | dd of="$EMMC_ROOT_DEV" bs=512 2>&1 | grep "records out" | cut -d' ' -f1)))
                                                                   ^----------^ SC2086: Double quote to prevent globbing and word splitting.
 
@@ -71,7 +63,20 @@ Did you mean:
 		export EMMC_ROOTFS_BLOCKS=$(($(tar xf "$tar_file" "${board_dir}"/root -O | dd of="$EMMC_ROOT_DEV" bs=512 2>&1 | grep "records out" | cut -d' ' -f1)))
 
 
-In openwrt/package/base-files/files/lib/upgrade/emmc.sh line 41:
+In openwrt/package/base-files/files/lib/upgrade/emmc.sh line 32:
+	[ "$has_kernel" = 1 -a "$EMMC_KERN_DEV" ] &&
+                            ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
+
+
+In openwrt/package/base-files/files/lib/upgrade/emmc.sh line 33:
+		export EMMC_KERNEL_BLOCKS=$(($(tar xf "$tar_file" ${board_dir}/kernel -O | dd of="$EMMC_KERN_DEV" bs=512 2>&1 | grep "records out" | cut -d' ' -f1)))
+                                                                  ^----------^ SC2086: Double quote to prevent globbing and word splitting.
+
+Did you mean: 
+		export EMMC_KERNEL_BLOCKS=$(($(tar xf "$tar_file" "${board_dir}"/kernel -O | dd of="$EMMC_KERN_DEV" bs=512 2>&1 | grep "records out" | cut -d' ' -f1)))
+
+
+In openwrt/package/base-files/files/lib/upgrade/emmc.sh line 48:
 	[ "$CI_KERNPART" -a -z "$EMMC_KERN_DEV" ] && export EMMC_KERN_DEV="$(find_mmc_part $CI_KERNPART $CI_ROOTDEV)"
                          ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
                                                                                            ^----------^ SC2086: Double quote to prevent globbing and word splitting.
@@ -81,7 +86,7 @@ Did you mean:
 	[ "$CI_KERNPART" -a -z "$EMMC_KERN_DEV" ] && export EMMC_KERN_DEV="$(find_mmc_part "$CI_KERNPART" "$CI_ROOTDEV")"
 
 
-In openwrt/package/base-files/files/lib/upgrade/emmc.sh line 64:
+In openwrt/package/base-files/files/lib/upgrade/emmc.sh line 71:
 		"fit")  emmc_upgrade_fit $1;;
                                          ^-- SC2086: Double quote to prevent globbing and word splitting.
 
@@ -89,7 +94,7 @@ Did you mean:
 		"fit")  emmc_upgrade_fit "$1";;
 
 
-In openwrt/package/base-files/files/lib/upgrade/emmc.sh line 65:
+In openwrt/package/base-files/files/lib/upgrade/emmc.sh line 72:
 		*)      emmc_upgrade_tar $1;;
                                          ^-- SC2086: Double quote to prevent globbing and word splitting.
 
