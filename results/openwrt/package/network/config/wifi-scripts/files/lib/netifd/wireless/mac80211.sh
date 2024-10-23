@@ -468,11 +468,12 @@ In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac8021
 
 
 In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac80211.sh line 559:
-	cat >> /var/run/hostapd-$phy.conf <<EOF
+	cat >> /var/run/hostapd-$phy$vif_phy_suffix.conf <<EOF
                                 ^--^ SC2086: Double quote to prevent globbing and word splitting.
+                                    ^-------------^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-	cat >> /var/run/hostapd-"$phy".conf <<EOF
+	cat >> /var/run/hostapd-"$phy""$vif_phy_suffix".conf <<EOF
 
 
 In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac80211.sh line 572:
@@ -484,13 +485,13 @@ Did you mean:
 
 
 In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac80211.sh line 579:
-	wdev_tool "$phy" get_macaddr id=$id num_global=$num_global_macaddr mbssid=${multiple_bssid:-0}
-                                        ^-^ SC2086: Double quote to prevent globbing and word splitting.
-                                                       ^-----------------^ SC2086: Double quote to prevent globbing and word splitting.
-                                                                                  ^------------------^ SC2086: Double quote to prevent globbing and word splitting.
+	wdev_tool "$phy$phy_suffix" get_macaddr id=$id num_global=$num_global_macaddr mbssid=${multiple_bssid:-0}
+                                                   ^-^ SC2086: Double quote to prevent globbing and word splitting.
+                                                                  ^-----------------^ SC2086: Double quote to prevent globbing and word splitting.
+                                                                                             ^------------------^ SC2086: Double quote to prevent globbing and word splitting.
 
 Did you mean: 
-	wdev_tool "$phy" get_macaddr id="$id" num_global="$num_global_macaddr" mbssid="${multiple_bssid:-0}"
+	wdev_tool "$phy$phy_suffix" get_macaddr id="$id" num_global="$num_global_macaddr" mbssid="${multiple_bssid:-0}"
 
 
 In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac80211.sh line 588:
@@ -579,22 +580,22 @@ In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac8021
                                                                        ^--^ SC2031: key was modified in a subshell. That change might be lost.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac80211.sh line 943:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac80211.sh line 950:
 	[ "$ret" != 0 -o -z "$supplicant_res" ] && wireless_setup_vif_failed WPA_SUPPLICANT_FAILED
                       ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac80211.sh line 958:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac80211.sh line 968:
 	[ "$ret" != 0 -o -z "$hostapd_res" ] && {
                       ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac80211.sh line 974:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac80211.sh line 985:
 mac80211_setup_supplicant() {
 ^-- SC2120: mac80211_setup_supplicant references arguments, but none are ever passed.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac80211.sh line 1006:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac80211.sh line 1017:
 			json_get_vars $MP_CONFIG_INT $MP_CONFIG_BOOL $MP_CONFIG_STRING
                                       ^------------^ SC2086: Double quote to prevent globbing and word splitting.
                                                      ^-------------^ SC2086: Double quote to prevent globbing and word splitting.
@@ -603,42 +604,42 @@ Did you mean:
 			json_get_vars "$MP_CONFIG_INT" "$MP_CONFIG_BOOL" $MP_CONFIG_STRING
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac80211.sh line 1010:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac80211.sh line 1021:
 				mac80211_setup_supplicant || failed=1
                                 ^-----------------------^ SC2119: Use mac80211_setup_supplicant "$@" if function's $1 should mean script's $1.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac80211.sh line 1017:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac80211.sh line 1028:
 			if [ "$wpa" -gt 0 -o "$auto_channel" -gt 0 ]; then
                                           ^-- SC2166: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac80211.sh line 1018:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac80211.sh line 1029:
 				mac80211_setup_supplicant || failed=1
                                 ^-----------------------^ SC2119: Use mac80211_setup_supplicant "$@" if function's $1 should mean script's $1.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac80211.sh line 1020:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac80211.sh line 1031:
 				mac80211_setup_adhoc
                                 ^------------------^ SC2119: Use mac80211_setup_adhoc "$@" if function's $1 should mean script's $1.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac80211.sh line 1024:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac80211.sh line 1035:
 			mac80211_setup_supplicant || failed=1
                         ^-----------------------^ SC2119: Use mac80211_setup_supplicant "$@" if function's $1 should mean script's $1.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac80211.sh line 1129:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac80211.sh line 1147:
 		for file in /sys/kernel/debug/ieee80211/$phy/ath9k*/chanbw /sys/kernel/debug/ieee80211/$phy/ath5k/bwmode; do
                                                         ^--^ SC2231: Quote expansions in this for loop glob to prevent wordsplitting, e.g. "$dir"/*.txt .
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac80211.sh line 1141:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac80211.sh line 1159:
 	[ "$rxantenna" = "$prev_rxantenna" -a "$txantenna" = "$prev_txantenna" ] || mac80211_reset_config "$phy"
                                            ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac80211.sh line 1198:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac80211.sh line 1210:
 		ls "/sys/class/ieee80211/${phy}/device" 2>/dev/null | grep net: | sed -e 's,net:,,g'
                 ^-- SC2010: Don't use ls | grep. Use a glob or a for loop with a condition to allow non-alphanumeric filenames.
 
