@@ -640,7 +640,7 @@ In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac8021
                                            ^-- SC2166: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined.
 
 
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac80211.sh line 1222:
+In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac80211.sh line 1230:
 		ls "/sys/class/ieee80211/${phy}/device" 2>/dev/null | grep net: | sed -e 's,net:,,g'
                 ^-- SC2010: Don't use ls | grep. Use a glob or a for loop with a condition to allow non-alphanumeric filenames.
 
