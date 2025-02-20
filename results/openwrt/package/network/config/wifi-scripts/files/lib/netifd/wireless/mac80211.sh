@@ -445,15 +445,6 @@ Did you mean:
 
 
 In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac80211.sh line 474:
-			he_spr_psr_enabled:${he_phy_cap:14:2}:0x1:$he_spr_psr_enabled \
-                                           ^----------------^ SC2086: Double quote to prevent globbing and word splitting.
-                                                                  ^-----------------^ SC2086: Double quote to prevent globbing and word splitting.
-
-Did you mean: 
-			he_spr_psr_enabled:"${he_phy_cap:14:2}":0x1:"$he_spr_psr_enabled" \
-
-
-In openwrt/package/network/config/wifi-scripts/files/lib/netifd/wireless/mac80211.sh line 475:
 			he_twt_required:${he_mac_cap:0:2}:0x6:$he_twt_required
                                         ^---------------^ SC2086: Double quote to prevent globbing and word splitting.
                                                               ^--------------^ SC2086: Double quote to prevent globbing and word splitting.
